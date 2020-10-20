@@ -1,0 +1,41 @@
+@font-face {
+  font-family: RobotoCondensedBold;
+  src: url('/fonts/RobotoCondensed-Bold.ttf');
+}
+
+@font-face {
+  font-family: RobotoMedium;
+  src: url('/fonts/Roboto-Medium.ttf');
+}
+
+@font-face {
+  font-family: RobotoRegular;
+  src: url('/fonts/Roboto-Regular.ttf');
+}
+
+@font-face {
+  font-family: DIN1451;
+  src: url('/fonts/DIN1451.ttf');
+}
+
+h1 {
+  font-family: RobotoCondensedBold;
+}
+
+h2 {
+  font-family: RobotoMedium;
+}
+
+body {
+  font-family: RobotoRegular;
+}
+
+#welcome {
+  background-color: purple;
+  color: white;
+}
+
+#errorPage {
+  background-color: red;
+  color: white;
+}

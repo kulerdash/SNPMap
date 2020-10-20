@@ -1,0 +1,7 @@
+/public/temp/
+/node_modules/
+/public/__pycache__
+/public/tempCodeRunnerFile.py
+/public/data/out/abstractPMID/*.txt
+tempCodeRunnerFile.js
+SNPMap.code-workspace

@@ -1,0 +1,45 @@
+{{Rsnum
+|rsid=1001579
+|Chromosome=5
+|position=108396257
+|Orientation=minus
+|GMAF=0.1074
+|Assembly=GRCh38
+|GenomeBuild=38.1
+|dbSNPBuild=141
+|geno1=(C;C)
+|geno2=(C;T)
+|geno3=(T;T)
+|StabilizedOrientation=minus
+}}{{ population diversity
+|geno1=(C;C)
+|geno2=(C;T)
+|geno3=(T;T)
+|CEU |1.6 |20.3 |78.1
+|HCB |0.0 |15.9 |84.1
+|JPT |0.0 |30.2 |69.8
+|YRI |0.0 |1.6 |98.4
+|ASW |0.0 |0.0 |0.0
+|CHB |0.0 |15.9 |84.1
+|CHD |0.0 |0.0 |0.0
+|GIH |0.0 |0.0 |0.0
+|LWK |0.0 |0.0 |0.0
+|MEX |0.0 |0.0 |0.0
+|MKK |0.0 |0.0 |0.0
+|TSI |0.0 |0.0 |0.0
+|HapMapRevision=28
+}}{{PMID Auto GWAS
+  |PMID=23382691
+  |Trait=IgG glycosylation
+  |Title=Loci associated with N-glycosylation of human immunoglobulin G show pleiotropy with autoimmune diseases and haematological cancers.
+  |RiskAllele=G
+  |Pval=7E-6
+  |OR=.18
+  |ORtxt=[0.1-0.26] unit increase
+  |OA=1
+}}
+
+{{on chip |Ancestry v2}}
+{{on chip |23andMe v5}}
+{{on chip |Ancestry v2c}}
+{{on chip |Ancestry v2d}}

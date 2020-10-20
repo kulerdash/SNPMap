@@ -1,0 +1,1 @@
+{"rsid": "2032582", "Gene": "ABCB1", "Chromosome": "7", "position": "87531302", "Orientation": "minus", "ReferenceAllele": "T", "MissenseAllele": "G", "GMAF": "0.3402", "Assembly": "GRCh38", "GenomeBuild": "38.1", "dbSNPBuild": "141", "geno1": "(G;G)", "geno2": "(G;T)", "geno3": "(T;T)", "Gene_s": "ABCB1", "StabilizedOrientation": "minus"}

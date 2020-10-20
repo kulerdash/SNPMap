@@ -1,0 +1,492 @@
+{{Rsnum
+|rsid=2032582
+|Gene=ABCB1
+|Chromosome=7
+|position=87531302
+|Orientation=minus
+|ReferenceAllele=T
+|MissenseAllele=G
+|GMAF=0.3402
+|Assembly=GRCh38
+|GenomeBuild=38.1
+|dbSNPBuild=141
+|geno1=(G;G)
+|geno2=(G;T)
+|geno3=(T;T)
+|Gene_s=ABCB1
+|StabilizedOrientation=minus
+}}{{ population diversity
+|geno1=(G;G)
+|geno2=(G;T)
+|geno3=(T;T)
+|CEU |25.7 |54.9 |19.5
+|HCB |19.7 |51.8 |28.5
+|JPT |22.1 |46.9 |31.0
+|YRI |0.0 |0.0 |0.0
+|ASW |80.7 |17.5 |1.8
+|CHB |19.7 |51.8 |28.5
+|CHD |19.3 |58.7 |22.0
+|GIH |8.9 |50.5 |40.6
+|LWK |96.3 |3.7 |0.0
+|MEX |29.3 |56.9 |13.8
+|MKK |82.7 |16.7 |0.6
+|TSI |34.3 |46.1 |19.6
+|HapMapRevision=28
+}}
+[[rs2032582]], also known as G2677T, is a nonsynonymous SNP located in exon 21 of the [[ABCB1]] gene. G2677 is also known as Ala893Thr. It is often studied in conjunction with [[rs1045642]].
+
+The [[rs2032582]](T) variant allele yields a 2.6 fold higher risk of developing [[lung cancer]], and in particular, the type of lung cancer called squamous cell carcinoma (CI 1.7-4.0, P < .001) in white Spanish smokers. There appears to be little gene dosage effect, since homozygous [[rs2032582(T;T)]] carriers shoulder almost all the risk (odds ratio 6.75 compared to (A;A) homozygotes, CI 3.0-15.2). This risk is also the same in light or heavy smokers. {{PMID|17120199}} 
+
+A study of 98 methadone-maintaining patients concluded that the higher (>150 mg/day) and lower (< or=150 mg/day) [[methadone]] dose groups differed significantly in their [[rs1128503]] status (experiment-wise p=0.0325). Furthermore, individuals with the 3-locus genotype pattern (T;T)-(T;T)-(T;T) for SNPs [[rs1045642]], [[rs2032582]] and [[rs1128503]], respectively, had an approximately 5-fold chance of requiring the 'higher' methadone dose, while individuals heterozygous for these three SNPs have an approximately 3-fold chance of stabilizing at the 'lower' methadone dose (point-wise p-value=0.026).{{PMID|18424454|OA=1
+}}
+
+OMIM also reports an association with [[Crohn's disease]].
+
+{{omim
+|id=171050
+|quiet=1
+|variant=0003
+|desc=CROHN DISEASE, SUSCEPTIBILITY TO
+|rsnum=2032582
+}}
+
+{{PMID Auto
+|PMID=20944127
+|Title=Two multidrug-resistance (ABCB1) gene polymorphisms as prognostic parameters in women with ovarian cancer
+}}
+{{PMID Auto
+|PMID=21287651
+|Title=Different Transport Activity of Human Triallelic MDR1 893Ala/Ser/Thr Variant and its Association with Herb Extracts
+}}
+
+{{omim
+|id=610064
+|rsnum=2032582
+}}
+
+{{PMID Auto
+|PMID=21902503
+|Title=ABCB1 polymorphisms and neuropsychiatric adverse events in oseltamivir-treated children during influenza H1N1/09 pandemia
+}}
+
+{{PMID Auto
+|PMID=22015057
+|Title=Single nucleotide polymorphism associations with response and toxic effects in patients with advanced renal-cell carcinoma treated with first-line sunitinib: a multicentre, observational, prospective study
+}}
+
+{{PMID Auto
+|PMID=22110582
+|Title=Association of MDR1 Gene SNPs and Haplotypes with the Tacrolimus Dose Requirements in Han Chinese Liver Transplant Recipients
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=22120734
+|Title=Identification of pharmacogenetic predictors of lipid-lowering response to atorvastatin in Chilean subjects with hypercholesterolemia
+}}
+
+{{PMID Auto
+|PMID=21705081
+|Title=Multidrug resistance gene expression and ABCB1 SNPs in plasma cell myeloma
+}}
+
+{{PMID Auto
+|PMID=22176633
+|Title=ABCB1/MDR1 polymorphism and colorectal cancer risk: a meta-analysis of case-control studies
+}}
+
+{{PMID Auto
+|PMID=21806386
+|Title=Pharmacogenetics of calcineurin inhibitors in Brazilian renal transplant patients
+}}
+
+{{PMID Auto
+|PMID=15197162
+|Title=Identifying candidate causal variants responsible for altered activity of the ABCB1 multidrug resistance gene.
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=16103896
+|Title=An association study of 43 SNPs in 16 candidate genes with atorvastatin response.
+}}
+
+{{PMID Auto
+|PMID=16999857
+|Title=ABCB1 genotypes and haplotypes in patients with dementia and age-matched non-demented control patients.
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=17146660
+|Title=Association of MDR1 genotypes with susceptibility to colorectal cancer in older non-smokers.
+}}
+
+{{PMID Auto
+|PMID=17548681
+|Title=MDR1 gene variants, indoor insecticide exposure, and the risk of childhood acute lymphoblastic leukemia.
+}}
+
+{{PMID Auto
+|PMID=17674045
+|Title=No association between MDR1 (ABCB1) 2677G>T and 3435C>T polymorphism and sporadic colorectal cancer among Bulgarian patients.
+}}
+
+{{PMID Auto
+|PMID=18213362
+|Title=Multiplexed genotyping of ABC transporter polymorphisms with the Bioplex suspension array.
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=18442890
+|Title=Association of a polymorphism of ABCB1 with obesity in Japanese individuals.
+}}
+
+{{PMID Auto
+|PMID=18518969
+|Title=Association of ABCB1 genetic variants with renal function in Africans and in Caucasians.
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=18698231
+|Title=Polymorphisms affecting gene transcription and mRNA processing in pharmacogenetic candidate genes: detection through allelic expression imbalance in human target tissues.
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=18725235
+|Title=Bidirectional translational research: Progress in understanding addictive diseases.
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=18784455
+|Title=The pharmacokinetics and pharmacogenomics of efavirenz and lopinavir/ritonavir in HIV-infected persons requiring hemodialysis.
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=18812236
+|Title=No association of ABCB1 polymorphisms with drug-refractory epilepsy in a north Indian population.
+}}
+
+{{PMID Auto
+|PMID=18854777
+|Title=Germline genetic variations in drug action pathways predict clinical outcomes in advanced lung cancer treated with platinum-based chemotherapy.
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=19155191
+|Title=Opiate and cocaine addiction: from bench to clinic and back to the bench.
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=19667110
+|Title=Identification of genetic variants associated with response to statin therapy.
+}}
+
+{{PMID Auto
+|PMID=19694740
+|Title=No significant effect of ABCB1 haplotypes on the pharmacokinetics of fluvastatin, pravastatin, lovastatin, and rosuvastatin.
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=19740399
+|Title=Influence of ABCB1 polymorphisms and haplotypes on tacrolimus nephrotoxicity and dosage requirements in children with liver transplant.
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=20170205
+|Title=Effect of CYP3A and ABCB1 single nucleotide polymorphisms on the pharmacokinetics and pharmacodynamics of calcineurin inhibitors: Part I.
+}}
+
+{{PMID Auto
+|PMID=20214406
+|Title=Effect of CYP3A and ABCB1 single nucleotide polymorphisms on the pharmacokinetics and pharmacodynamics of calcineurin inhibitors: Part II.
+}}
+
+{{PMID Auto
+|PMID=20354687
+|Title=Explaining variability in ciclosporin exposure in adult kidney transplant recipients.
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=20389299
+|Title=Pazopanib-induced hyperbilirubinemia is associated with Gilbert's syndrome UGT1A1 polymorphism.
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=20533057
+|Title=ABCB1/MDR1 gene polymorphisms as a prognostic factor in colorectal cancer.
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=21102498
+|Title=Cytochrome P450 genetic polymorphisms influence the serum concentration of calcineurin inhibitors in allogeneic hematopoietic SCT recipients.
+}}
+
+{{PMID Auto
+|PMID=21172166
+|Title=Pharmacogenetics of antidepressant response.
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=21185600
+|Title=Correlation between genetic polymorphisms of the hOCT1 and MDR1 genes and the response to imatinib in patients newly diagnosed with chronic-phase chronic myeloid leukemia.
+}}
+
+{{PMID Auto
+|PMID=21468756
+|Title=The effects of CYP3A4, CYP3A5, ABCB1, ABCC2, ABCG2 and SLCO1B3 single nucleotide polymorphisms on the pharmacokinetics and pharmacodynamics of docetaxel in nasopharyngeal carcinoma patients.
+}}
+
+{{PMID Auto
+|PMID=21544031
+|Title=Expression of CYP3A5 and P-glycoprotein in renal allografts with histological signs of calcineurin inhibitor nephrotoxicity.
+}}
+
+{{PMID Auto
+|PMID=21553324
+|Title=Polymorphisms of the MDR1 and MIF genes in children with nephrotic syndrome.
+}}
+
+{{PMID Auto
+|PMID=21827404
+|Title=The clinical impact of ABCB1 polymorphisms on the treatment of psychiatric diseases.
+}}
+
+{{PMID Auto
+|PMID=21840870
+|Title=Association of ABCB1, 5-HT3B receptor and CYP2D6 genetic polymorphisms with ondansetron and metoclopramide antiemetic response in Indonesian cancer patients treated with highly emetogenic chemotherapy.
+}}
+
+{{PMID Auto
+|PMID=21896346
+|Title=Polymorphisms in genes that regulate cyclosporine metabolism affect cyclosporine blood levels and clinical outcomes in patients who receive allogeneic hematopoietic stem cell transplantation.
+}}
+
+{{PMID Auto
+|PMID=22112610
+|Title=Common variants in ABCB1, ABCC2 and ABCG2 genes and clinical outcomes among women with advanced stage ovarian cancer treated with platinum and taxane-based chemotherapy: a Gynecologic Oncology Group study.
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=22134106
+|Title=ABCB1 haplotype is associated with major molecular response in chronic myeloid leukemia patients treated with standard-dose of imatinib.
+}}
+
+{{PMID Auto
+|PMID=22136368
+|Title=Influence of genomic ancestry on the distribution of SLCO1B1, SLCO1B3 and ABCB1 gene polymorphisms among Brazilians.
+}}
+
+{{PMID Auto
+|PMID=22306099
+|Title=Association between the functional polymorphism (C3435T) of the gene encoding P-glycoprotein (ABCB1) and major depressive disorder in the Japanese population.
+}}
+
+{{PMID Auto
+|PMID=22672924
+|Title=Polymorphisms of the drug transporter gene ABCB1 predict side effects of treatment with cabergoline in patients with PRL adenomas
+}}
+
+{{PMID Auto
+|PMID=23188198
+|Title=ABCB1 polymorphism predicts escitalopram dose needed for remission in major depression
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=23279665
+|Title=ABCB1/MDR1 gene polymorphism and colorectal cancer risk: a meta-analysis of case-control studies
+}}
+
+{{PMID Auto
+|PMID=23546964
+|Title=Frequency of MDR1 single nucleotide polymorphisms in a Jordanian population, including a novel variant
+}}
+
+{{PMID Auto
+|PMID=23093106
+|Title=Detection of frequent ABCB1 polymorphisms by high-resolution melting curve analysis and their effect on breast carcinoma prognosis
+}}
+
+{{PMID Auto
+|PMID=23556446
+|Title=Association of ATP-binding cassette transporter variants with the risk of Alzheimer's disease
+}}
+
+{{PMID Auto
+|PMID=23372834
+|Title=ABCB1 variation and treatment response in AIDS patients: initial results of the Henan cohort
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=23917080
+|Title=ABCB1 (MDR1) polymorphisms and ovarian cancer progression and survival: a comprehensive analysis from the Ovarian Cancer Association Consortium and The Cancer Genome Atlas
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=24469730
+|Title=Genetic association of the P-glycoprotein gene ABCB1 polymorphisms with the risk for steroid-induced osteonecrosis of the femoral head in Chinese population
+}}
+
+{{PMID Auto
+|PMID=23133420
+|Title=Pharmacogenomic Diversity among Brazilians: Influence of Ancestry, Self-Reported Color, and Geographical Origin.
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=23133441
+|Title=ABCB1 4036A>G and 1236C>T Polymorphisms Affect Plasma Efavirenz Levels in South African HIV/AIDS Patients.
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=23443032
+|Title=Fetal polymorphisms at the ABCB1-transporter gene locus are associated with susceptibility to non-syndromic oral cleft malformations.
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=23733030
+|Title=Pharmacogenetics in major depression: a comprehensive meta-analysis.
+}}
+
+{{PMID Auto
+|PMID=24918524
+|Title=Association study between the MDR1 gene and clinical characteristics in schizophrenia
+}}
+
+{{ClinVar
+|ALT=C,T
+|CHROM=7
+|CLNACC=RCV000152717.3; RCV000211207.1; RCV000211425.1; RCV000152713.3; RCV000429867.1
+|CLNALLE=1; 2
+|CLNDBN=not specified; ondansetron response - Efficacy; simvastatin response - Efficacy; Ovarian Neoplasms
+|CLNDSDB=MedGen; MeSH:MedGen
+|CLNDSDBID=CN169374; CN236569; CN236582; D010051:CN236629
+|CLNHGVS=NC_000007.13:g.87160618A>C; NC_000007.13:g.87160618A>T
+|CLNORIGIN=1; 3
+|CLNREVSTAT=single; exp; no_assertion
+|CLNSIG=6
+|CLNSRC=HGMD; PharmGKB Clinical Annotation; UniProtKB (protein)
+|CLNSRCID=CM033585; 1150414901; 1183632200; P08183#VAR_013361; P08183#VAR_013362
+|Disease=not specified; ondansetron response - Efficacy; simvastatin response - Efficacy; Ovarian Neoplasms
+|FwdALT=A,G
+|FwdREF=T
+|GENEINFO=ABCB1:5243
+|GENE_ID=5243
+|GENE_NAME=ABCB1
+|REF=A
+|RSPOS=87160618
+|Reversed=1
+|SAO=1
+|SSR=0
+|Tags=RV;PM;TPA;PMC;S3D;SLO;NSM;REF;ASP;VLD;G5;HD;GNO;KGPhase1;KGPhase3;LSD;OM
+|VC=SNV
+|VP=0x050378000a0515053f110101
+|WGT=1
+|dbSNPBuildID=94
+|rsid=2032582
+|CAF=0.3343; 0.617; 0.04872
+|COMMON=1
+}}
+
+{{PMID Auto
+|PMID=25355168
+|Title=Colorectal cancer susceptibility: apparent gender-related modulation by ABCB1 gene polymorphisms
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=25520092
+|Title=Lack of association between polymorphisms in genes MTHFR and MDR1 with risk of childhood acute lymphoblastic leukemia
+}}
+
+{{PMID Auto
+|PMID=26325438
+|Title=Influence of ADME genomic variants on tacrolimus/sirolimus blood levels and GVHD after allogeneic hematopoietic cell transplantation
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=26189305
+|Title=ABCB1, ABCC2, SCN1A, SCN2A, GABRA1 gene polymorphisms and drug resistant epilepsy in the Chinese Han population
+}}
+
+{{PMID Auto
+|PMID=26457621
+|Title=Genetic variability in ABCB1, occupational pesticide exposure, and Parkinson's disease
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=27296832
+|Title=ABCB1 polymorphism is associated with atorvastatin-induced liver injury in Japanese population.
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=27600024
+|Title=Association between ABCB1 polymorphisms and haplotypes and Alzheimer's disease: a meta-analysis.
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=28608314
+|Title=Polymorphism of the multidrug resistance 1 gene MDR1 G2677T/A (rs2032582) and the risk of drug-resistant epilepsy in the Polish adult population.
+}}
+
+{{PMID Auto
+|PMID=28792718
+|Title=MDR-1 and CYP3A5 Polymorphisms in Pediatric Idiopathic Nephrotic Syndrome: Impact on Susceptibility and Response to Steroids (Preliminary Results).
+}}
+
+{{PMID Auto
+|PMID=29491071
+|Title=Polymorphisms of ABCB1, CYP3A4 and CYP3A5 Genes in Ovarian Cancer and Treatment Response in Poles.
+}}
+
+{{PMID Auto
+|PMID=30213564
+|Title=Clinical utility of ABCB1 genotyping for preventing toxicity in treatment with irinotecan.
+}}
+
+{{PMID Auto
+|PMID=30996113
+|Title=Association between genetic polymorphisms and osteonecrosis in steroid treatment populations: a detailed stratified and dose-response meta-analysis.
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=31391850
+|Title=Role of Four ABC Transporter Genes in Pharmacogenetic Susceptibility to Breast Cancer in Jordanian Patients.
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=32295184
+|Title=MTHFR and VDR Polymorphisms Improve the Prognostic Value of MYCN Status on Overall Survival in Neuroblastoma Patients.
+|OA=1
+}}
+{{on chip |Ancestry v2c}}
+{{on chip |Ancestry v2d}}
+{{on chip |Ancestry v2}}
+{{on chip |FTDNA2}}
+{{on chip |HumanOmni1Quad}}
+{{on chip |Illumina Human 1M}}

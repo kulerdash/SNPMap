@@ -1,0 +1,463 @@
+{{Rsnum
+|rsid=2279744
+|Gene=MDM2
+|Chromosome=12
+|position=68808800
+|Orientation=plus
+|StabilizedOrientation=plus
+|GMAF=0.3691
+|Gene_s=MDM2
+|Assembly=GRCh38
+|GenomeBuild=38.1
+|dbSNPBuild=141
+|Summary=Associated with number of cancers and cancer prognosis
+|geno1=(G;G)
+|geno2=(G;T)
+|geno3=(T;T)
+}}
+[[rs2279744]], a variant in the promoter of the [[MDM2]] gene and also known as "-410T-G", "SNP309", and "SNP309T>G", has been studied for several years to determine it's role in [[cancer]] origin and treatment. The interest primarily stems from the ability of the [[MDM2]] protein to bind to and thereby enhance the degradation of the tumor suppressor protein known as [[p53]]. Studies on [[rs2279744]] include:
+
+* [[rs2279744]](G) carriers in individuals with [[cancer]] tend to develop such cancers on average 12 years earlier than those lacking this allele, and the frequency of [[rs2279744]](G) was greatly increased in those who developed soft tissue sarcomas at a young age. {{PMID|15550242}}
+
+* Individuals with one or more [[rs2279744]](G) alleles who are also carriers of the [[TP53]] [[rs1042522]](C) (arg at aa72) SNP tend to develop cancers earlier than [[rs2279744(T;T)]] homozygotes who carry the same p53 SNP. {{PMID|16258005|OA=1
+}}
+
+* [[rs2279744]](T;T) individuals who have a mutant p53 (in their tumors) are at an increased risk of death (risk ratio [RR] of death=2.33, 95% CI=1.08 to 5.03). Tumor p53 status was not associated with [[breast cancer]] survival among [[rs2279744]](G;T) or [[rs2279744]](G;G) genotypes. {{PMID|16818855}}
+
+* [[rs2279744]] showed no association with nonsmall cell [[lung cancer]] risk in a study of 1,787 Caucasian patients. However, a possible association between nonsmoking (G;G) homozygotes and a higher risk of nonsmall cell [[lung cancer]] was reported.{{PMID|17957785}}
+
+* A study in Chinese leukemia patients found that the [[rs2279744]](G) allele was unexpectedly associated with reduced risk.{{PMID|18313915}}
+
+* Another study concludes that this SNP on its own has little or no effect on the risk of common cancers, but it might modify the time of tumor onset and prognosis. {{PMID|17827408}}
+
+* [[rs2279744]](G;G) females are at a 2.76x increased risk (CI: 1.06-7.20, p=0.03) for [[endometrial cancer]] compared to (G;T) or (T;T) genotypes based on a study of 73 patients and matched controls.{{PMID|17123590}}
+
+* A study of 148 individuals with advanced nonsmall cell [[lung cancer]] (NSCLC) undergoing first-line chemotherapy, such as the irinotecan plus cisplatin regimen, concluded after multivariate analysis that the [[rs2279744]](T;T) genotype was independently predictive for longer survival (HR=1.742, p=.032).{{PMID|18618574}} 
+
+* The [[rs2279744]](G;G) genotype was associated with high grade [[breast cancer]] tumors (with an odds ratio of 1.64, CI:1.06-2.53, p=0.025) and greater nodal involvement (OR=2.51, CI:1.26-4.98, p=0.009), but was not associated with an earlier age of cancer diagnosis or even risk of breast cancer, in a study of ~300 Scottish Caucasian patients.{{PMID|18828900|OA=1
+}}
+
+* Around 300 cases each of [[melanoma]], basal cell carcinoma, and squamous cell carcinoma were studied relative to this SNP. No significant associations were found between [[rs2279744]] and any of these three types of [[skin cancer]]. However, compared with the (T;T) genotype, the adjusted odds ratios of having moles on the arms for (G;T) and (G;G) genotypes was 0.92 (CI: 0.78-1.08) and 0.68 (CI: 0.53-0.87), respectively (p, trend, 0.005).{{PMID|18814047|OA=1
+}}
+
+* [[rs2279744]](G;G) women are diagnosed with [[melanoma]] 13 years earlier than women who carry one or no G alleles. Note that this SNP does not cause higher risk of melanoma; it affects only the age at diagnosis of melanoma in women and has no effect in men, as reported in the 23andMe blog [http://blog.23andme.com/2009/03/30/snpwatch-genetic-variation-may-explain-why-young-women-are-at-greater-risk-for-melanoma-compared-to-young-men/ 23andMe blog].
+
+* Odds ratio for (G;G) 3x, for (G;T) 2x, for [[breast cancer]] in a study of 124 Taiwanese patients, along with a correlation towards earlier occurence.{{PMID|19144119|OA=1
+}}
+
+* [[rs117039649]], also known as SNP285C, a second MDM2 SNP found on the SNP305G allele (and only in Caucasians), reduces the risk of both ovarian and breast cancer among SNP309G holders (odds ratio 0.74 and 0.79, respectively), compared to SNP309G holders lacking this (second) SNP.{{PMID|21316605}}
+
+[http://blog.23andme.com/2009/03/30/snpwatch-genetic-variation-may-explain-why-young-women-are-at-greater-risk-for-melanoma-compared-to-young-men/ 23andMe blog] rs2279744(G) has been associated with earlier onset for some cancers, including soft tissue sarcoma, diffuse large B-cell lymphoma, colorectal cancer, ovarian cancer and non-small cell lung cancer in women, and decreased survival in people with stomach and kidney cancer.  But there is evidence for improved survival in women with ovarian cancer who have the G version of this SNP.  Paradoxically, higher levels of the MDM2 protein (as would be expected with the G version of SNP rs2279744 shown to lead to earlier melanoma onset in the current study) have been associated with improved survival for melanoma.
+
+* [[rs2279744]] is not associated with [[SLE]] in a study of Caucasians, African-Americans, and Asian children and adults.{{PMID|19074170|OA=1
+}}
+
+*{{PMID|19193430}} [[rs2279744]], [[rs1042522]], [[rs17878362]] and [[rs1625895]] associated with high grade [[endometrial cancer]]
+
+{{PMID Auto
+|PMID=19521721
+|Title=Accelerated decline in lung function in cigarette smokers is associated with TP53/MDM2 polymorphisms
+|OA=1
+}}
+
+{{omim
+|id=164785
+|desc=MOUSE DOUBLE MINUTE 2 HOMOLOG; MDM2
+|rsnum=2279744
+}}
+{{PMID Auto
+|PMID=19707196
+|Title=The TP53 Arg72Pro and MDM2 309G&gt;T polymorphisms are not associated with breast cancer risk in BRCA1 and BRCA2 mutation carriers
+|OA=1
+}}
+{{PMID Auto
+|PMID=19751436
+|Title=Interaction of Helicobacter pylori with Genetic Variants in the MDM2 Promoter, is Associated with Gastric Cancer Susceptibility in Chinese Patients
+}}
+{{PMID Auto
+|PMID=19837266
+|Title=TP53 R72P and MDM2 SNP309 polymorphisms in modification of childhood acute lymphoblastic leukemia susceptibility
+}}
+
+{{PMID Auto
+|PMID=20447891
+|Title=MDM2 promoter polymorphism is associated with increased susceptibility to hepatocellular carcinoma in Turkish population
+}}
+{{PMID Auto
+|PMID=20736372
+|Title=Human Papillomavirus Seropositivity Synergizes with MDM2 Variants to Increase the Risk of Oral Squamous Cell Carcinoma
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=21051655
+|Title=MDM2 as a Modifier Gene in Retinoblastoma
+}}
+{{PMID Auto
+|PMID=20587610
+|Title=Examination of genetic polymorphisms in newborns for signatures of sex-specific prenatal selection
+}}
+
+{{omim
+|id=164785
+|rsnum=2279744
+|variant=0001
+}}
+
+{{PMID Auto
+|PMID=21843334
+|Title=TP53 and MDM2 gene polymorphisms and risk of hepatocellular carcinoma in Italian patients
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=22251423
+|Title=NAMPT (visfatin) and AKT1 genetic variants associate with myocardial infarction
+}}
+
+{{PMID Auto
+|PMID=22558411
+|Title=MDM2 Promoter SNP344T>A (rs1196333) Status Does Not Affect Cancer Risk
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=16287156
+|Title=Genetic polymorphisms in cell cycle regulatory genes MDM2 and TP53 are associated with susceptibility to lung cancer.
+}}
+
+{{PMID Auto
+|PMID=17360557
+|Title=Haplotype structure and selection of the MDM2 oncogene in humans.
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=17537232
+|Title=Association of TP53 codon 72 polymorphism and the outcome of adjuvant therapy in breast cancer patients.
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=17634539
+|Title=MDM2 SNP309 polymorphism as risk factor for susceptibility and poor prognosis in renal cell carcinoma.
+}}
+
+{{PMID Auto
+|PMID=18332046
+|Title=A distinct ERCC1 haplotype is associated with mRNA expression levels in prostate cancer patients.
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=18433484
+|Title=Early onset lung cancer, cigarette smoking and the SNP309 of the murine double minute-2 (MDM2) gene.
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=18433491
+|Title=MDM2 gene SNP309 T/G and p53 gene SNP72 G/C do not influence diffuse large B-cell non-Hodgkin lymphoma onset or survival in central European Caucasians.
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=18798306
+|Title=Construction of a high resolution linkage disequilibrium map to evaluate common genetic variation in TP53 and neural tube defect risk in an Irish population.
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=19237173
+|Title=Bcl2 -938C/A polymorphism carries increased risk of biochemical recurrence after radical prostatectomy.
+}}
+
+{{PMID Auto
+|PMID=19470478
+|Title=Single-nucleotide polymorphisms in the p53 pathway regulate fertility in humans.
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=19497887
+|Title=Altered tumor formation and evolutionary selection of genetic variants in the human MDM4 oncogene.
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=19542078
+|Title=TP53 PIN3 and MDM2 SNP309 polymorphisms as genetic modifiers in the Li-Fraumeni syndrome: impact on age at first diagnosis.
+}}
+
+{{PMID Auto
+|PMID=20452958
+|Title=Single-nucleotide polymorphisms in the p53 signaling pathway.
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=20617153
+|Title=Detection of fetomaternal genotype associations in early-onset disorders: evaluation of different methods and their application to childhood leukemia.
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=20922573
+|Title=Functional polymorphisms associated with disease-free survival in resected carcinoma of the esophagus.
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=20979563
+|Title=MDM2 and CDKN1A gene polymorphisms and risk of Kaposi's sarcoma in African and Caucasian patients.
+}}
+
+{{PMID Auto
+|PMID=21240526
+|Title=Evaluation of the association studies of single nucleotide polymorphisms and hepatocellular carcinoma: a systematic review.
+}}
+
+{{PMID Auto
+|PMID=21268124
+|Title=MDM2 SNP309 contributes to non-small cell lung cancer survival in Chinese.
+}}
+
+{{PMID Auto
+|PMID=21305319
+|Title=Joint effects of germ-line TP53 mutation, MDM2 SNP309, and gender on cancer risk in family studies of Li-Fraumeni syndrome.
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=21437228
+|Title=Using epidemiology and genomics to understand osteosarcoma etiology.
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=21841506
+|Title=Combined effect of genetic polymorphisms in P53, P73, and MDM2 on non-small cell lung cancer survival.
+}}
+
+{{PMID Auto
+|PMID=22004425
+|Title=Genetic risk of hepatocellular carcinoma in patients with hepatitis C virus: a case control study.
+}}
+
+{{PMID Auto
+|PMID=22180099
+|Title=Influence of MDM2 and MDM4 on development and survival in hereditary retinoblastoma.
+}}
+
+{{PMID Auto
+|PMID=23210739
+|Title=Association of MDM2 and p53 Polymorphisms with the Advancement of Cervical Carcinoma
+}}
+
+{{PMID Auto
+|PMID=23451111
+|Title=MDM2 SNP309 rs2279744 Polymorphism and Gastric Cancer Risk: A Meta-Analysis
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=24175836
+|Title=P53 Arg72Pro and MDM2 SNP309 Polymorphisms Cooperate to Increase Lung Adenocarcinoma Risk in Chinese Female Non-smokers: A Case Control Study
+}}
+
+{{PMID Auto
+|PMID=24324286
+|Title=Investigation of genetic polymorphisms related to the outcome of radiotherapy for prostate cancer patients
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=24349246
+|Title=The T309G MDM2 Gene Polymorphism Is a Novel Risk Factor for Proliferative Vitreoretinopathy
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=24427778
+|Title=ESR1 rs9340799 is associated with endometriosis-related infertility and in vitro fertilization failure
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=23218882
+|Title=Significance of MDM2 and P14 ARF polymorphisms in susceptibility to differentiated thyroid carcinoma.
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=23423487
+|Title=Effect of TP53 codon 72 and MDM2 SNP309 polymorphisms on survival of gastric cancer among patients who receiving 5-fluorouracil-based postoperative adjuvant chemotherapy.
+}}
+
+{{PMID Auto
+|PMID=24792886
+|Title=Common variant on MDM2 contributes to endometrial cancer susceptibility: evidence based on 7 studies
+}}
+
+{{PMID Auto
+|PMID=25054017
+|Title=Single-nucleotide polymorphism (c.309T&gt;G) in the MDM2 gene and lung cancer risk
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=25218545
+|Title=Interaction between TP63 and MDM2 genes and the risk of recurrent pregnancy loss
+}}
+
+{{PMID Auto
+|PMID=25479941
+|Title=Genetic association of single nucleotide polymorphisms in P53 pathway with gastric cancer risk in a Chinese Han population
+}}
+
+{{ClinVar
+|ALT=G
+|CAF=0.6334; 0.3666
+|CHROM=12
+|CLNACC=RCV000014918.4
+|CLNALLE=1
+|CLNDBN=Accelerated tumor formation, susceptibility to
+|CLNDSDB=MedGen:OMIM
+|CLNDSDBID=C3280690:614401
+|CLNHGVS=NC_000012.11:g.69202580T>G
+|CLNORIGIN=1
+|CLNREVSTAT=no_criteria
+|CLNSIG=255
+|CLNSRC=OMIM Allelic Variant
+|CLNSRCID=164785.0001
+|COMMON=1
+|Disease=Accelerated tumor formation
+|FwdALT=G
+|FwdREF=T
+|GENEINFO=MDM2:4193
+|GENE_ID=4193
+|GENE_NAME=MDM2
+|REF=T
+|RSPOS=69202580
+|Reversed=0
+|SAO=1
+|SSR=0
+|Tags=PM;PMC;SLO;INT;R5;ASP;VLD;G5A;G5;HD;GNO;KGPhase1;KGPhase3;LSD;OM
+|VC=SNV
+|VP=0x0501680a0005170536110100
+|WGT=1
+|dbSNPBuildID=100
+|rsid=2279744
+}}
+
+{{PMID Auto
+|PMID=25734904
+|Title=Impact of TP53 Codon 72 and MDM2 SNP 309 Polymorphisms in Pancreatic Ductal Adenocarcinoma
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=26135929
+|Title=A Systematic Review and Meta-Analysis of Three Gene Variants Association with Risk of Prostate Cancer: An Update
+}}
+
+{{PMID Auto
+|PMID=26224627
+|Title=Murine Double-Minute 2 Homolog Single Nucleotide Polymorphisms 285 and 309 in Cervical Carcinogenesis
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=26373042
+|Title=Polymorphisms in NEIL-2, APE-1, CYP2E1 and MDM2 Genes are Independent Predictors of Gastric Cancer Risk in a Northern Jiangsu Population (China)
+}}
+
+{{PMID Auto
+|PMID=26471763
+|Title=MDM4 SNP34091 (rs4245739) and its effect on breast-, colon-, lung-, and prostate cancer risk
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=25316267
+|Title=TP53 and MDM2 polymorphisms and the risk of endometrial cancer in postmenopausal women
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=27228500
+|Title=Prognostic potential of the MDM2 309T&gt;G polymorphism in stage I lung adenocarcinoma.
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=27330794
+|Title=Association of MDM2 promoter T309G polymorphism with oral cancer risk: A meta-analysis of 3,536 subjects.
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=27624283
+|Title=MDM2 promoter SNP55 (rs2870820) affects risk of colon cancer but not breast-, lung-, or prostate cancer.
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=27785069
+|Title=Influence of MDM2 polymorphisms on squamous cell carcinoma susceptibility: a meta-analysis.
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=28083704
+|Title=MDM2 gene polymorphisms and risk of classic Kaposi's sarcoma among Iranian patients.
+}}
+
+{{PMID Auto
+|PMID=28351583
+|Title=Candidate apoptotic and DNA repair gene approach confirms involvement of ERCC1, ERCC5, TP53 and MDM2 in radiation-induced toxicity in head and neck cancer.
+}}
+
+{{PMID Auto
+|PMID=28467961
+|Title=Detection of nasopharyngeal carcinoma susceptibility with single nucleotide polymorphism analysis using next-generation sequencing technology.
+}}
+
+{{PMID Auto
+|PMID=28756477
+|Title=p53 signaling pathway polymorphisms, cancer risk and tumor phenotype in TP53 R337H mutation carriers.
+}}
+
+{{PMID Auto
+|PMID=28881764
+|Title=Detection of nasopharyngeal carcinoma susceptibility with single nucleotide polymorphism analysis using next-generation sequencing technology.
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=30861607
+|Title=MDM2 and its functional polymorphism SNP309 contribute to the development of esophageal carcinoma.
+}}
+
+{{PMID Auto
+|PMID=31326197
+|Title=Association of MDM2 gene SNP 309 polymorphism and human non-small cell lung cancer susceptibility: A meta-analysis.
+}}
+
+{{PMID Auto
+|PMID=32066633
+|Title=Association between genetic polymorphisms and endometrial cancer risk: a systematic review.
+}}
+
+{{PMID Auto
+|PMID=32392664
+|Title=A cohort study on the association of MDM2 SNP309 with lung cancer risk in Bangladeshi population.
+|OA=1
+}}
+{{on chip |23andMe v1}}
+{{on chip |23andMe v2}}
+{{on chip |23andMe v3}}
+{{on chip |23andMe v4}}
+{{on chip |Ancestry v2d}}
+{{on chip |Ancestry v2}}
+{{on chip |HumanOmni1Quad}}
