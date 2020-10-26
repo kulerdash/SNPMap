@@ -81,10 +81,11 @@ function writewords(wordlist, rsnumber) {
         // 使用刚指定的配置项和数据显示图表。
         myChart.setOption(option);
     } else {
-        let father = document.getElementById('keyword');
-        let word = document.createElement('p');
-        word.innerHTML = 'Not enough information to render graph.';
-        father.appendChild(word);
+        document.getElementById("keywordchart").innerHTML = "Not enough information to render graph!";
+        //let father = document.getElementById('keyword');
+        //let word = document.createElement('p');
+        //word.innerHTML = 'Not enough information to render graph.';
+        //father.appendChild(word);
     }
     
 }
