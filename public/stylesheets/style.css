@@ -4,6 +4,11 @@
 }
 
 @font-face {
+  font-family: RobotoBold;
+  src: url('/fonts/Roboto-Bold.ttf');
+}
+
+@font-face {
   font-family: RobotoMedium;
   src: url('/fonts/Roboto-Medium.ttf');
 }
@@ -30,6 +35,22 @@ body {
   font-family: RobotoRegular;
 }
 
+.amend {
+  font-family: RobotoBold;
+}
+
+.geno1 {
+  background-color: red;
+}
+
+.geno2 {
+  background-color: lightgreen;
+}
+
+.geno3 {
+  background-color: lightgreen;
+}
+
 #welcome {
   background-color: purple;
   color: white;
@@ -38,4 +59,10 @@ body {
 #errorPage {
   background-color: red;
   color: white;
+}
+
+#basiccard {
+  background-color: blue;
+  color: white;
+  font-size: 3;
 }

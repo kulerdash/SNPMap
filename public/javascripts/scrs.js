@@ -89,6 +89,18 @@ function writewords(wordlist, rsnumber) {
     
 }
 
+function getbasics(rsnumber) {
+    var basics = load('data/out/basic/Rs'+rsnumber+'.json');
+    for (var key in basics) {
+        obj = document.getElementById(key);
+        if(!(obj)) {
+            console.log(key+' does not exist!')
+        } else {
+            document.getElementById(key).innerHTML = basics[key];
+        }
+    }
+}
+
 var req = load('temp/form.json');
 console.log(req.name);
 console.log(typeof(req.name));
@@ -109,6 +121,9 @@ console.log(document.title);      // 可以获取title的值。
 document.title = 'rs'+rsnumber;    // 设置title的值。
 var wordlist = load('data/out/keyword/Rs'+rsnumber+'.json');
 writewords(wordlist, rsnumber);
+console.log("title="+document.title);
+document.getElementById("rstitle").innerHTML = 'Rs'+rsnumber;
+getbasics(rsnumber);
 
 /*function run(rt) {
     console.log('rt '+rt);

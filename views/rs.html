@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="stylesheets/bootstrap.min.css" rel="stylesheet">
+  <link href="stylesheets/offcanvas.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
   <script src="/javascripts/common/jquery.min.js"></script>
   <script src="/javascripts/common/bootstrap.min.js"></script>
@@ -28,7 +29,6 @@
       </div>
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
-          <li><a href="/">Home</a></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tutorials <span class="caret"></span></a>
             <ul class="dropdown-menu">
@@ -44,6 +44,12 @@
           <li><a href="/about">About</a></li>
           <li><a href="/report">Report a bug</a></li>
         </ul>
+        <form class="navbar-form navbar-left" action="/rs" method="post">
+          <div class="form-group">
+            <input id="SNPNo" type="text" class="form-control" placeholder="e.g.: rs2234693, 2234693" name="name" value="">
+          </div>
+          <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+        </form>
         <ul class="nav navbar-nav navbar-right">
           <li><a href="/zh">中文</a></li>
           <li class="active"><a href="/">English <span class="sr-only">(current)</span></a></li>
@@ -51,29 +57,158 @@
       </div><!--/.nav-collapse -->
     </div>
   </nav>
-  <div class="jumbotron jumbotron-fluid">
-    <div class="container">
-      <p><form action="/rs" method="post">
-          <div class="input-group">
-            <input id="SNPNo" type="text" class="form-control" placeholder="e.g.: rs2234693, 2234693" name="name" value="">
-          <span class="input-group-btn">
-          <button type="submit" class="btn btn-default">
-            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-          </button>
-          </span>
+
+  <div class="container">
+
+    <div class="row row-offcanvas row-offcanvas-right">
+
+      <div class="col-xs-12 col-sm-9">
+        <p class="pull-right visible-xs">
+          <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Contents</button>
+        </p>
+        <div class="jumbotron">
+          <h1 id="rstitle">Rs2234693</h1>
+          
+        </div>
+        <ul class="nav nav-tabs">
+          <li role="presentation" class="active"><a href="#">Home</a></li>
+          <li role="presentation"><a href="#">Related articles</a></li>
+        </ul>
+        <p>&nbsp</p>
+        <div class="row">
+          <div class="col-xs-12 col-md-6">
+            <div class="panel panel-primary">
+              <!-- Default panel contents -->
+              <div class="panel-heading">
+                <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>&nbsp&nbspBasic Information&nbsp&nbsp&nbsp&nbsp
+                <a href="/help">
+                  <font color="white"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></font>
+                </a>
+              </div>
+              <div class="panel-body">
+                <p>The basic information about this SNP.</p>
+              </div>
+            
+              <!-- Table -->
+              <table class="table">
+                <tr>
+                  <td><span class="glyphicon glyphicon-signal" aria-hidden="true"></span>&nbsp&nbsp<font class="amend">rsid</font></td>
+                  <td id="rsid"></td>
+                </tr>
+                <tr>
+                  <td><span class="glyphicon glyphicon-object-align-horizontal" aria-hidden="true"></span>&nbsp&nbsp<font class="amend">Gene</font></td>
+                  <td id="Gene"></td>
+                </tr>
+                <tr>
+                  <td><span class="glyphicon glyphicon-ice-lolly" aria-hidden="true"></span>&nbsp&nbsp<font class="amend">Chromosome</font></td>
+                  <td id="Chromosome"></td>
+                </tr>
+                <tr>
+                  <td><span class="glyphicon glyphicon-indent-left" aria-hidden="true"></span>&nbsp&nbsp<font class="amend">Position</font></td>
+                  <td id="position"></td>
+                </tr>
+                <tr>
+                  <td><span class="glyphicon glyphicon-adjust" aria-hidden="true"></span>&nbsp&nbsp<font class="amend">Orientation</font></td>
+                  <td id="Orientation"></td>
+                </tr>
+              </table>
+            </div>
+          </div><!--/.col-xs-6.col-lg-4-->
+          <div class="col-xs-12 col-md-6">
+            <div class="panel panel-primary">
+              <!-- Default panel contents -->
+              <div class="panel-heading">
+                <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>&nbsp&nbspGenotypes&nbsp&nbsp&nbsp&nbsp
+                <a href="/help">
+                  <font color="white"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></font>
+                </a>
+              </div>
+              <div class="panel-body">
+                <p>Genotypes and their magnitudes.</p>
+              </div>
+            
+              <!-- Table -->
+              <table class="table">
+                <tr>
+                  <th>Geno</th>
+                  <th>Mag</th>
+                  <th>Summary</th>
+                </tr>
+                <tr class="geno1">
+                  <td id="geno1"></td>
+                  <td id="geno1Mag">3</td>
+                  <td id="geno1Sum"></td>
+                </tr>
+                <tr class="geno2">
+                  <td id="geno2"></td>
+                  <td id="geno2Mag">2</td>
+                  <td id="geno2Sum"></td>
+                </tr>
+                <tr class="geno3">
+                  <td id="geno3"></td>
+                  <td id="geno3Mag">2</td>
+                  <td id="geno3Sum"></td>
+                </tr>
+              </table>
+            </div>
+          </div><!--/.col-xs-6.col-lg-4-->
+        </div><!--/row-->
+        <div class="row">
+          <div class="col-xs-12 col-md-12">
+            <div class="panel panel-primary">
+              <!-- Default panel contents -->
+              <div class="panel-heading">
+                <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>&nbsp&nbspKeyword Map&nbsp&nbsp&nbsp&nbsp
+                <a href="/help">
+                  <font color="white"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></font>
+                </a>
+              </div>
+              <div class="panel-body">
+                <p><div id="main" style="width: 100%;height:600px;">
+                  <script src="/javascripts/scrs.js"></script>
+                </div></p>
+              </div>
+
+            </div>
           </div>
-        </form></p>
-        <p><div class="keywords" id="keyword">
-  
-        </div></p>
-        <p><div id="main" style="width: 1000px;height:700px;">
-          <script src="/javascripts/scrs.js"></script>
-        </div></p>
+        </div>
+      </div><!--/.col-xs-12.col-sm-9-->
+
+      <div class="col-xs-12 col-sm-3 sidebar-offcanvas" id="sidebar">
+        <div class="list-group">
+          <a href="#" class="list-group-item active"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>&nbsp&nbspContents</a>
+          <a href="#" class="list-group-item">Basic Information</a>
+          <a href="#" class="list-group-item">Genotypes</a>
+          <a href="#" class="list-group-item">Population Diversity</a>
+          <a href="#" class="list-group-item">Keyword Map</a>
+          <a href="#" class="list-group-item">Link</a>
+          <a href="#" class="list-group-item">Link</a>
+          <a href="#" class="list-group-item">Link</a>
+          <a href="#" class="list-group-item">Link</a>
+          <a href="#" class="list-group-item">Link</a>
+        </div>
+      </div><!--/.sidebar-offcanvas-->
+    </div><!--/row-->
+    
+
+    <!--<div class="container">
+      <div class="row">
+        <div class="col-md-6 col-xs-10">
+          <p><div id="main" style="width: 100%;height:600px;">
+            <script src="/javascripts/scrs.js"></script>
+          </div></p>
+        </div>
+      </div>
     </div>
-  </div>
+    <hr>-->
+
+    <footer>
+      <p>&copy; Company 2014</p>
+    </footer>
+
+  </div><!--/.container-->
   
-  
-  
+  <script src="javascripts/common/offcanvas.js"></script>
 </body>
             
 </html>
