@@ -75,12 +75,18 @@ function writewords(wordlist, rsnumber) {
                 }
             ]
         };
-        option.series[0].data.push({value:wordlist['Disease']['number'], name:'Disease'});
-        option.legend.data.push('Disease');
-        option.series[0].data.push({value:wordlist['Chemical']['number'], name:'Chemical'});
-        option.legend.data.push('Chemical');
-        option.series[0].data.push({value:wordlist['Gene']['number'], name:'Gene'});
-        option.legend.data.push('Gene');
+        if (wordlist['Disease']['number'] !== 0) {
+            option.series[0].data.push({value:wordlist['Disease']['number'], name:'Disease'});
+            option.legend.data.push('Disease');
+        }
+        if (wordlist['Chemical']['number'] !== 0) {
+            option.series[0].data.push({value:wordlist['Chemical']['number'], name:'Chemical'});
+            option.legend.data.push('Chemical');
+        }
+        if (wordlist['Gene']['number'] !== 0) {
+            option.series[0].data.push({value:wordlist['Gene']['number'], name:'Gene'});
+            option.legend.data.push('Gene');
+        }
         for (m=0; m<wordlist['Disease']['data'].length; m++) {
             option.series[1].data.push({value:wordlist['Disease']['data'][m].value, name:wordlist['Disease']['data'][m].name});
             option.legend.data.push(wordlist['Disease']['data'][m].name);
