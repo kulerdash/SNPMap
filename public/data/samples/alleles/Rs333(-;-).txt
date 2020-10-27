@@ -1,0 +1,11 @@
+{{Genotype
+|rsid=333
+|allele1=-
+|allele2=-
+|magnitude=4
+|repute=Good
+|summary=very resistant to HIV
+}}
+resistant to [[HIV]]. You have the donor genotype described at http://snpedia.blogspot.com/2012/12/all-i-want-for-christmas-is-cure-for-hiv.html .  Also known as CCR5-Δ32.
+
+Consider becoming a marrow donor at http://marrow.org/Join/Join_the_Registry.aspx

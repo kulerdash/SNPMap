@@ -1,0 +1,8 @@
+{{Genotype
+|allele1=A
+|allele2=A
+|rsid=2032582
+|magnitude=1.5
+|repute=Good
+|summary=rare genotype, on a triallelic snp
+}}

@@ -1,0 +1,9 @@
+{{Genotype
+|rsid=2279744
+|allele1=G
+|allele2=T
+|magnitude=2
+|repute=Bad
+|summary=Slightly more cancer prone; common
+}}
+Very common variant, present in 10 - 49% of most populations.

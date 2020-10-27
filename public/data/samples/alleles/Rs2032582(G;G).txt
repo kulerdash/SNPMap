@@ -1,0 +1,12 @@
+{{Genotype
+|allele1=G
+|allele2=G
+|rsid=2032582
+|magnitude=1
+|repute=Bad
+|summary=normal. better response to atorvastatin. greater severity of delusions in male schizophrenics.
+}}
+
+
+
+'''Association study between the MDR1 gene and clinical characteristics in schizophrenia.''' (2014). Male schizophrenic carriers of the G allele of variant rs2032582 exhibit greater severity of delusions.

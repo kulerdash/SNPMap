@@ -58,6 +58,7 @@ def wordsearch(filename):
                             count.append({});
                             count[index[tx]]['name'] = tx
                             count[index[tx]]['value'] = 1
+                            count[index[tx]]['type'] = tp
                         elif tx in index.keys():
                             count[index[tx]]['value'] += 1
                         check[tx] = True
@@ -68,6 +69,7 @@ def wordsearch(filename):
                             count.append({});
                             count[index[tx]]['name'] = tx
                             count[index[tx]]['value'] = 1
+                            count[index[tx]]['type'] = tp
                         elif tx in index.keys():
                             count[index[tx]]['value'] += 1
                         check[tx] = True

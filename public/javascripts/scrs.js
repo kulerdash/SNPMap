@@ -16,15 +16,7 @@ function load(filedir) {
 
 function writewords(wordlist, rsnumber) {
     // 引入 ECharts 主模块
-    var max = 0;
-    var j = 0;
-    for (m=0; m<wordlist.length; m++) {
-        if (wordlist[m].value > max) {
-            max = wordlist[m].value;
-        }
-    }
-    console.log(max);
-    if (max>2 && wordlist.length>10) {
+    if (wordlist['Check'] === 1) {
         var myChart = echarts.init(document.getElementById('main'));
  
         // 指定图表的配置项和数据
@@ -40,9 +32,23 @@ function writewords(wordlist, rsnumber) {
             },
             series : [
                 {
-                    name: rsnumber,
+                    name: 'Keyword ytpe',
+                    type: 'pie',
+                    selectedMode: 'single',
+                    radius: [0, '30%'],
+        
+                    label: {
+                        position: 'inner'
+                    },
+                    labelLine: {
+                        show: false
+                    },
+                    data: []
+                },
+                {
+                    name: 'Keyword',
                     type: 'pie',    // 设置图表类型为饼图
-                    radius: ['50%', '70%'],
+                    radius: ['40%', '55%'],
                     avoidLabelOverlap: false,
                     label: {
                         show: false,
@@ -69,14 +75,26 @@ function writewords(wordlist, rsnumber) {
                 }
             ]
         };
-        var edge = wordlist[15].value;
-        for (m=0; m<wordlist.length; m++) {
-            if (wordlist[m].value>2 && wordlist[m].value>=edge) {
-                option.series[0].data.push({value:wordlist[m].value, name:wordlist[m].name});
-                option.legend.data.push(wordlist[m].name);
-            }
+        option.series[0].data.push({value:wordlist['Disease']['number'], name:'Disease'});
+        option.legend.data.push('Disease');
+        option.series[0].data.push({value:wordlist['Chemical']['number'], name:'Chemical'});
+        option.legend.data.push('Chemical');
+        option.series[0].data.push({value:wordlist['Gene']['number'], name:'Gene'});
+        option.legend.data.push('Gene');
+        for (m=0; m<wordlist['Disease']['data'].length; m++) {
+            option.series[1].data.push({value:wordlist['Disease']['data'][m].value, name:wordlist['Disease']['data'][m].name});
+            option.legend.data.push(wordlist['Disease']['data'][m].name);
+        }
+        for (m=0; m<wordlist['Chemical']['data'].length; m++) {
+            option.series[1].data.push({value:wordlist['Chemical']['data'][m].value, name:wordlist['Chemical']['data'][m].name});
+            option.legend.data.push(wordlist['Chemical']['data'][m].name);
+        }
+        for (m=0; m<wordlist['Gene']['data'].length; m++) {
+            option.series[1].data.push({value:wordlist['Gene']['data'][m].value, name:wordlist['Gene']['data'][m].name});
+            option.legend.data.push(wordlist['Gene']['data'][m].name);
         }
         console.log(option.series[0].data);
+        console.log(option.series[1].data);
 
         // 使用刚指定的配置项和数据显示图表。
         myChart.setOption(option);
@@ -100,6 +118,50 @@ function getbasics(rsnumber) {
             document.getElementById(key).innerHTML = basics[key];
         }
     }
+    return basics;
+}
+
+function getgenotype(rsnumber, basics) {
+    var genos1 = load('data/out/basic/alleles/Rs'+rsnumber+basics['geno1']+'.json');
+    var genos2 = load('data/out/basic/alleles/Rs'+rsnumber+basics['geno2']+'.json');
+    var genos3 = load('data/out/basic/alleles/Rs'+rsnumber+basics['geno3']+'.json');
+    if (genos1 !== null) document.getElementById("geno1Mag").innerHTML = genos1['magnitude'];
+    if (genos1 !== null) document.getElementById("geno1Sum").innerHTML = genos1['summary'];
+    if (genos2 !== null) document.getElementById("geno2Mag").innerHTML = genos2['magnitude'];
+    if (genos2 !== null) document.getElementById("geno2Sum").innerHTML = genos2['summary'];
+    if (genos3 !== null) document.getElementById("geno3Mag").innerHTML = genos3['magnitude'];
+    if (genos3 !== null) document.getElementById("geno3Sum").innerHTML = genos3['summary'];
+    if (genos1 !== null) repute1 = genos1['repute'];
+    if (genos2 !== null) repute2 = genos2['repute'];
+    if (genos3 !== null) repute3 = genos3['repute'];
+    if (genos1 !== null) {
+        if (repute1 === 'Bad') {
+            obj = document.getElementById('geno1id');
+            obj.setAttribute("class", "bad");
+        } else if (repute1 === 'Good') {
+            obj = document.getElementById('geno1id');
+            obj.setAttribute("class", "good");
+        }
+    }
+    if (genos2 !== null) {
+        if (repute2 === 'Bad') {
+            obj = document.getElementById('geno2id');
+            obj.setAttribute("class", "bad");
+        } else if (repute2 === 'Good') {
+            obj = document.getElementById('geno2id');
+            obj.setAttribute("class", "good");
+        }
+    }
+    if (genos3 !== null) {
+        if (repute3 === 'Bad') {
+            obj = document.getElementById('geno3id');
+            obj.setAttribute("class", "bad");
+        } else if (repute3 === 'Good') {
+            obj = document.getElementById('geno3id');
+            obj.setAttribute("class", "good");
+        }
+    }
+    
 }
 
 var req = load('temp/form.json');
@@ -120,11 +182,12 @@ if (patt1.test(req.name)) {
 console.log(rsnumber);
 console.log(document.title);      // 可以获取title的值。
 document.title = 'Rs'+rsnumber;    // 设置title的值。
-var wordlist = load('data/out/keyword/Rs'+rsnumber+'.json');
+var wordlist = load('data/out/keyword/arranged/Rs'+rsnumber+'.json');
 writewords(wordlist, rsnumber);
 console.log("title="+document.title);
 document.getElementById("rstitle").innerHTML = 'Rs'+rsnumber;
-getbasics(rsnumber);
+mybasics = getbasics(rsnumber);
+getgenotype(rsnumber, mybasics);
 
 /*function run(rt) {
     console.log('rt '+rt);
