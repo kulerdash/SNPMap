@@ -1,0 +1,194 @@
+{{Rsnum
+|rsid=333
+|Gene=CCR5
+|Chromosome=3
+|position=46373456
+|Orientation=plus
+|ReferenceAllele=GTCAGTATCAATTCTGGAAGAATTTCCAGACA
+|Gene_s=CCR5,LOC102724297
+|Assembly=GRCh38
+|GenomeBuild=38.1
+|dbSNPBuild=141
+|Summary=HIV Resistance
+|geno1=(-;-)
+|geno2=(-;GTCAGTATCAATTCTGGAAGAATTTCCAGACA)
+|geno3=(GTCAGTATCAATTCTGGAAGAATTTCCAGACA;GTCAGTATCAATTCTGGAAGAATTTCCAGACA)
+|StabilizedOrientation=plus
+}}
+{{interesting}}
+
+The chemokine receptor gene [[CCR5]] plays an important role in many immune-related processes. Delta 32 [[rs333]], designating the CCR5-delta32 deletion of 32 nucleotides from within the gene, is perhaps the most famous allele of [[CCR5]]. 23andMe tests for this under their private identifier/name, [[I3003626]].
+
+Individuals carrying one copy of the delta 32 allele are somewhat resistant to infection by [[HIV]], the virus that causes [[AIDS]], and individuals with 2 copies (delta 32 homozygotes, ~1% of Caucasians) are almost completely immune to infection by HIV. {{PMID|8898752}} The delta 32 allele may have been selected for in European populations because it confers resistance to plague (Black Death) or smallpox. [http://www.pnas.org/content/100/25/15276.long]
+
+{{PMID|16216086|OA=1
+}} shows the the geographic spread of the allele. [[Image:Journal.pbio.0030339.g001.png|thumb|300px|The geographic spread of the allele {{PMID|16216086|OA=1
+}}]]
+
+[http://content.nejm.org/cgi/content/full/NEJMoa0807917 NEJM] suggests decreased risk of [[type 1 diabetes]] (odds ratio, 0.54; 95% CI, 0.40 to 0.72; P=1.88x10&#8211;6 with 2 df). 
+
+Does the CCR5-delta32 mutation have an entirely positive/protective role?
+
+Probably not. In patients with [[abdominal aortic aneurysm]] (AAA), the major risk is a sudden rupture - which is quite often fatal. Individuals with the delta 32 variant are more likely to have aneurysms than non-carriers, and among patients with aneurysms, delta 32 carriers are more likely to rupture than to be diagnosed in time for surgical repair. {{PMID|15557916}}
+
+Tests for CCR-delta32 are offered by [http://www.familytreedna.com/advanced-test-results.aspx FamilyTreeDNA] ([http://www.familytreedna.com/faq/answers/default.aspx?faqid=8#518 FAQ]), [https://www.23andme.com/health/Resistance-to-HIV-AIDS/ 23andMe], and possibly other direct-to-consumer genetics testing companies.
+
+{{PMID Auto
+|PMID=15726497
+|Title=Gene-environment interaction effects on the development of immune responses in the 1st year of life.
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=17327408
+|Title=Prognostic significance of host immune gene polymorphisms in follicular lymphoma survival.
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=17355643
+|Title=Frequencies of single nucleotide polymorphisms in genes regulating inflammatory responses in a community-based population.
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=17672867
+|Title=Polymorphisms in chemokine receptor genes and susceptibility to Kawasaki disease.
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=18633131
+|Title=Host immune gene polymorphisms in combination with clinical and demographic factors predict late survival in diffuse large B-cell lymphoma patients in the pre-rituximab era.
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=18805939
+|Title=Functional genetic polymorphisms and female reproductive disorders: part II--endometriosis.
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=19066394
+|Title=Organochlorine exposure, immune gene variation, and risk of non-Hodgkin lymphoma.
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=19073967
+|Title=Shared and distinct genetic variants in type 1 diabetes and celiac disease.
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=19131662
+|Title=A meta-analysis of candidate gene polymorphisms and ischemic stroke in 6 study populations: association of lymphotoxin-alpha in nonhypertensive patients.
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=19225544
+|Title=Variation in the lymphotoxin-alpha/tumor necrosis factor locus modifies risk of erythema nodosum in sarcoidosis.
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=19263529
+|Title=Genetic risk factors in recurrent venous thromboembolism: A multilocus, population-based, prospective approach.
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=19330901
+|Title=Association of 77 polymorphisms in 52 candidate genes with blood pressure progression and incident hypertension: the Women's Genome Health Study.
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=19559392
+|Title=A candidate gene association study of 77 polymorphisms in migraine.
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=20041166
+|Title=Common genetic variation and the control of HIV-1 in humans.
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=20206716
+|Title=Genetic variation within the gene encoding the HIV-1 CCR5 coreceptor in two South African populations.
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=20552027
+|Title=Host and viral genetic correlates of clinical definitions of HIV-1 disease progression.
+|OA=1
+}}
+
+{{PMID Auto
+|PMID=21854194
+|Title=Distribution of polymorphisms in cytochrome P450 2B6, histocompatibility complex P5, chemokine coreceptor 5, and interleukin 28B genes in inhabitants from the central area of Argentina.
+}}
+
+{{PMID Auto
+|PMID=22474614
+|Title=Host Genes Important to HIV Replication and Evolution.
+|OA=1
+}}
+{{PMID Auto
+|PMID=23632061
+|Title=CCR2 and CCR5 genes polymorphisms in benign prostatic hyperplasia and prostate cancer
+}}{{PMID Auto
+|PMID=23107763
+|Title=Host genetic risk factors for community-acquired pneumonia.
+}}{{ClinVar
+|ALT=A,AACAGTCAGTATCAATTCTGGAAGAATTTCCAG
+|CAF=0.9708; 0.02915
+|CHROM=3
+|CLNACC=RCV000008663.4; RCV000008664.3; RCV000008665.5; RCV000008666.4
+|CLNALLE=1
+|CLNDBN=Human immunodeficiency virus type 1, susceptibility to; West nile virus, susceptibility to; Resistance to hepatitis C virus; Multiple sclerosis modifier of disease progression
+|CLNDSDB=MedGen:OMIM; MedGen:OMIM:Orphanet; MedGen
+|CLNDSDBID=C1836230:609423; C1835867:610379:ORPHA83476; C1836031; CN069138
+|CLNHGVS=NC_000003.11:g.46414947_46414978del32
+|CLNORIGIN=1
+|CLNREVSTAT=no_criteria
+|CLNSIG=255
+|CLNSRC=OMIM Allelic Variant
+|CLNSRCID=601373.0001
+|COMMON=1
+|Disease=Human immunodeficiency virus type 1; West nile virus; Resistance to hepatitis C virus; Multiple sclerosis modifier of disease progression
+|FwdREF=GTCAGTATCAATTCTGGAAGAATTTCCAGACA
+|GENEINFO=LOC102724297:102724297; CCR5:1234
+|GENE_ID=102724297; 1234
+|GENE_NAME=LOC102724297; CCR5
+|REF=AGTCAGTATCAATTCTGGAAGAATTTCCAGACA
+|RSPOS=46414946
+|Reversed=0
+|SAO=0
+|SSR=0
+|Tags=PM;PMC;SLO;NSF;REF;INT;ASP;VLD;LSD;OM
+|VC=DIV
+|VP=0x050168081205040002110200
+|WGT=1
+|dbSNPBuildID=36
+|rsid=333
+|FwdALT=-,ACAGTCAGTATCAATTCTGGAAGAATTTCCAG
+}}
+{{PMID Auto
+|PMID=26071874
+|Title=CCR5Δ32 (rs333) polymorphism is associated with the susceptibility to systemic lupus erythematosus in female Brazilian patients
+}}
+
+{{PMID Auto
+|PMID=31148855
+|Title=Evaluation of HCP5 and Chemokine C Receptor type 5 Gene Polymorphisms in Indian Psoriatic Patients.
+|OA=1
+}}
+{{on chip |Ancestry v2c}}
+{{on chip |Ancestry v2}}
+{{on chip |Ancestry v2d}}

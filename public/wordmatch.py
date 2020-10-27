@@ -29,8 +29,13 @@ def clearredundancy(inputed):
     return a_list
 
 def wordsearch(filename):
+    rsnumber = filename.strip('data\\out\\abstract\\')
+    rsnumber = rsnumber.strip('.json')
+    basicname = 'data\\out\\basic\\'+rsnumber+'.json'
     with open(filename) as fp:
         a = json.load(fp)
+    with open(basicname) as fp2:
+        b = json.load(fp2)
     count = []
     index = {}
     l = 0
@@ -45,16 +50,27 @@ def wordsearch(filename):
                     tx = getLemma(tx, upos='NOUN', lemmatize_oov=True)
                     tx = "".join(tuple(tx))
                 if (tp == 'Gene' or tp == 'Disease' or tp == 'Chemical')\
-                and tx not in check.keys():
-                    if tx not in index.keys():
-                        index[tx] = l
-                        l = l+1
-                        count.append({});
-                        count[index[tx]]['name'] = tx
-                        count[index[tx]]['value'] = 1
-                    elif tx in index.keys():
-                        count[index[tx]]['value'] += 1
-                    check[tx] = True
+                and (tx not in check.keys()):
+                    if 'Gene' not in b.keys():
+                        if tx not in index.keys():
+                            index[tx] = l
+                            l = l+1
+                            count.append({});
+                            count[index[tx]]['name'] = tx
+                            count[index[tx]]['value'] = 1
+                        elif tx in index.keys():
+                            count[index[tx]]['value'] += 1
+                        check[tx] = True
+                    elif tx != b['Gene']:
+                        if tx not in index.keys():
+                            index[tx] = l
+                            l = l+1
+                            count.append({});
+                            count[index[tx]]['name'] = tx
+                            count[index[tx]]['value'] = 1
+                        elif tx in index.keys():
+                            count[index[tx]]['value'] += 1
+                        check[tx] = True
                 '''
                 list_words += (re.findall('[a-zA-Z0-9]+', tx))
                 for l in range(0, len(list_words)):

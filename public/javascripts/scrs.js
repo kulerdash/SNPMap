@@ -119,7 +119,7 @@ if (patt1.test(req.name)) {
 }
 console.log(rsnumber);
 console.log(document.title);      // 可以获取title的值。
-document.title = 'rs'+rsnumber;    // 设置title的值。
+document.title = 'Rs'+rsnumber;    // 设置title的值。
 var wordlist = load('data/out/keyword/Rs'+rsnumber+'.json');
 writewords(wordlist, rsnumber);
 console.log("title="+document.title);
