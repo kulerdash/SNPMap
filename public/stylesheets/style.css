@@ -62,3 +62,7 @@ body {
   color: white;
   font-size: 3;
 }
+
+#geno1, #geno2, #geno3 {
+  word-break: break-all;
+}
