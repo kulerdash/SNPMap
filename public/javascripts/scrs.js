@@ -35,7 +35,7 @@ function writewords(wordlist, rsnumber) {
                     name: 'Keyword ytpe',
                     type: 'pie',
                     selectedMode: 'single',
-                    radius: [0, '30%'],
+                    radius: [0, '33%'],
 
                     label: {
                         position: 'inner'
@@ -48,7 +48,7 @@ function writewords(wordlist, rsnumber) {
                 {
                     name: 'Keyword',
                     type: 'pie',    // 设置图表类型为饼图
-                    radius: ['40%', '55%'],
+                    radius: ['35%', '55%'],
                     avoidLabelOverlap: false,
                     label: {
                         show: false,
