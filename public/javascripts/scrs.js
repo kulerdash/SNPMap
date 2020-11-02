@@ -14,96 +14,158 @@ function load(filedir) {
     return json;
 }
 
+function decidesize(size) {
+    if (size<20) {
+        return size*4;
+    } else if (size<40) {
+        return (0.4*size+12)*4;
+    } else {
+        return (0.15*size+22)*4;
+    }
+}
+
 function writewords(wordlist, rsnumber) {
     // 引入 ECharts 主模块
     if (wordlist['Check'] === 1) {
         var myChart = echarts.init(document.getElementById('main'));
-
+        var categories = [];
+        var data = [];
+        var data2 = [];
         // 指定图表的配置项和数据
+        if (wordlist['Disease']['number'] !== 0) {
+            categories.push({name: 'Disease'});
+            data2.push('Disease');
+        }
+        if (wordlist['Chemical']['number'] !== 0) {
+            categories.push({name: 'Chemical'});
+            data2.push('Chemical');
+        }
+        if (wordlist['Gene']['number'] !== 0) {
+            categories.push({name: 'Gene'});
+            data2.push('Gene');
+        }
+        var q = 0;
+        for (m = 0; m < wordlist['Disease']['data'].length; m++) {
+            data.push({ category:q, name:wordlist['Disease']['data'][m].name, value:wordlist['Disease']['data'][m].value, symbolSize: decidesize(wordlist['Disease']['data'][m].value), des: 'des'+wordlist['Disease']['data'][m].name });
+            if (m === wordlist['Disease']['data'].length-1) q += 1;
+        }
+        for (m = 0; m < wordlist['Chemical']['data'].length; m++) {
+            data.push({ category:q, name:wordlist['Chemical']['data'][m].name, value:wordlist['Chemical']['data'][m].value, symbolSize: decidesize(wordlist['Chemical']['data'][m].value), des: 'des'+wordlist['Chemical']['data'][m].name });
+            if (m === wordlist['Chemical']['data'].length-1) q += 1;
+        }
+        for (m = 0; m < wordlist['Gene']['data'].length; m++) {
+            data.push({ category:q, name:wordlist['Gene']['data'][m].name, value:wordlist['Gene']['data'][m].value, symbolSize: decidesize(wordlist['Gene']['data'][m].value), des: 'des'+wordlist['Gene']['data'][m].name });
+            if (m === wordlist['Gene']['data'].length-1) q += 1;
+        }
+        var arrangedata = data;
+        for (m = arrangedata.length-1 ;m >=0;m--) {
+            for (n = 0;n < m-1;n++){
+                if (arrangedata[n]['value'] < data[n+1]['value']) {
+                    t = arrangedata[n];
+                    arrangedata[n] = arrangedata[n+1];
+                    arrangedata[n+1] = t;
+                }
+            }
+        }
+        console.log(arrangedata);
         var option = {
             tooltip: {
-                trigger: 'item',
-                formatter: '{a} <br/>{b} : {c} ({d}%)'
+                formatter: function (x) {
+                    if (x.data.category === 0) {
+                        return data2[0]+' <br />'+x.data.name+': '+x.data.value;
+                    } else if (x.data.category === 1) {
+                        return data2[1]+' <br />'+x.data.name+': '+x.data.value;
+                    } else {
+                        return data2[2]+' <br />'+x.data.name+': '+x.data.value;
+                    }
+                }
             },
-            legend: {
-                orient: 'vertical',
-                left: 10,
-                data: []
+            legend: [{
+                // selectedMode: 'single',
+                data: data2
+            }],
+            toolbox: {
+                // 显示工具箱
+                show: true,
+                feature: {
+                    saveAsImage: {//保存图片
+                        show: true,
+                        title: 'Save as image'
+                    },
+                    dataView: { //数据视图
+                        show: true,
+                        title: 'Original data',
+                        readOnly: true,
+                        optionToContent: function(opt) {
+                            var table = '<table class="pure-table"><tbody><tr>'
+                                         + '<th>' + 'Keyword'+ '</th>'
+                                         + '<th>' + 'Value' + '</th>'
+                                         + '</tr>';
+                            for (var m = 0, l = data.length; m < l; m++) {
+                                table += '<tr>'
+                                         + '<td>' + arrangedata[m]['name'] + '</td>'
+                                         + '<td>' + arrangedata[m]['value'] + '</td>'
+                                         + '</tr>';
+                            }
+                            table += '</tbody></table>';
+                            return table;
+                               
+                        }
+                    },
+                    restore: { //重置
+                        show: true,
+                        title: 'Restore'
+                    }
+                }
             },
+            animationDuration: 1500,
+            animationEasingUpdate: 'quinticInOut',
             series: [
                 {
-                    name: 'Keyword ytpe',
-                    type: 'pie',
-                    selectedMode: 'single',
-                    radius: [0, '33%'],
-
+                    type: 'graph', // 类型:关系图
+                    layout: 'force', //图的布局，类型为力导图
+                    roam: true,
+                    focusNodeAdjacency: true,
+                    itemStyle: {
+                        borderColor: '#fff',
+                        borderWidth: 1,
+                        shadowBlur: 10,
+                        shadowColor: 'rgba(0, 0, 0, 0.3)'
+                    },
                     label: {
-                        position: 'inner'
-                    },
-                    labelLine: {
-                        show: false
-                    },
-                    data: []
-                },
-                {
-                    name: 'Keyword',
-                    type: 'pie',    // 设置图表类型为饼图
-                    radius: ['35%', '55%'],
-                    avoidLabelOverlap: false,
-                    label: {
-                        show: false,
-                        position: 'center'
-                    },
-                    emphasis: {
-                        label: {
-                            show: true,
-                            fontSize: '5',
-                            fontWeight: 'bold'
+                        show: true,
+                        position: 'inside',
+                        /*fontSize: function (x) {
+                            return (x.data['symbolSize']).toString();
+                        },*/
+                        formatter: function (x) {
+                            if (x.data.value >= 9) {
+                                return x.data.name;
+                            } else {
+                                return '';
+                            }
                         }
                     },
-                    labelLine: {
-                        show: false
+                    lineStyle: {
+                        color: 'source',
+                        curveness: 0.3
                     },
-                    data: [],
                     emphasis: {
-                        itemStyle: {
-                            shadowBlur: 10,
-                            shadowOffsetX: 0,
-                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        lineStyle: {
+                            width: 10
                         }
-                    }
+                    },
+ 
+            // 数据
+                    data: data,
+                    link: [],
+                    categories: categories
                 }
             ]
         };
-        if (wordlist['Disease']['number'] !== 0) {
-            option.series[0].data.push({ value: wordlist['Disease']['number'], name: 'Disease' });
-            option.legend.data.push('Disease');
-        }
-        if (wordlist['Chemical']['number'] !== 0) {
-            option.series[0].data.push({ value: wordlist['Chemical']['number'], name: 'Chemical' });
-            option.legend.data.push('Chemical');
-        }
-        if (wordlist['Gene']['number'] !== 0) {
-            option.series[0].data.push({ value: wordlist['Gene']['number'], name: 'Gene' });
-            option.legend.data.push('Gene');
-        }
-        for (m = 0; m < wordlist['Disease']['data'].length; m++) {
-            option.series[1].data.push({ value: wordlist['Disease']['data'][m].value, name: wordlist['Disease']['data'][m].name });
-            option.legend.data.push(wordlist['Disease']['data'][m].name);
-        }
-        for (m = 0; m < wordlist['Chemical']['data'].length; m++) {
-            option.series[1].data.push({ value: wordlist['Chemical']['data'][m].value, name: wordlist['Chemical']['data'][m].name });
-            option.legend.data.push(wordlist['Chemical']['data'][m].name);
-        }
-        for (m = 0; m < wordlist['Gene']['data'].length; m++) {
-            option.series[1].data.push({ value: wordlist['Gene']['data'][m].value, name: wordlist['Gene']['data'][m].name });
-            option.legend.data.push(wordlist['Gene']['data'][m].name);
-        }
-        console.log(option.series[0].data);
-        console.log(option.series[1].data);
-
+        
         // 使用刚指定的配置项和数据显示图表。
-        myChart.setOption(option);
+        myChart.setOption(option, 'xml');
     } else {
         document.getElementById("keywordchart").innerHTML = "Not enough information to render graph!";
         //let father = document.getElementById('keyword');

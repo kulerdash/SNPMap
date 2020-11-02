@@ -15,11 +15,10 @@ import json
 import time
 
 def arrange(a, filename):
-    edge = a[15]['value']
     info = {'Check':1, 'Gene':{'number':0, 'data':[]}, 'Disease':{'number':0, 'data':[]}, 'Chemical':{'number':0, 'data':[]}}
     if len(a)>10 and a[0]['value']>2:
         for j in range(0, len(a)):
-            if a[j]['value']>2 and a[j]['value']>edge:
+            if a[j]['value']>2:
                 info[a[j]['type']]['number'] += a[j]['value']
                 info[a[j]['type']]['data'].append(a[j])
     else:
