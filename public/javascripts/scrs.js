@@ -15,12 +15,12 @@ function load(filedir) {
 }
 
 function decidesize(size) {
-    if (size<20) {
-        return size*4;
-    } else if (size<40) {
-        return (0.4*size+12)*4;
+    if (size < 20) {
+        return size * 4;
+    } else if (size < 40) {
+        return (0.4 * size + 12) * 4;
     } else {
-        return (0.15*size+22)*4;
+        return (0.15 * size + 22) * 4;
     }
 }
 
@@ -33,37 +33,37 @@ function writewords(wordlist, rsnumber) {
         var data2 = [];
         // 指定图表的配置项和数据
         if (wordlist['Disease']['number'] !== 0) {
-            categories.push({name: 'Disease'});
+            categories.push({ name: 'Disease' });
             data2.push('Disease');
         }
         if (wordlist['Chemical']['number'] !== 0) {
-            categories.push({name: 'Chemical'});
+            categories.push({ name: 'Chemical' });
             data2.push('Chemical');
         }
         if (wordlist['Gene']['number'] !== 0) {
-            categories.push({name: 'Gene'});
+            categories.push({ name: 'Gene' });
             data2.push('Gene');
         }
         var q = 0;
         for (m = 0; m < wordlist['Disease']['data'].length; m++) {
-            data.push({ category:q, name:wordlist['Disease']['data'][m].name, value:wordlist['Disease']['data'][m].value, symbolSize: decidesize(wordlist['Disease']['data'][m].value), des: 'des'+wordlist['Disease']['data'][m].name });
-            if (m === wordlist['Disease']['data'].length-1) q += 1;
+            data.push({ category: q, name: wordlist['Disease']['data'][m].name, value: wordlist['Disease']['data'][m].value, symbolSize: decidesize(wordlist['Disease']['data'][m].value), des: 'des' + wordlist['Disease']['data'][m].name });
+            if (m === wordlist['Disease']['data'].length - 1) q += 1;
         }
         for (m = 0; m < wordlist['Chemical']['data'].length; m++) {
-            data.push({ category:q, name:wordlist['Chemical']['data'][m].name, value:wordlist['Chemical']['data'][m].value, symbolSize: decidesize(wordlist['Chemical']['data'][m].value), des: 'des'+wordlist['Chemical']['data'][m].name });
-            if (m === wordlist['Chemical']['data'].length-1) q += 1;
+            data.push({ category: q, name: wordlist['Chemical']['data'][m].name, value: wordlist['Chemical']['data'][m].value, symbolSize: decidesize(wordlist['Chemical']['data'][m].value), des: 'des' + wordlist['Chemical']['data'][m].name });
+            if (m === wordlist['Chemical']['data'].length - 1) q += 1;
         }
         for (m = 0; m < wordlist['Gene']['data'].length; m++) {
-            data.push({ category:q, name:wordlist['Gene']['data'][m].name, value:wordlist['Gene']['data'][m].value, symbolSize: decidesize(wordlist['Gene']['data'][m].value), des: 'des'+wordlist['Gene']['data'][m].name });
-            if (m === wordlist['Gene']['data'].length-1) q += 1;
+            data.push({ category: q, name: wordlist['Gene']['data'][m].name, value: wordlist['Gene']['data'][m].value, symbolSize: decidesize(wordlist['Gene']['data'][m].value), des: 'des' + wordlist['Gene']['data'][m].name });
+            if (m === wordlist['Gene']['data'].length - 1) q += 1;
         }
         var arrangedata = data;
-        for (m = arrangedata.length-1 ;m >=0;m--) {
-            for (n = 0;n < m-1;n++){
-                if (arrangedata[n]['value'] < data[n+1]['value']) {
+        for (m = arrangedata.length - 1; m >= 0; m--) {
+            for (n = 0; n < m - 1; n++) {
+                if (arrangedata[n]['value'] < data[n + 1]['value']) {
                     t = arrangedata[n];
-                    arrangedata[n] = arrangedata[n+1];
-                    arrangedata[n+1] = t;
+                    arrangedata[n] = arrangedata[n + 1];
+                    arrangedata[n + 1] = t;
                 }
             }
         }
@@ -72,11 +72,11 @@ function writewords(wordlist, rsnumber) {
             tooltip: {
                 formatter: function (x) {
                     if (x.data.category === 0) {
-                        return data2[0]+' <br />'+x.data.name+': '+x.data.value;
+                        return data2[0] + ' <br />' + x.data.name + ': ' + x.data.value;
                     } else if (x.data.category === 1) {
-                        return data2[1]+' <br />'+x.data.name+': '+x.data.value;
+                        return data2[1] + ' <br />' + x.data.name + ': ' + x.data.value;
                     } else {
-                        return data2[2]+' <br />'+x.data.name+': '+x.data.value;
+                        return data2[2] + ' <br />' + x.data.name + ': ' + x.data.value;
                     }
                 }
             },
@@ -96,20 +96,20 @@ function writewords(wordlist, rsnumber) {
                         show: true,
                         title: 'Original data',
                         readOnly: true,
-                        optionToContent: function(opt) {
+                        optionToContent: function (opt) {
                             var table = '<table class="pure-table"><tbody><tr>'
-                                         + '<th>' + 'Keyword'+ '</th>'
-                                         + '<th>' + 'Value' + '</th>'
-                                         + '</tr>';
+                                + '<th>' + 'Keyword' + '</th>'
+                                + '<th>' + 'Value' + '</th>'
+                                + '</tr>';
                             for (var m = 0, l = data.length; m < l; m++) {
                                 table += '<tr>'
-                                         + '<td>' + arrangedata[m]['name'] + '</td>'
-                                         + '<td>' + arrangedata[m]['value'] + '</td>'
-                                         + '</tr>';
+                                    + '<td>' + arrangedata[m]['name'] + '</td>'
+                                    + '<td>' + arrangedata[m]['value'] + '</td>'
+                                    + '</tr>';
                             }
                             table += '</tbody></table>';
                             return table;
-                               
+
                         }
                     },
                     restore: { //重置
@@ -155,15 +155,15 @@ function writewords(wordlist, rsnumber) {
                             width: 10
                         }
                     },
- 
-            // 数据
+
+                    // 数据
                     data: data,
                     link: [],
                     categories: categories
                 }
             ]
         };
-        
+
         // 使用刚指定的配置项和数据显示图表。
         myChart.setOption(option, 'xml');
     } else {
@@ -254,213 +254,232 @@ function getpopulation(rsnumber) {
         option['dataset']['source'][3][0] = poplist['geno3'];
         var lend = Object.keys(poplist['geography']);
         var len = lend.length;
+        for (i=len-1;i>-1;i--) {
+            for (j=0;j<i;j++){
+                if (poplist['geography'][lend[j]][0] > poplist['geography'][lend[j+1]][0]) {
+                    var jh = lend[j];
+                    lend[j] = lend[j+1];
+                    lend[j+1] = jh;
+                }
+            }
+        }
         var place = [];
-        var div = Math.ceil(len/4) + 1;
-        var hang = Math.floor(100/div);
-        for (i=0;i<len;i++) {
-            var t = i+1;
-            var divt = Math.ceil(t/4);
+        var div = Math.ceil(len / 4) + 1;
+        var hang = Math.floor(100 / div);
+        jord = len;
+        for (i = 0; i < len; i++) {
+            if (poplist['geography'][lend[i]][0] == 0 && poplist['geography'][lend[i]][1] == 0 && poplist['geography'][lend[i]][2] == 0) {
+                jord -= 1;
+            }
+        }
+        for (i = 0; i < jord; i++) {
+            var t = i + 1;
+            var divt = Math.ceil(t / 4);
             var hangt = hang * divt;
             var liet;
-            if (t%4 !== 0) {
-                liet = 20*(t%4);
+            if (t % 4 !== 0) {
+                liet = 20 * (t % 4);
             } else {
                 liet = 80;
             }
-            var resulting = [hangt.toString()+'%', liet.toString()+'%'];
+            var resulting = [liet.toString() + '%', hangt.toString() + '%'];
             console.log(resulting);
             place.push(resulting);
         }
         var i = 0;
-        for (var key in poplist['geography']) {
-            console.log(place[i]);
-            option['dataset']['source'][0].push(key);
-            option['dataset']['source'][1].push(poplist['geography'][key][0]);
-            option['dataset']['source'][2].push(poplist['geography'][key][1]);
-            option['dataset']['source'][3].push(poplist['geography'][key][2]);
-            tender = {
-                name: '',
-                label: {},
-                type: 'pie',
-                radius: [40, 60],
-                center: place[i],
-                encode: {
-                    itemName: 'population group',
-                    value: key
+        console.log(lend);
+        for (sam = 0;sam < len;sam++) {
+            key = lend[sam];
+            if (poplist['geography'][key][0] !== 0 || poplist['geography'][key][1] !== 0 || poplist['geography'][key][2] !== 0) {
+                console.log(place[i]);
+                option['dataset']['source'][0].push(key);
+                option['dataset']['source'][1].push(poplist['geography'][key][0]);
+                option['dataset']['source'][2].push(poplist['geography'][key][1]);
+                option['dataset']['source'][3].push(poplist['geography'][key][2]);
+                tender = {
+                    name: '',
+                    label: {},
+                    type: 'pie',
+                    radius: [40, 60],
+                    center: place[i],
+                    encode: {
+                        itemName: 'population group',
+                        value: key
+                    }
                 }
+                switch (key) {
+                    case 'CEU':
+                        tender.name = 'Utah residents with Northern or Western European ancestry';
+                        tender.label = {
+                            normal: {
+                                position: 'center',
+                                textStyle: {
+                                    fontSize: '20',
+                                    color: '#000000'
+                                },
+                                formatter: 'CEU'
+                            }
+                        };
+                        break;
+                    case 'HCB':
+                        tender.name = 'Han Chinese in Beijing, China';
+                        tender.label = {
+                            normal: {
+                                position: 'center',
+                                textStyle: {
+                                    fontSize: '20',
+                                    color: '#000000'
+                                },
+                                formatter: 'HCB'
+                            }
+                        };
+                        break;
+                    case 'JPT':
+                        tender.name = 'Japanese in Tokyo, Japan';
+                        tender.label = {
+                            normal: {
+                                position: 'center',
+                                textStyle: {
+                                    fontSize: '20',
+                                    color: '#000000'
+                                },
+                                formatter: 'JPT'
+                            }
+                        };
+                        break;
+                    case 'YRI':
+                        tender.name = 'Yoruba in Ibadan, Nigeria';
+                        tender.label = {
+                            normal: {
+                                position: 'center',
+                                textStyle: {
+                                    fontSize: '20',
+                                    color: '#000000'
+                                },
+                                formatter: 'YRI'
+                            }
+                        };
+                        break;
+                    case 'ASW':
+                        tender.name = 'African ancestry in Southwest USA';
+                        tender.label = {
+                            normal: {
+                                position: 'center',
+                                textStyle: {
+                                    fontSize: '20',
+                                    color: '#000000'
+                                },
+                                formatter: 'ASW'
+                            }
+                        };
+                        break;
+                    case 'CHB':
+                        tender.name = 'Han Chinese in Beijing, China';
+                        tender.label = {
+                            normal: {
+                                position: 'center',
+                                textStyle: {
+                                    fontSize: '20',
+                                    color: '#000000'
+                                },
+                                formatter: 'CHB'
+                            }
+                        };
+                        break;
+                    case 'CHD':
+                        tender.name = 'Chinese in metropolitan Denver, CO, United States';
+                        tender.label = {
+                            normal: {
+                                position: 'center',
+                                textStyle: {
+                                    fontSize: '20',
+                                    color: '#000000'
+                                },
+                                formatter: 'CHD'
+                            }
+                        };
+                        break;
+                    case 'GIH':
+                        tender.name = 'Gujarati Indians in Houston, TX, United States';
+                        tender.label = {
+                            normal: {
+                                position: 'center',
+                                textStyle: {
+                                    fontSize: '20',
+                                    color: '#000000'
+                                },
+                                formatter: 'GIH'
+                            }
+                        };
+                        break;
+                    case 'LWK':
+                        tender.name = 'Luhya in Webuye, Kenya';
+                        tender.label = {
+                            normal: {
+                                position: 'center',
+                                textStyle: {
+                                    fontSize: '20',
+                                    color: '#000000'
+                                },
+                                formatter: 'LWK'
+                            }
+                        };
+                        break;
+                    case 'MEX':
+                        tender.name = 'Mexican ancestry in Los Angeles, CA, United States';
+                        tender.label = {
+                            normal: {
+                                position: 'center',
+                                textStyle: {
+                                    fontSize: '20',
+                                    color: '#000000'
+                                },
+                                formatter: 'MEX'
+                            }
+                        };
+                        break;
+                    case 'MXL':
+                        tender.name = 'Mexican ancestry in Los Angeles, CA, United States';
+                        tender.label = {
+                            normal: {
+                                position: 'center',
+                                textStyle: {
+                                    fontSize: '20',
+                                    color: '#000000'
+                                },
+                                formatter: 'MXL'
+                            }
+                        };
+                        break;
+                    case 'MKK':
+                        tender.name = 'Maasai in Kinyawa, Kenya';
+                        tender.label = {
+                            normal: {
+                                position: 'center',
+                                textStyle: {
+                                    fontSize: '20',
+                                    color: '#000000'
+                                },
+                                formatter: 'MKK'
+                            }
+                        };
+                        break;
+                    case 'TSI':
+                        tender.name = 'Toscani in Italia';
+                        tender.label = {
+                            normal: {
+                                position: 'center',
+                                textStyle: {
+                                    fontSize: '20',
+                                    color: '#000000'
+                                },
+                                formatter: 'TSI'
+                            }
+                        };
+                }
+                option['series'].push(tender);
+                i += 1;
             }
-            switch (key) {
-                case 'CEU':
-                    tender.name = 'Utah residents with Northern or Western European ancestry';
-                    tender.label = {
-                        normal: {
-                            position: 'center',
-                            textStyle: {
-                                fontSize: '20',
-                                color: '#000000'
-                            },
-                            formatter: 'CEU'
-                        }
-                    };
-                    break;
-                case 'HCB':
-                    tender.name = 'Han Chinese in Beijing, China';
-                    tender.label = {
-                        normal: {
-                            position: 'center',
-                            textStyle: {
-                                fontSize: '20',
-                                color: '#000000'
-                            },
-                            formatter: 'HCB'
-                        }
-                    };
-                    break;
-                case 'JPT':
-                    tender.name = 'Japanese in Tokyo, Japan';
-                    tender.label = {
-                        normal: {
-                            position: 'center',
-                            textStyle: {
-                                fontSize: '20',
-                                color: '#000000'
-                            },
-                            formatter: 'JPT'
-                        }
-                    };
-                    break;
-                case 'YRI':
-                    tender.name = 'Yoruba in Ibadan, Nigeria';
-                    tender.label = {
-                        normal: {
-                            position: 'center',
-                            textStyle: {
-                                fontSize: '20',
-                                color: '#000000'
-                            },
-                            formatter: 'YRI'
-                        }
-                    };
-                    break;
-                case 'ASW':
-                    tender.name = 'African ancestry in Southwest USA';
-                    tender.label = {
-                        normal: {
-                            position: 'center',
-                            textStyle: {
-                                fontSize: '20',
-                                color: '#000000'
-                            },
-                            formatter: 'ASW'
-                        }
-                    };
-                    break;
-                case 'CHB':
-                    tender.name = 'Han Chinese in Beijing, China';
-                    tender.label = {
-                        normal: {
-                            position: 'center',
-                            textStyle: {
-                                fontSize: '20',
-                                color: '#000000'
-                            },
-                            formatter: 'CHB'
-                        }
-                    };
-                    break;
-                case 'CHD':
-                    tender.name = 'Chinese in metropolitan Denver, CO, United States';
-                    tender.label = {
-                        normal: {
-                            position: 'center',
-                            textStyle: {
-                                fontSize: '20',
-                                color: '#000000'
-                            },
-                            formatter: 'CHD'
-                        }
-                    };
-                    break;
-                case 'GIH':
-                    tender.name = 'Gujarati Indians in Houston, TX, United States';
-                    tender.label = {
-                        normal: {
-                            position: 'center',
-                            textStyle: {
-                                fontSize: '20',
-                                color: '#000000'
-                            },
-                            formatter: 'GIH'
-                        }
-                    };
-                    break;
-                case 'LWK':
-                    tender.name = 'Luhya in Webuye, Kenya';
-                    tender.label = {
-                        normal: {
-                            position: 'center',
-                            textStyle: {
-                                fontSize: '20',
-                                color: '#000000'
-                            },
-                            formatter: 'LWK'
-                        }
-                    };
-                    break;
-                case 'MEX':
-                    tender.name = 'Mexican ancestry in Los Angeles, CA, United States';
-                    tender.label = {
-                        normal: {
-                            position: 'center',
-                            textStyle: {
-                                fontSize: '20',
-                                color: '#000000'
-                            },
-                            formatter: 'MEX'
-                        }
-                    };
-                    break;
-                case 'MXL':
-                    tender.name = 'Mexican ancestry in Los Angeles, CA, United States';
-                    tender.label = {
-                        normal: {
-                            position: 'center',
-                            textStyle: {
-                                fontSize: '20',
-                                color: '#000000'
-                            },
-                            formatter: 'MXL'
-                        }
-                    };
-                    break;
-                case 'MKK':
-                    tender.name = 'Maasai in Kinyawa, Kenya';
-                    tender.label = {
-                        normal: {
-                            position: 'center',
-                            textStyle: {
-                                fontSize: '20',
-                                color: '#000000'
-                            },
-                            formatter: 'MKK'
-                        }
-                    };
-                    break;
-                case 'TSI':
-                    tender.name = 'Toscani in Italia';
-                    tender.label = {
-                        normal: {
-                            position: 'center',
-                            textStyle: {
-                                fontSize: '20',
-                                color: '#000000'
-                            },
-                            formatter: 'TSI'
-                        }
-                    };
-            }
-            option['series'].push(tender);
-            i += 1;
         }
         myChart.setOption(option, 'xml');
     } else {
@@ -501,28 +520,28 @@ function getpopulation(rsnumber) {
                             + '.' + value[1];  
                     return params.seriesName + '<br/>' + params.name + ' : ' + value;  
                 }  
-            },*/       
-            /*visualMap: {  
-                min: 0,  
-                max: 1000000,  
-                text:['High','Low'],  
-                realtime: false,  
-                calculable: true,  
-                color: ['orangered','yellow','lightskyblue']  
-            },  
-            series: [  
-                {  
-                    name: 'World Population (2010)',  
-                    type: 'map',  
-                    mapType: 'world',  
-                    roam: true,  
-                    itemStyle:{  
-                        emphasis:{label:{show:true}}  
-                    }
-                }
-            ]
+            },*/
+/*visualMap: {  
+    min: 0,  
+    max: 1000000,  
+    text:['High','Low'],  
+    realtime: false,  
+    calculable: true,  
+    color: ['orangered','yellow','lightskyblue']  
+},  
+series: [  
+    {  
+        name: 'World Population (2010)',  
+        type: 'map',  
+        mapType: 'world',  
+        roam: true,  
+        itemStyle:{  
+            emphasis:{label:{show:true}}  
         }
-        myChart.setOption(option, 'xml');*/
+    }
+]
+}
+myChart.setOption(option, 'xml');*/
 
 function listarticle(rsnumber) {
     var pmidlist = load('data/out/abstract/Rs' + rsnumber + '.json');
@@ -533,7 +552,7 @@ function listarticle(rsnumber) {
     }
     for (i = 0; i < pages; i++) {
         var nodea = document.createElement('a');
-        var josh = (i+1).toString();
+        var josh = (i + 1).toString();
         var textnodea = document.createTextNode(josh);
         nodea.appendChild(textnodea);
         nodea.setAttribute('href', '#page' + josh);
@@ -580,7 +599,7 @@ function listarticle(rsnumber) {
             if (j < pmidlist.length) {
                 var node1 = document.createElement('tr');
                 node1.setAttribute('id', 'article' + j.toString());
-                document.getElementById('articleform'+josh).appendChild(node1);
+                document.getElementById('articleform' + josh).appendChild(node1);
                 var node2 = document.createElement('td');
                 var node4 = document.createElement('td');
                 var node6 = document.createElement('td');
