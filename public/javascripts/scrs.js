@@ -232,6 +232,298 @@ function getgenotype(rsnumber, basics) {
 
 }
 
+function getpopulation(rsnumber) {
+    var poplist = load('data/out/population/Rs' + rsnumber + '.json');
+    if (poplist !== null) {
+        var myChart = echarts.init(document.getElementById('main2'));
+        var option = {
+            legend: {},
+            tooltip: {},
+            dataset: {
+                source: [
+                    ['population group'],
+                    ['geno1'],
+                    ['geno2'],
+                    ['geno3']
+                ]
+            },
+            series: []
+        };
+        option['dataset']['source'][1][0] = poplist['geno1'];
+        option['dataset']['source'][2][0] = poplist['geno2'];
+        option['dataset']['source'][3][0] = poplist['geno3'];
+        var lend = Object.keys(poplist['geography']);
+        var len = lend.length;
+        var place = [];
+        var div = Math.ceil(len/4) + 1;
+        var hang = Math.floor(100/div);
+        for (i=0;i<len;i++) {
+            var t = i+1;
+            var divt = Math.ceil(t/4);
+            var hangt = hang * divt;
+            var liet;
+            if (t%4 !== 0) {
+                liet = 20*(t%4);
+            } else {
+                liet = 80;
+            }
+            var resulting = [hangt.toString()+'%', liet.toString()+'%'];
+            console.log(resulting);
+            place.push(resulting);
+        }
+        var i = 0;
+        for (var key in poplist['geography']) {
+            console.log(place[i]);
+            option['dataset']['source'][0].push(key);
+            option['dataset']['source'][1].push(poplist['geography'][key][0]);
+            option['dataset']['source'][2].push(poplist['geography'][key][1]);
+            option['dataset']['source'][3].push(poplist['geography'][key][2]);
+            tender = {
+                name: '',
+                label: {},
+                type: 'pie',
+                radius: [40, 60],
+                center: place[i],
+                encode: {
+                    itemName: 'population group',
+                    value: key
+                }
+            }
+            switch (key) {
+                case 'CEU':
+                    tender.name = 'Utah residents with Northern or Western European ancestry';
+                    tender.label = {
+                        normal: {
+                            position: 'center',
+                            textStyle: {
+                                fontSize: '20',
+                                color: '#000000'
+                            },
+                            formatter: 'CEU'
+                        }
+                    };
+                    break;
+                case 'HCB':
+                    tender.name = 'Han Chinese in Beijing, China';
+                    tender.label = {
+                        normal: {
+                            position: 'center',
+                            textStyle: {
+                                fontSize: '20',
+                                color: '#000000'
+                            },
+                            formatter: 'HCB'
+                        }
+                    };
+                    break;
+                case 'JPT':
+                    tender.name = 'Japanese in Tokyo, Japan';
+                    tender.label = {
+                        normal: {
+                            position: 'center',
+                            textStyle: {
+                                fontSize: '20',
+                                color: '#000000'
+                            },
+                            formatter: 'JPT'
+                        }
+                    };
+                    break;
+                case 'YRI':
+                    tender.name = 'Yoruba in Ibadan, Nigeria';
+                    tender.label = {
+                        normal: {
+                            position: 'center',
+                            textStyle: {
+                                fontSize: '20',
+                                color: '#000000'
+                            },
+                            formatter: 'YRI'
+                        }
+                    };
+                    break;
+                case 'ASW':
+                    tender.name = 'African ancestry in Southwest USA';
+                    tender.label = {
+                        normal: {
+                            position: 'center',
+                            textStyle: {
+                                fontSize: '20',
+                                color: '#000000'
+                            },
+                            formatter: 'ASW'
+                        }
+                    };
+                    break;
+                case 'CHB':
+                    tender.name = 'Han Chinese in Beijing, China';
+                    tender.label = {
+                        normal: {
+                            position: 'center',
+                            textStyle: {
+                                fontSize: '20',
+                                color: '#000000'
+                            },
+                            formatter: 'CHB'
+                        }
+                    };
+                    break;
+                case 'CHD':
+                    tender.name = 'Chinese in metropolitan Denver, CO, United States';
+                    tender.label = {
+                        normal: {
+                            position: 'center',
+                            textStyle: {
+                                fontSize: '20',
+                                color: '#000000'
+                            },
+                            formatter: 'CHD'
+                        }
+                    };
+                    break;
+                case 'GIH':
+                    tender.name = 'Gujarati Indians in Houston, TX, United States';
+                    tender.label = {
+                        normal: {
+                            position: 'center',
+                            textStyle: {
+                                fontSize: '20',
+                                color: '#000000'
+                            },
+                            formatter: 'GIH'
+                        }
+                    };
+                    break;
+                case 'LWK':
+                    tender.name = 'Luhya in Webuye, Kenya';
+                    tender.label = {
+                        normal: {
+                            position: 'center',
+                            textStyle: {
+                                fontSize: '20',
+                                color: '#000000'
+                            },
+                            formatter: 'LWK'
+                        }
+                    };
+                    break;
+                case 'MEX':
+                    tender.name = 'Mexican ancestry in Los Angeles, CA, United States';
+                    tender.label = {
+                        normal: {
+                            position: 'center',
+                            textStyle: {
+                                fontSize: '20',
+                                color: '#000000'
+                            },
+                            formatter: 'MEX'
+                        }
+                    };
+                    break;
+                case 'MXL':
+                    tender.name = 'Mexican ancestry in Los Angeles, CA, United States';
+                    tender.label = {
+                        normal: {
+                            position: 'center',
+                            textStyle: {
+                                fontSize: '20',
+                                color: '#000000'
+                            },
+                            formatter: 'MXL'
+                        }
+                    };
+                    break;
+                case 'MKK':
+                    tender.name = 'Maasai in Kinyawa, Kenya';
+                    tender.label = {
+                        normal: {
+                            position: 'center',
+                            textStyle: {
+                                fontSize: '20',
+                                color: '#000000'
+                            },
+                            formatter: 'MKK'
+                        }
+                    };
+                    break;
+                case 'TSI':
+                    tender.name = 'Toscani in Italia';
+                    tender.label = {
+                        normal: {
+                            position: 'center',
+                            textStyle: {
+                                fontSize: '20',
+                                color: '#000000'
+                            },
+                            formatter: 'TSI'
+                        }
+                    };
+            }
+            option['series'].push(tender);
+            i += 1;
+        }
+        myChart.setOption(option, 'xml');
+    } else {
+        document.getElementById('populationchart').innerHTML = 'Not enough information to render map';
+    }
+}
+
+/*var geo = poplist['geography'];
+        var mapFeatures = echarts.getMap('world').geoJson.features;
+        mapFeatures.forEach(function(v){
+            // 地区名称
+            var name = v.properties.name;
+            // 地区经纬度
+            geoCoordMap[name] = v.properties.cp;
+            data.push({
+                    "name":name,
+                    "value":[
+                            {name:"2013",value:Math.round(Math.random() * 100 + 10)},
+                            {name:"2014",value:Math.round(Math.random() * 100 + 10)},
+                            {name:"2015",value:Math.round(Math.random() * 100 + 10)}
+                            ]
+                })
+        });
+                
+        var option = {
+            title: {  
+                
+                
+                sublink: 'http://esa.un.org/wpp/Excel-Data/population.htm',  
+                left: 'center',  
+                top: 'top'  
+            },  
+           /* tooltip: {  
+                trigger: 'item',  
+                formatter: function (params) {  
+                    var value = (params.value + '').split('.');  
+                    value = value[0].replace(/(\d{1,3})(?=(?:\d{3})+(?!\d))/g, '$1,')  
+                            + '.' + value[1];  
+                    return params.seriesName + '<br/>' + params.name + ' : ' + value;  
+                }  
+            },*/       
+            /*visualMap: {  
+                min: 0,  
+                max: 1000000,  
+                text:['High','Low'],  
+                realtime: false,  
+                calculable: true,  
+                color: ['orangered','yellow','lightskyblue']  
+            },  
+            series: [  
+                {  
+                    name: 'World Population (2010)',  
+                    type: 'map',  
+                    mapType: 'world',  
+                    roam: true,  
+                    itemStyle:{  
+                        emphasis:{label:{show:true}}  
+                    }
+                }
+            ]
+        }
+        myChart.setOption(option, 'xml');*/
+
 function listarticle(rsnumber) {
     var pmidlist = load('data/out/abstract/Rs' + rsnumber + '.json');
     pages = Math.ceil(pmidlist.length / 10);
@@ -397,6 +689,7 @@ console.log("title=" + document.title);
 document.getElementById("rstitle").innerHTML = 'Rs' + rsnumber;
 mybasics = getbasics(rsnumber);
 getgenotype(rsnumber, mybasics);
+getpopulation(rsnumber);
 listarticle(rsnumber);
 
 /*function run(rt) {
