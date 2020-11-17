@@ -237,33 +237,167 @@ function getpopulation(rsnumber) {
     if (poplist !== null) {
         var myChart = echarts.init(document.getElementById('main2'));
         var option = {
-            legend: {},
-            tooltip: {},
-            dataset: {
-                source: [
-                    ['population group'],
-                    ['geno1'],
-                    ['geno2'],
-                    ['geno3']
-                ]
+            tooltip: {
+                trigger: 'item',
+                axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                    type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                },
+                formatter: function (x) {
+                    var tendername;
+                    var ans;
+                    switch (x.name) {
+                        case 'CEU':
+                            tendername = 'Utah residents with Northern or Western European ancestry';
+                            break;
+                        case 'HCB':
+                            tendername = 'Han Chinese in Beijing, China';
+                            break;
+                        case 'JPT':
+                            tendername = 'Japanese in Tokyo, Japan';
+                            break;
+                        case 'YRI':
+                            tendername = 'Yoruba in Ibadan, Nigeria';
+                            break;
+                        case 'ASW':
+                            tendername = 'African ancestry in Southwest USA';
+                            break;
+                        case 'CHB':
+                            tendername = 'Han Chinese in Beijing, China';
+                            break;
+                        case 'CHD':
+                            tendername = 'Chinese in metropolitan Denver, CO, United States';
+                            break;
+                        case 'GIH':
+                            tendername = 'Gujarati Indians in Houston, TX, United States';
+                            break;
+                        case 'LWK':
+                            tendername = 'Luhya in Webuye, Kenya';
+                            break;
+                        case 'MEX':
+                            tendername = 'Mexican ancestry in Los Angeles, CA, United States';
+                            break;
+                        case 'MXL':
+                            tendername = 'Mexican ancestry in Los Angeles, CA, United States';
+                            break;
+                        case 'MKK':
+                            tendername = 'Maasai in Kinyawa, Kenya';
+                            break;
+                        case 'TSI':
+                            tendername = 'Toscani in Italia';
+                    }
+                    ans = tendername + '<br / >' + poplist['geno1'] + ': ' + poplist['geography'][x.name][0];
+                    ans += '<br />' + poplist['geno2'] + ': ' + poplist['geography'][x.name][1];
+                    ans += '<br />' + poplist['geno3'] + ': ' + poplist['geography'][x.name][2];
+                    return ans;
+                }
             },
-            series: []
+            toolbox: {
+                // 显示工具箱
+                show: true,
+                feature: {
+                    saveAsImage: {//保存图片
+                        show: true,
+                        title: 'Save as image'
+                    },
+                    dataView: { //数据视图
+                        show: true,
+                        title: 'Original data',
+                        readOnly: true,
+                        optionToContent: function (opt) {
+                            
+                        }
+                    }
+                }
+            },
+            legend: {
+                data: []
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            xAxis: {
+                type: 'value',
+                max: 100
+            },
+            yAxis: {
+                type: 'category',
+                data: []
+            },
+            series: [
+                {
+                    name: '',
+                    type: 'bar',
+                    stack: '总量',
+                    label: {
+                        show: true,
+                        position: 'insideRight',
+                        formatter: function(x) {
+                            if (x.data>3) {
+                                return x.data;
+                            } else {
+                                return '';
+                            }
+                        }
+                    },
+                    data: []
+                },
+                {
+                    name: '',
+                    type: 'bar',
+                    stack: '总量',
+                    label: {
+                        show: true,
+                        position: 'insideRight',
+                        formatter: function(x) {
+                            if (x.data>3) {
+                                return x.data;
+                            } else {
+                                return '';
+                            }
+                        }
+                    },
+                    data: []
+                },
+                {
+                    name: '',
+                    type: 'bar',
+                    stack: '总量',
+                    label: {
+                        show: true,
+                        position: 'insideRight',
+                        formatter: function(x) {
+                            if (x.data>3) {
+                                return x.data;
+                            } else {
+                                return '';
+                            }
+                        }
+                    },
+                    data: []
+                },
+            ]
         };
-        option['dataset']['source'][1][0] = poplist['geno1'];
-        option['dataset']['source'][2][0] = poplist['geno2'];
-        option['dataset']['source'][3][0] = poplist['geno3'];
+        option['legend']['data'].push(poplist['geno1']);
+        option['legend']['data'].push(poplist['geno2']);
+        option['legend']['data'].push(poplist['geno3']);
+        option['series'][0]['name'] = poplist['geno1'];
+        option['series'][1]['name'] = poplist['geno2'];
+        option['series'][2]['name'] = poplist['geno3'];
         var lend = Object.keys(poplist['geography']);
         var len = lend.length;
-        for (i=len-1;i>-1;i--) {
-            for (j=0;j<i;j++){
-                if (poplist['geography'][lend[j]][0] > poplist['geography'][lend[j+1]][0]) {
+        for (i = len - 1; i > -1; i--) {
+            for (j = 0; j < i; j++) {
+                if (poplist['geography'][lend[j]][0] > poplist['geography'][lend[j + 1]][0]) {
                     var jh = lend[j];
-                    lend[j] = lend[j+1];
-                    lend[j+1] = jh;
+                    lend[j] = lend[j + 1];
+                    lend[j + 1] = jh;
                 }
             }
         }
-        var place = [];
+        /*var place = [];
         var div = Math.ceil(len / 4) + 1;
         var hang = Math.floor(100 / div);
         jord = len;
@@ -285,18 +419,17 @@ function getpopulation(rsnumber) {
             var resulting = [liet.toString() + '%', hangt.toString() + '%'];
             console.log(resulting);
             place.push(resulting);
-        }
+        }*/
         var i = 0;
         console.log(lend);
-        for (sam = 0;sam < len;sam++) {
+        for (sam = 0; sam < len; sam++) {
             key = lend[sam];
-            if (poplist['geography'][key][0] !== 0 || poplist['geography'][key][1] !== 0 || poplist['geography'][key][2] !== 0) {
-                console.log(place[i]);
-                option['dataset']['source'][0].push(key);
-                option['dataset']['source'][1].push(poplist['geography'][key][0]);
-                option['dataset']['source'][2].push(poplist['geography'][key][1]);
-                option['dataset']['source'][3].push(poplist['geography'][key][2]);
-                tender = {
+            if ((poplist['geography'][key][0] !== 0 || poplist['geography'][key][1] !== 0 || poplist['geography'][key][2] !== 0) && key !== 'HCB') {
+                option['yAxis']['data'].push(key);
+                option['series'][0]['data'].push(poplist['geography'][key][0]);
+                option['series'][1]['data'].push(poplist['geography'][key][1]);
+                option['series'][2]['data'].push(poplist['geography'][key][2]);
+                /*tender = {
                     name: '',
                     label: {},
                     type: 'pie',
@@ -477,7 +610,7 @@ function getpopulation(rsnumber) {
                             }
                         };
                 }
-                option['series'].push(tender);
+                option['series'].push(tender);*/
                 i += 1;
             }
         }
