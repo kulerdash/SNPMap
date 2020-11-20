@@ -49,10 +49,19 @@ def main():
             kd = kd.rstrip('\n')
             kd = kd.rstrip(',')
             g.write('[\n'+kd+'\n]')
+            with open('data\\out\\abstract\\'+filelist[i].strip('.txt')+'.json', 'r',encoding='utf-8') as fp:
+                maxdata = json.load(fp)
+                for j in range(0, len(maxdata)):
+                    g = open('data\\out\\abstractPMID\\PMID'+maxdata[j]['id']+'.json', 'w', encoding='utf-8')
+                    g.truncate(0)
+                    with open('data\\out\\abstractPMID\\PMID'+maxdata[j]['id']+'.json', 'a', encoding='utf-8') as gp:
+                        json.dump(maxdata[j], gp)
+            '''
             for j in range(0, len(list_pmid)):
                 g = open('data\\out\\abstractPMID\\PMID'+list_pmid[j]+'.json', 'w', encoding='utf-8')
                 kd = str(SubmitPMIDList('data\\out\\abstractPMID\\'+list_pmid[j]+'.txt', 'biocjson', ''), encoding="utf-8")
                 g.write(kd)
+            '''
             '''
             for j in range(0, len(list_pmid)):
                 g = open('data\\out\\abstractPMID\\temp.txt', 'w', encoding='utf-8')

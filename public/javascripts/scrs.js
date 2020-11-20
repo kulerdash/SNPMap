@@ -24,7 +24,7 @@ function decidesize(size) {
     }
 }
 
-function writewords(wordlist, rsnumber) {
+function writewords(wordlist, weblist, rsnumber) {
     // 引入 ECharts 主模块
     if (wordlist['Check'] === 1) {
         var myChart = echarts.init(document.getElementById('main'));
@@ -68,6 +68,17 @@ function writewords(wordlist, rsnumber) {
             }
         }
         console.log(arrangedata);
+        console.log('ori ' + weblist);
+        var webfinal = [];
+        for (m = 0; m < weblist.length; m++) {
+            word1 = weblist[m][0][0];
+            word2 = weblist[m][0][1];
+            thevalue = weblist[m][1];
+            if (thevalue >= 4) { webfinal.push({ source: word1, target: word2, value: thevalue, name: word1 + ' TO ' + word2 }); }
+        }
+        var tfinal = JSON.stringify(webfinal);
+        webfinal = JSON.parse(tfinal);
+        console.log('weblist ' + JSON.stringify(webfinal));
         var option = {
             tooltip: {
                 formatter: function (x) {
@@ -118,7 +129,7 @@ function writewords(wordlist, rsnumber) {
                     }
                 }
             },
-            animationDuration: 1500,
+            animationDuration: 500,
             animationEasingUpdate: 'quinticInOut',
             series: [
                 {
@@ -131,6 +142,10 @@ function writewords(wordlist, rsnumber) {
                         borderWidth: 1,
                         shadowBlur: 10,
                         shadowColor: 'rgba(0, 0, 0, 0.3)'
+                    },
+                    force: {
+                        repulsion: 1000,
+                        edgeLength: [10, 50]
                     },
                     label: {
                         show: true,
@@ -158,14 +173,14 @@ function writewords(wordlist, rsnumber) {
 
                     // 数据
                     data: data,
-                    link: [],
+                    links: webfinal,
                     categories: categories
                 }
             ]
         };
-
+        console.log(option);
         // 使用刚指定的配置项和数据显示图表。
-        myChart.setOption(option, 'xml');
+        myChart.setOption(option);
     } else {
         document.getElementById("keywordchart").innerHTML = "Not enough information to render graph!";
         //let father = document.getElementById('keyword');
@@ -304,7 +319,7 @@ function getpopulation(rsnumber) {
                         title: 'Original data',
                         readOnly: true,
                         optionToContent: function (opt) {
-                            
+
                         }
                     }
                 }
@@ -334,8 +349,8 @@ function getpopulation(rsnumber) {
                     label: {
                         show: true,
                         position: 'insideRight',
-                        formatter: function(x) {
-                            if (x.data>3) {
+                        formatter: function (x) {
+                            if (x.data > 3) {
                                 return x.data;
                             } else {
                                 return '';
@@ -351,8 +366,8 @@ function getpopulation(rsnumber) {
                     label: {
                         show: true,
                         position: 'insideRight',
-                        formatter: function(x) {
-                            if (x.data>3) {
+                        formatter: function (x) {
+                            if (x.data > 3) {
                                 return x.data;
                             } else {
                                 return '';
@@ -368,8 +383,8 @@ function getpopulation(rsnumber) {
                     label: {
                         show: true,
                         position: 'insideRight',
-                        formatter: function(x) {
-                            if (x.data>3) {
+                        formatter: function (x) {
+                            if (x.data > 3) {
                                 return x.data;
                             } else {
                                 return '';
@@ -836,7 +851,8 @@ console.log(rsnumber);
 console.log(document.title);      // 可以获取title的值。
 document.title = 'Rs' + rsnumber;    // 设置title的值。
 var wordlist = load('data/out/keyword/arranged/Rs' + rsnumber + '.json');
-writewords(wordlist, rsnumber);
+var weblist = load('data/out/webwork/Rs' + rsnumber + '.json');
+writewords(wordlist, weblist, rsnumber);
 console.log("title=" + document.title);
 document.getElementById("rstitle").innerHTML = 'Rs' + rsnumber;
 mybasics = getbasics(rsnumber);

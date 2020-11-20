@@ -17,8 +17,10 @@ def GetPMID(text, num, filename):
     g = open('data\\out\\PMIDList\\'+filename, 'w', encoding='utf-8')
     for i in range(0, num):
         g.write(str(text[i])+'\n')
+    '''
     for i in range(0, num):
         g = open('data\\out\\abstractPMID\\'+text[i]+'.txt', 'w', encoding='utf-8')
         g.write(str(text[i])+'\n')
+    '''
     g = open('data\\out\\PMIDList\\'+filename.strip('.txt')+'.json', 'w', encoding='utf-8')
     g.write(json.dumps(list(map(int, text))))

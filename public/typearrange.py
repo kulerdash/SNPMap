@@ -32,7 +32,7 @@ def main():
     filelist = os.listdir('data\\out\\keyword')
     for i in range(0, len(filelist)):
         if filelist[i].count('.json')>0 and filelist[i].count('Rs')>0:
-            with open('data\\out\\keyword\\'+filelist[i]) as f:
+            with open('data\\out\\keyword\\'+filelist[i], 'r', encoding='utf-8') as f:
                 a = json.load(f)
             arrange(a, filelist[i])
     time_end = time.time()
