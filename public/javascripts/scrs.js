@@ -74,7 +74,7 @@ function writewords(wordlist, weblist, rsnumber) {
             word1 = weblist[m][0][0];
             word2 = weblist[m][0][1];
             thevalue = weblist[m][1];
-            if (thevalue >= 3) { webfinal.push({ source: word1, target: word2, value: thevalue, lineStyle: { width: thevalue / 2 }, name: word1 + ' TO ' + word2 }); }
+            if (thevalue >= 2) { webfinal.push({ source: word1, target: word2, value: thevalue, lineStyle: { width: thevalue / 2 }, name: word1 + ' TO ' + word2 }); }
         }
         var tfinal = JSON.stringify(webfinal);
         webfinal = JSON.parse(tfinal);
