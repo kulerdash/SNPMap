@@ -74,7 +74,7 @@ function writewords(wordlist, weblist, rsnumber) {
             word1 = weblist[m][0][0];
             word2 = weblist[m][0][1];
             thevalue = weblist[m][1];
-            if (thevalue >= 3) { webfinal.push({ source: word1, target: word2, value: thevalue, lineStyle: {width: thevalue/2}, name: word1 + ' TO ' + word2 }); }
+            if (thevalue >= 3) { webfinal.push({ source: word1, target: word2, value: thevalue, lineStyle: { width: thevalue / 2 }, name: word1 + ' TO ' + word2 }); }
         }
         var tfinal = JSON.stringify(webfinal);
         webfinal = JSON.parse(tfinal);
@@ -166,7 +166,7 @@ function writewords(wordlist, weblist, rsnumber) {
                         curveness: 0.3
                     },
                     emphasis: {
-                        
+
                     },
 
                     // 数据
@@ -190,38 +190,43 @@ function writewords(wordlist, weblist, rsnumber) {
 }
 
 function wordcloudlist(wordlist, rsnumber) {
-    if (wordlist['Check'] === 1) {
-        var myChart = echarts3.init(document.getElementById('wordcloud'));
-        var keywordscloud = [];
-        for (var ms=0; ms<wordlist.length;ms++) {
-            keywordscloud.push({ name:wordlist[ms]['name'] , value:wordlist[ms]['value'] });
-        }
-        var option = {
-            series: [{
-                type: 'wordCloud',
-                sizeRange: [15, 80],
-                rotationRange: [0, 0],
-                rotationStep: 45,
-                gridSize: 8,
-                width: '100%',
-                height: '100%',
-                shape: 'circle',
-                textStyle: {
-                    normal: {
-                        color: function () {
-                            return 'rgb(' + [
-                                Math.round(Math.random() * 160),
-                                Math.round(Math.random() * 160),
-                                Math.round(Math.random() * 160)
-                            ].join(',') + ')';
-                        }
+    var myCharted = echarts.init(document.getElementById('wordcloud'));
+    var keywordscloud = [];
+    for (var ms = 0; ms < wordlist.length; ms++) {
+        keywordscloud.push({ name: wordlist[ms]['name'], value: wordlist[ms]['value'] });
+    }
+    var option = {
+        tooltip: {
+            show: true
+        },
+        series: [{
+            name: 'Keyword',
+            type: 'wordCloud',
+            sizeRange: [20, 150],
+            rotationRange: [-45, 45],
+            rotationStep: 45,
+            textRotation: [0, 45, -45],
+            shape: 'circle',
+            textStyle: {
+                normal: {
+                    color: function () {
+                        return 'rgb(' + [
+                            Math.round(Math.random() * 250),
+                            Math.round(Math.random() * 250),
+                            Math.round(Math.random() * 250)
+                        ].join(',') + ')';
                     }
                 },
-                data: keywordscloud
-            }]
-        }
-        myChart.setOption(option);
-    }
+                emphasis: {
+                    shadowBlur: 10,
+                    shadowColor: '#333'
+                }
+            },
+            data: keywordscloud
+        }]
+    };
+    console.log('serwe ' + keywordscloud);
+    myCharted.setOption(option);
 }
 
 function getbasics(rsnumber) {
@@ -884,6 +889,7 @@ console.log(rsnumber);
 console.log(document.title);      // 可以获取title的值。
 document.title = 'Rs' + rsnumber;    // 设置title的值。
 var wordlist = load('data/out/keyword/arranged/Rs' + rsnumber + '.json');
+var newwordlist = load('data/out/keyword/Rs' + rsnumber + '.json');
 var weblist = load('data/out/webwork/Rs' + rsnumber + '.json');
 console.log("title=" + document.title);
 document.getElementById("rstitle").innerHTML = 'Rs' + rsnumber;
@@ -892,7 +898,7 @@ getgenotype(rsnumber, mybasics);
 getpopulation(rsnumber);
 listarticle(rsnumber);
 writewords(wordlist, weblist, rsnumber);
-wordcloudlist(wordlist, rsnumber);
+wordcloudlist(newwordlist, rsnumber);
 
 /*function run(rt) {
     console.log('rt '+rt);
