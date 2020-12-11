@@ -37,6 +37,7 @@ def main():
             with open('data\\samples\\alleles\\'+filelist[i]) as f:
                 lines = f.readlines()
             genoinfo(lines, filelist[i])
+            print(filelist[i] + 'is finished.')
     time_end = time.time()
     print('time cost',time_end-time_start,'s')
 

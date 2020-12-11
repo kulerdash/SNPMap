@@ -202,11 +202,13 @@ function wordcloudlist(wordlist, rsnumber) {
         series: [{
             name: 'Keyword',
             type: 'wordCloud',
-            sizeRange: [20, 150],
-            rotationRange: [-45, 45],
+            sizeRange: [15, 120],
+            gridSize: 20,
+            rotationRange: [0, 0],
             rotationStep: 45,
-            textRotation: [0, 45, -45],
+            textRotation: [0],
             shape: 'circle',
+            drawOutOfBound: false,
             textStyle: {
                 normal: {
                     color: function () {
@@ -673,6 +675,194 @@ function getpopulation(rsnumber) {
     }
 }
 
+function getalfa(rsnumber) {
+    var poplist = load('data/out/ALFA/Rs' + rsnumber + '.json');
+    if (poplist !== null) {
+        pop = [];
+        tlegend = [];
+        for (var i in poplist['results']) {
+            var ref = poplist['results'][i]['ref'];
+            for (var j in poplist['results'][i]['counts']) {
+                for (var k in poplist['results'][i]['counts'][j]['allele_counts']) {
+                    var total = 0;
+                    var fire = poplist['results'][i]['counts'][j]['allele_counts'][k];
+                    for (var l in poplist['results'][i]['counts'][j]['allele_counts'][k]) {
+                        total = total + poplist['results'][i]['counts'][j]['allele_counts'][k][l];
+                    }
+                    for (var l in poplist['results'][i]['counts'][j]['allele_counts'][k]) {
+                        fire[l] = 100*fire[l]/total;
+                        fire[l] = fire[l].toFixed(1);
+                    }
+                    if (tlegend.length === 0){
+                        for (var l in poplist['results'][i]['counts'][j]['allele_counts'][k]) {
+                            tlegend.push(l);
+                        }
+                    }
+                    var tendername;
+                    switch (k) {
+                        case 'SAMN10492695':
+                            tendername = 'European';
+                            break;
+                        case 'SAMN10492698':
+                            tendername = 'African American';
+                            break;
+                        case 'SAMN10492696':
+                            tendername = 'African Others';
+                            break;
+                        case 'SAMN10492703':
+                            tendername = 'African (Note 1)';
+                            break;
+                        case 'SAMN10492697':
+                            tendername = 'East Asian';
+                            break;
+                        case 'SAMN10492702':
+                            tendername = 'South Asian';
+                            break;
+                        case 'SAMN10492701':
+                            tendername = 'Other Asian';
+                            break;
+                        case 'SAMN10492704':
+                            tendername = 'Asian (Note 2)';
+                            break;
+                        case 'SAMN10492699':
+                            tendername = 'Latin American 1';
+                            break;
+                        case 'SAMN10492700':
+                            tendername = 'Latin American 2';
+                            break;
+                        case 'SAMN11605645':
+                            tendername = 'Other';
+                            break;
+                        case 'SAMN10492705':
+                            tendername = 'Total (Note 3)';
+                    }
+                    pop.push({
+                        name: tendername,
+                        data: fire
+                        //data: poplist['results'][i]['ref'][j]['allele_counts'][k]
+                    });
+                }
+            }
+        }
+        var myChart = echarts.init(document.getElementById('alfamain'));
+        var option = {
+            tooltip: {
+                trigger: 'item',
+                axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                    type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                },
+                //formatter: 
+            },
+            toolbox: {
+                // 显示工具箱
+                show: true,
+                feature: {
+                    saveAsImage: {//保存图片
+                        show: true,
+                        title: 'Save as image'
+                    },
+                    dataView: { //数据视图
+                        show: true,
+                        title: 'Original data',
+                        readOnly: true,
+                        optionToContent: function (opt) {
+
+                        }
+                    }
+                }
+            },
+            legend: {
+                data: []
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            xAxis: {
+                type: 'value',
+                max: 100
+            },
+            yAxis: {
+                type: 'category',
+                data: []
+            },
+            series: [
+                {
+                    name: '',
+                    type: 'bar',
+                    stack: '总量',
+                    label: {
+                        show: true,
+                        position: 'insideRight',
+                        formatter: function (x) {
+                            if (x.data > 3) {
+                                return x.data;
+                            } else {
+                                return '';
+                            }
+                        }
+                    },
+                    data: []
+                }
+            ]
+        };
+        for (i=1;i<tlegend.length;i++) {
+            option['series'].push({
+                name: '',
+                type: 'bar',
+                stack: '总量',
+                label: {
+                    show: true,
+                    position: 'insideRight',
+                    formatter: function (x) {
+                        if (x.data > 3) {
+                            return x.data;
+                        } else {
+                            return '';
+                        }
+                    }
+                },
+                data: []
+            });
+        }
+        for (i=0;i<tlegend.length;i++) {
+            option['legend']['data'].push(tlegend[i]);
+            option['series'][i]['name'] = tlegend[i];
+        }
+        len = pop.length;
+        for (i = len - 1; i > -1; i--) {
+            for (j = 0; j < i; j++) {
+                if (pop[j]['data'][tlegend[0]] > pop[j+1]['data'][tlegend[0]]) {
+                    var jh = pop[j];
+                    pop[j] = pop[j + 1];
+                    pop[j + 1] = jh;
+                }
+            }
+        }
+        for (sam = 0; sam < len; sam++) {
+            var bool = false;
+            for (san = 0; san < tlegend.length; san++) {
+                if (pop[sam][tlegend[san]] !== 0) {
+                    bool = true;
+                }
+            }
+            if (bool) {
+                option['yAxis']['data'].push(pop[sam]['name']);
+                for (san = 0; san < tlegend.length; san++) {
+                    option['series'][san]['data'].push(pop[sam]['data'][tlegend[san]]);
+                }
+            }
+        }
+        myChart.setOption(option, 'xml');
+        console.log('seehere');
+        console.log(option);
+    } else {
+        document.getElementById('alfamain').innerHTML = 'Not enough information to render map';
+    }
+}
+
 /*var geo = poplist['geography'];
         var mapFeatures = echarts.getMap('world').geoJson.features;
         mapFeatures.forEach(function(v){
@@ -896,6 +1086,7 @@ document.getElementById("rstitle").innerHTML = 'Rs' + rsnumber;
 mybasics = getbasics(rsnumber);
 getgenotype(rsnumber, mybasics);
 getpopulation(rsnumber);
+getalfa(rsnumber);
 listarticle(rsnumber);
 writewords(wordlist, weblist, rsnumber);
 wordcloudlist(newwordlist, rsnumber);

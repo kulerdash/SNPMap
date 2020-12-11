@@ -35,6 +35,7 @@ def main():
             with open('data\\out\\keyword\\'+filelist[i], 'r', encoding='utf-8') as f:
                 a = json.load(f)
             arrange(a, filelist[i])
+            print(filelist[i] + 'is finished.')
     time_end = time.time()
     print('time cost',time_end-time_start,'s')
 

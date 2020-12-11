@@ -66,6 +66,7 @@ def main():
             webresult = webresult[::-1]
             with open('data\\out\\webwork\\'+filelist[i], 'a', encoding='utf-8') as hp:
                 json.dump(webresult, hp)
+            print(filelist[i] + 'is finished.')
     time_end = time.time()
     print('time cost',time_end-time_start,'s')
 

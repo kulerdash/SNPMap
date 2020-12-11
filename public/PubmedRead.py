@@ -83,6 +83,7 @@ def main():
             sortedfinal = sortedfinal[::-1]
             h = open('data\\out\\keyword\\'+filelist[i].strip('.txt')+'.json', 'w', encoding='utf-8')
             h.write(json.dumps(sortedfinal))
+            print(filelist[i] + 'is finished.')
     time_end = time.time()
     print('time cost',time_end-time_start,'s')
 

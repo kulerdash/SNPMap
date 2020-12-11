@@ -10,6 +10,8 @@
 # Start typing your code from here
 import json
 
+import requests
+
 import re
 
 def basicinfo(lines, filename):
@@ -53,3 +55,4 @@ def basicinfo(lines, filename):
         g.write(json.dumps(pop))
     g = open('data\\out\\basic\\'+filename.strip('.txt')+'.json', 'w', encoding='utf-8')
     g.write(json.dumps(info))
+    
