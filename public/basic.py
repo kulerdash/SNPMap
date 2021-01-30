@@ -10,6 +10,10 @@
 # Start typing your code from here
 import json
 
+import time
+
+import os
+
 import requests
 
 import re
@@ -32,15 +36,12 @@ def basicinfo(lines, filename):
         for i in range(endline+1, len(lines)):
             if lines[i].count('}}')>0:
                 endline2 = i
-                print(endline2)
                 break
         for i in range(endline+1, endline2):
             if lines[i].count('=')>0:
                 cut = lines[i].find('=')
                 key = lines[i][1:cut]
                 value = lines[i][cut+1:].strip('\n')
-                print(key)
-                print(value)
                 pop[key] = value
             else:
                 place = lines[i][1:4]
@@ -55,4 +56,19 @@ def basicinfo(lines, filename):
         g.write(json.dumps(pop))
     g = open('data\\out\\basic\\'+filename.strip('.txt')+'.json', 'w', encoding='utf-8')
     g.write(json.dumps(info))
-    
+
+def main():
+    time_start = time.time()
+    print('Running Python basic info analysis...')
+    filelist = os.listdir('data\\samples')
+    for i in range(0, len(filelist)):
+        if filelist[i].count('.txt')>0 and filelist[i].count('Rs')>0:
+            with open('data\\samples\\'+filelist[i]) as f:
+                lines = f.readlines()
+            basicinfo(lines, filelist[i])
+            print(filelist[i] + ' is finished.')
+    time_end = time.time()
+    print('time cost',time_end-time_start,'s')
+
+if __name__ == '__main__':
+    main()

@@ -5,11 +5,39 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="stylesheets/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+  <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
   <script src="/javascripts/common/jquery.min.js"></script>
   <script src="/javascripts/common/bootstrap.min.js"></script>
   <title>The requested page cannot be found</title>
+  <script>
+    function newDoc() {
+      rsnumber = document.getElementById('SNPNo').value;
+      console.log('seeme');
+      console.log(rsnumber);
+      rsnumber = String(rsnumber);
+      var patt5 = /rs([0-9]+)/;
+      var patt6 = /Rs([0-9]+)/;
+      if (patt5.test(rsnumber) || patt6.test(rsnumber)) {
+        rsnumber = rsnumber.slice(2);
+      }
+      window.location.assign("/rs/id/" + rsnumber);
+    }
+  </script>
+  <script>
+    function newDoc2() {
+      rsnumber = document.getElementById('SNPNo2').value;
+      console.log('seeme');
+      console.log(rsnumber);
+      rsnumber = String(rsnumber);
+      var patt5 = /rs([0-9]+)/;
+      var patt6 = /Rs([0-9]+)/;
+      if (patt5.test(rsnumber) || patt6.test(rsnumber)) {
+        rsnumber = rsnumber.slice(2);
+      }
+      window.location.assign("/rs/id/" + rsnumber);
+    }
+  </script>
 </head>
 
 <body>
@@ -17,7 +45,8 @@
   <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
       <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+          aria-expanded="false" aria-controls="navbar">
           <span class="sr-only">Toggle navigation</span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
@@ -28,7 +57,8 @@
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tutorials <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+              aria-expanded="false">Tutorials <span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li><a href="#">Action</a></li>
               <li><a href="#">Another action</a></li>
@@ -42,56 +72,65 @@
           <li><a href="/about">About</a></li>
           <li><a href="/report">Report a bug</a></li>
         </ul>
-        <form class="navbar-form navbar-left" action="/rs" method="post">
+        <div class="navbar-form navbar-left">
           <div class="form-group">
-            <input id="SNPNo" type="text" class="form-control" placeholder="e.g.: rs2234693, 2234693" name="name" value="">
+            <input id="SNPNo" type="text" class="form-control" placeholder="e.g.: rs2234693, 2234693" name="name"
+              value="">
+            <button class="btn btn-default" onclick="newDoc()"><span class="glyphicon glyphicon-search"
+              aria-hidden="true"></span></button>
           </div>
-          <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-        </form>
+        </div>
         <ul class="nav navbar-nav navbar-right">
           <li><a href="/zh">中文</a></li>
           <li class="active"><a href="/">English <span class="sr-only">(current)</span></a></li>
         </ul>
-      </div><!--/.nav-collapse -->
+      </div>
+      <!--/.nav-collapse -->
     </div>
   </nav>
 
   <div class="jumbotron" id="errorPage">
+    <div class="container">
       <div class="container">
-        <div class="container">
         <div class="row">
-        <div class="col-md-12">
-        <p>&nbsp&nbsp</p>
-        <h1>:-(&nbsp&nbspThe requested page cannot be found...</h1>
-        <p>&nbsp&nbsp</p>
-        <p><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>&nbsp&nbsp&nbspCheck if you have the right address.</p>
-        <p><span class="glyphicon glyphicon-fire" aria-hidden="true"></span>&nbsp&nbsp&nbspThe page might have been removed.</p>
-        <p><span class="glyphicon glyphicon-search" aria-hidden="true"></span>&nbsp&nbsp&nbspMaybe, just make a search below.</p>
+          <div class="col-md-12">
+            <p>&nbsp&nbsp</p>
+            <h1>:-(&nbsp&nbspThe requested page cannot be found...</h1>
+            <p>&nbsp&nbsp</p>
+            <p><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>&nbsp&nbsp&nbspCheck if you have
+              the right address.</p>
+            <p><span class="glyphicon glyphicon-fire" aria-hidden="true"></span>&nbsp&nbsp&nbspThe page might have been
+              removed.</p>
+            <p><span class="glyphicon glyphicon-search" aria-hidden="true"></span>&nbsp&nbsp&nbspMaybe, just make a
+              search below.</p>
+          </div>
         </div>
-        </div>
-        </div>
-        <p><div class="container">
-          <!-- Example row of columns -->
-          <div class="row">
-            <div class="col-md-6">
-              <form action="/rs" method="post">
-                <div class="input-group">
-                  <input id="SNPNo" type="text" class="form-control" placeholder="e.g.: rs2234693, 2234693" name="name" value="">
+      </div>
+      <p>
+      <div class="container">
+        <!-- Example row of columns -->
+        <div class="row">
+          <div class="col-md-6">
+            <div>
+              <div class="input-group">
+                <input id="SNPNo2" type="text" class="form-control" placeholder="e.g.: rs2234693, 2234693" name="name"
+                  value="">
                 <span class="input-group-btn">
-                <button type="submit" class="btn btn-default">
-                  <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                </button>
+                  <button class="btn btn-default" onclick="newDoc2()">
+                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                  </button>
                 </span>
-                </div>
-              </form>
+              </div>
             </div>
           </div>
-        </div></p>
+        </div>
       </div>
+      </p>
+    </div>
   </div>
 
   <div class="container">
-    
+
     <hr>
 
     <footer>

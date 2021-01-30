@@ -16,13 +16,13 @@ import time
 
 import json
 
-from basic import basicinfo
-
 from wordmatch import wordsearch, clearredundancy
 
 from SelectPMID import GetPMID
 
 from api.PMIDRetrieve.SubmitPMIDListAmended import SubmitPMIDList
+
+from clean import cleansing
 
 def main():
     # 读取Samples文件夹内文件按行读取到列表中
@@ -34,7 +34,6 @@ def main():
             with open('data\\samples\\'+filelist[i]) as f:
                 lines = f.readlines()
             list_pmid = list()
-            basicinfo(lines, filelist[i])
             for j in range(0, len(lines)):#确定扫描单词范围的起始行
                 if lines[j].count('PMID')>0:
                     startline = j
@@ -48,7 +47,11 @@ def main():
             kd = kd.replace('}\n', '},\n')
             kd = kd.rstrip('\n')
             kd = kd.rstrip(',')
-            g.write('[\n'+kd+'\n]')
+            kd = '[\n'+kd+'\n]'
+            g.write(kd)
+            with open('data\\out\\abstract\\'+filelist[i].strip('.txt')+'.json', 'r', encoding='utf-8') as tae:
+                al = json.load(tae)
+            cleansing(al, filelist[i])
             with open('data\\out\\abstract\\'+filelist[i].strip('.txt')+'.json', 'r',encoding='utf-8') as fp:
                 maxdata = json.load(fp)
                 for j in range(0, len(maxdata)):
@@ -83,7 +86,7 @@ def main():
             sortedfinal = sortedfinal[::-1]
             h = open('data\\out\\keyword\\'+filelist[i].strip('.txt')+'.json', 'w', encoding='utf-8')
             h.write(json.dumps(sortedfinal))
-            print(filelist[i] + 'is finished.')
+            print(filelist[i] + ' is finished.')
     time_end = time.time()
     print('time cost',time_end-time_start,'s')
 

@@ -12,18 +12,26 @@ import time
 
 import requests
 
+import sys
+
+import json
+
+import re
+
 import os
 
 def main():
     time_start = time.time()
-    filelist = os.listdir('data\\out\\abstract')
-    for i in range(0, len(filelist)):
-        h = open('data\\out\\ALFA\\'+filelist[i], 'w', encoding='utf-8')
-        h.truncate(0)
-        urld = 'https://api.ncbi.nlm.nih.gov/variation/v0/refsnp/' + filelist[i].strip('.json').strip('Rs') +'/frequency'
-        res = requests.get(urld)
-        h.write(res.text)
-        print(filelist[i] + 'is finished.')
+    filename = sys.argv[1]
+    searchObj = re.search(r'([0-9]+)', filename)
+    if searchObj:
+        filename = 'Rs' + filename
+    h = open('data\\out\\ALFA\\'+filename+'.json', 'w', encoding='utf-8')
+    h.truncate(0)
+    urld = 'https://api.ncbi.nlm.nih.gov/variation/v0/refsnp/' + filename.strip('Rs') +'/frequency'
+    res = requests.get(urld)
+    h.write(res.text)
+    print(filename + ' ALFA population data download is completed.')
     time_end = time.time()
     print('time cost',time_end-time_start,'s')
 

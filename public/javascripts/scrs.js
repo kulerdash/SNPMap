@@ -10,7 +10,6 @@ function reading(name) {
 function load(filedir) {
     txt = reading(filedir);
     var json = JSON.parse(txt);
-    console.log(json);
     return json;
 }
 
@@ -67,8 +66,6 @@ function writewords(wordlist, weblist, rsnumber) {
                 }
             }
         }
-        console.log(arrangedata);
-        console.log('ori ' + weblist);
         var webfinal = [];
         for (m = 0; m < weblist.length; m++) {
             word1 = weblist[m][0][0];
@@ -78,7 +75,6 @@ function writewords(wordlist, weblist, rsnumber) {
         }
         var tfinal = JSON.stringify(webfinal);
         webfinal = JSON.parse(tfinal);
-        console.log('weblist ' + JSON.stringify(webfinal));
         var option = {
             tooltip: {
                 formatter: function (x) {
@@ -176,7 +172,6 @@ function writewords(wordlist, weblist, rsnumber) {
                 }
             ]
         };
-        console.log(option);
         // 使用刚指定的配置项和数据显示图表。
         myChart.setOption(option);
     } else {
@@ -227,640 +222,475 @@ function wordcloudlist(wordlist, rsnumber) {
             data: keywordscloud
         }]
     };
-    console.log('serwe ' + keywordscloud);
     myCharted.setOption(option);
 }
 
 function getbasics(rsnumber) {
-    var basics = load('data/out/basic/Rs' + rsnumber + '.json');
-    for (var key in basics) {
-        obj = document.getElementById(key);
-        if (!(obj)) {
-            console.log(key + ' does not exist!')
-        } else {
-            document.getElementById(key).innerHTML = basics[key];
+    $.ajax({
+        url: "/file/basic/" + rsnumber, //json文件位置
+        type: "GET", //请求方式为get
+        dataType: "json", //返回数据格式为json
+        success: function (data) {
+            var basics = data;
+            for (var key in basics) {
+                obj = document.getElementById(key);
+                if (!(obj)) {
+                    console.log(key + ' does not exist!')
+                } else {
+                    document.getElementById(key).innerHTML = basics[key];
+                }
+            }
         }
-    }
+    })
+    var basics = load('/data/out/basic/Rs' + rsnumber + '.json');
     return basics;
 }
 
 function getgenotype(rsnumber, basics) {
-    var genos1 = load('data/out/basic/alleles/Rs' + rsnumber + basics['geno1'] + '.json');
-    var genos2 = load('data/out/basic/alleles/Rs' + rsnumber + basics['geno2'] + '.json');
-    var genos3 = load('data/out/basic/alleles/Rs' + rsnumber + basics['geno3'] + '.json');
-    if (genos1 !== null) document.getElementById("geno1Mag").innerHTML = genos1['magnitude'];
-    if (genos1 !== null) document.getElementById("geno1Sum").innerHTML = genos1['summary'];
-    if (genos2 !== null) document.getElementById("geno2Mag").innerHTML = genos2['magnitude'];
-    if (genos2 !== null) document.getElementById("geno2Sum").innerHTML = genos2['summary'];
-    if (genos3 !== null) document.getElementById("geno3Mag").innerHTML = genos3['magnitude'];
-    if (genos3 !== null) document.getElementById("geno3Sum").innerHTML = genos3['summary'];
-    if (genos1 !== null) repute1 = genos1['repute'];
-    if (genos2 !== null) repute2 = genos2['repute'];
-    if (genos3 !== null) repute3 = genos3['repute'];
-    if (genos1 !== null) {
-        if (repute1 === 'Bad') {
-            obj = document.getElementById('geno1id');
-            obj.setAttribute("class", "bad");
-        } else if (repute1 === 'Good') {
-            obj = document.getElementById('geno1id');
-            obj.setAttribute("class", "good");
+    $.ajax({
+        url: "/file/genotype/" + rsnumber + basics['geno1'], //json文件位置
+        type: "GET", //请求方式为get
+        dataType: "json", //返回数据格式为json
+        success: function (data) {
+            var genos1 = data;
+            if (genos1 !== null) {
+                document.getElementById("geno1Mag").innerHTML = genos1['magnitude'];
+                document.getElementById("geno1Sum").innerHTML = genos1['summary'];
+                repute1 = genos1['repute'];
+                if (repute1 === 'Bad') {
+                    obj = document.getElementById('geno1id');
+                    obj.setAttribute("class", "bad");
+                } else if (repute1 === 'Good') {
+                    obj = document.getElementById('geno1id');
+                    obj.setAttribute("class", "good");
+                }
+            }
         }
-    }
-    if (genos2 !== null) {
-        if (repute2 === 'Bad') {
-            obj = document.getElementById('geno2id');
-            obj.setAttribute("class", "bad");
-        } else if (repute2 === 'Good') {
-            obj = document.getElementById('geno2id');
-            obj.setAttribute("class", "good");
+    })
+    $.ajax({
+        url: "/file/genotype/" + rsnumber + basics['geno2'], //json文件位置
+        type: "GET", //请求方式为get
+        dataType: "json", //返回数据格式为json
+        success: function (data) {
+            var genos2 = data;
+            if (genos2 !== null) {
+                document.getElementById("geno2Mag").innerHTML = genos2['magnitude'];
+                document.getElementById("geno2Sum").innerHTML = genos2['summary'];
+                repute2 = genos2['repute'];
+                if (repute2 === 'Bad') {
+                    obj = document.getElementById('geno2id');
+                    obj.setAttribute("class", "bad");
+                } else if (repute2 === 'Good') {
+                    obj = document.getElementById('geno2id');
+                    obj.setAttribute("class", "good");
+                }
+            }
         }
-    }
-    if (genos3 !== null) {
-        if (repute3 === 'Bad') {
-            obj = document.getElementById('geno3id');
-            obj.setAttribute("class", "bad");
-        } else if (repute3 === 'Good') {
-            obj = document.getElementById('geno3id');
-            obj.setAttribute("class", "good");
+    })
+    $.ajax({
+        url: "/file/genotype/" + rsnumber + basics['geno3'], //json文件位置
+        type: "GET", //请求方式为get
+        dataType: "json", //返回数据格式为json
+        success: function (data) {
+            var genos3 = data;
+            if (genos3 !== null) {
+                document.getElementById("geno3Mag").innerHTML = genos3['magnitude'];
+                document.getElementById("geno3Sum").innerHTML = genos3['summary'];
+                repute3 = genos3['repute'];
+                if (repute3 === 'Bad') {
+                    obj = document.getElementById('geno3id');
+                    obj.setAttribute("class", "bad");
+                } else if (repute3 === 'Good') {
+                    obj = document.getElementById('geno3id');
+                    obj.setAttribute("class", "good");
+                }
+            }
         }
-    }
-
+    })
 }
 
 function getpopulation(rsnumber) {
-    var poplist = load('data/out/population/Rs' + rsnumber + '.json');
-    if (poplist !== null) {
-        var myChart = echarts.init(document.getElementById('main2'));
-        var option = {
-            tooltip: {
-                trigger: 'item',
-                axisPointer: {            // 坐标轴指示器，坐标轴触发有效
-                    type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
-                },
-                formatter: function (x) {
-                    var tendername;
-                    var ans;
-                    switch (x.name) {
-                        case 'CEU':
-                            tendername = 'Utah residents with Northern or Western European ancestry';
-                            break;
-                        case 'HCB':
-                            tendername = 'Han Chinese in Beijing, China';
-                            break;
-                        case 'JPT':
-                            tendername = 'Japanese in Tokyo, Japan';
-                            break;
-                        case 'YRI':
-                            tendername = 'Yoruba in Ibadan, Nigeria';
-                            break;
-                        case 'ASW':
-                            tendername = 'African ancestry in Southwest USA';
-                            break;
-                        case 'CHB':
-                            tendername = 'Han Chinese in Beijing, China';
-                            break;
-                        case 'CHD':
-                            tendername = 'Chinese in metropolitan Denver, CO, United States';
-                            break;
-                        case 'GIH':
-                            tendername = 'Gujarati Indians in Houston, TX, United States';
-                            break;
-                        case 'LWK':
-                            tendername = 'Luhya in Webuye, Kenya';
-                            break;
-                        case 'MEX':
-                            tendername = 'Mexican ancestry in Los Angeles, CA, United States';
-                            break;
-                        case 'MXL':
-                            tendername = 'Mexican ancestry in Los Angeles, CA, United States';
-                            break;
-                        case 'MKK':
-                            tendername = 'Maasai in Kinyawa, Kenya';
-                            break;
-                        case 'TSI':
-                            tendername = 'Toscani in Italia';
-                    }
-                    ans = tendername + '<br / >' + poplist['geno1'] + ': ' + poplist['geography'][x.name][0];
-                    ans += '<br />' + poplist['geno2'] + ': ' + poplist['geography'][x.name][1];
-                    ans += '<br />' + poplist['geno3'] + ': ' + poplist['geography'][x.name][2];
-                    return ans;
-                }
-            },
-            toolbox: {
-                // 显示工具箱
-                show: true,
-                feature: {
-                    saveAsImage: {//保存图片
-                        show: true,
-                        title: 'Save as image'
+    $.ajax({
+        url: "/file/population/" + rsnumber, //json文件位置
+        type: "GET", //请求方式为get
+        dataType: "json", //返回数据格式为json
+        success: function (data) {
+            var poplist = data;
+            if (poplist !== null) {
+                var myChart = echarts.init(document.getElementById('main2'));
+                var option = {
+                    tooltip: {
+                        trigger: 'item',
+                        axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                            type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                        },
+                        formatter: function (x) {
+                            var tendername;
+                            var ans;
+                            switch (x.name) {
+                                case 'CEU':
+                                    tendername = 'Utah residents with Northern or Western European ancestry';
+                                    break;
+                                case 'HCB':
+                                    tendername = 'Han Chinese in Beijing, China';
+                                    break;
+                                case 'JPT':
+                                    tendername = 'Japanese in Tokyo, Japan';
+                                    break;
+                                case 'YRI':
+                                    tendername = 'Yoruba in Ibadan, Nigeria';
+                                    break;
+                                case 'ASW':
+                                    tendername = 'African ancestry in Southwest USA';
+                                    break;
+                                case 'CHB':
+                                    tendername = 'Han Chinese in Beijing, China';
+                                    break;
+                                case 'CHD':
+                                    tendername = 'Chinese in metropolitan Denver, CO, United States';
+                                    break;
+                                case 'GIH':
+                                    tendername = 'Gujarati Indians in Houston, TX, United States';
+                                    break;
+                                case 'LWK':
+                                    tendername = 'Luhya in Webuye, Kenya';
+                                    break;
+                                case 'MEX':
+                                    tendername = 'Mexican ancestry in Los Angeles, CA, United States';
+                                    break;
+                                case 'MXL':
+                                    tendername = 'Mexican ancestry in Los Angeles, CA, United States';
+                                    break;
+                                case 'MKK':
+                                    tendername = 'Maasai in Kinyawa, Kenya';
+                                    break;
+                                case 'TSI':
+                                    tendername = 'Toscani in Italia';
+                            }
+                            ans = tendername + '<br / >' + poplist['geno1'] + ': ' + poplist['geography'][x.name][0];
+                            ans += '<br />' + poplist['geno2'] + ': ' + poplist['geography'][x.name][1];
+                            ans += '<br />' + poplist['geno3'] + ': ' + poplist['geography'][x.name][2];
+                            return ans;
+                        }
                     },
-                    dataView: { //数据视图
+                    toolbox: {
+                        // 显示工具箱
                         show: true,
-                        title: 'Original data',
-                        readOnly: true,
-                        optionToContent: function (opt) {
+                        feature: {
+                            saveAsImage: {//保存图片
+                                show: true,
+                                title: 'Save as image'
+                            },
+                            dataView: { //数据视图
+                                show: true,
+                                title: 'Original data',
+                                readOnly: true,
+                                optionToContent: function (opt) {
 
+                                }
+                            }
+                        }
+                    },
+                    legend: {
+                        data: []
+                    },
+                    grid: {
+                        left: '3%',
+                        right: '4%',
+                        bottom: '3%',
+                        containLabel: true
+                    },
+                    xAxis: {
+                        type: 'value',
+                        max: 100
+                    },
+                    yAxis: {
+                        type: 'category',
+                        data: []
+                    },
+                    series: [
+                        {
+                            name: '',
+                            type: 'bar',
+                            stack: '总量',
+                            label: {
+                                show: true,
+                                position: 'insideRight',
+                                formatter: function (x) {
+                                    if (x.data > 3) {
+                                        return x.data;
+                                    } else {
+                                        return '';
+                                    }
+                                }
+                            },
+                            data: []
+                        },
+                        {
+                            name: '',
+                            type: 'bar',
+                            stack: '总量',
+                            label: {
+                                show: true,
+                                position: 'insideRight',
+                                formatter: function (x) {
+                                    if (x.data > 3) {
+                                        return x.data;
+                                    } else {
+                                        return '';
+                                    }
+                                }
+                            },
+                            data: []
+                        },
+                        {
+                            name: '',
+                            type: 'bar',
+                            stack: '总量',
+                            label: {
+                                show: true,
+                                position: 'insideRight',
+                                formatter: function (x) {
+                                    if (x.data > 3) {
+                                        return x.data;
+                                    } else {
+                                        return '';
+                                    }
+                                }
+                            },
+                            data: []
+                        },
+                    ]
+                };
+                option['legend']['data'].push(poplist['geno1']);
+                option['legend']['data'].push(poplist['geno2']);
+                option['legend']['data'].push(poplist['geno3']);
+                option['series'][0]['name'] = poplist['geno1'];
+                option['series'][1]['name'] = poplist['geno2'];
+                option['series'][2]['name'] = poplist['geno3'];
+                var lend = Object.keys(poplist['geography']);
+                var len = lend.length;
+                for (i = len - 1; i > -1; i--) {
+                    for (j = 0; j < i; j++) {
+                        if (poplist['geography'][lend[j]][0] > poplist['geography'][lend[j + 1]][0]) {
+                            var jh = lend[j];
+                            lend[j] = lend[j + 1];
+                            lend[j + 1] = jh;
                         }
                     }
                 }
-            },
-            legend: {
-                data: []
-            },
-            grid: {
-                left: '3%',
-                right: '4%',
-                bottom: '3%',
-                containLabel: true
-            },
-            xAxis: {
-                type: 'value',
-                max: 100
-            },
-            yAxis: {
-                type: 'category',
-                data: []
-            },
-            series: [
-                {
-                    name: '',
-                    type: 'bar',
-                    stack: '总量',
-                    label: {
-                        show: true,
-                        position: 'insideRight',
-                        formatter: function (x) {
-                            if (x.data > 3) {
-                                return x.data;
-                            } else {
-                                return '';
-                            }
-                        }
-                    },
-                    data: []
-                },
-                {
-                    name: '',
-                    type: 'bar',
-                    stack: '总量',
-                    label: {
-                        show: true,
-                        position: 'insideRight',
-                        formatter: function (x) {
-                            if (x.data > 3) {
-                                return x.data;
-                            } else {
-                                return '';
-                            }
-                        }
-                    },
-                    data: []
-                },
-                {
-                    name: '',
-                    type: 'bar',
-                    stack: '总量',
-                    label: {
-                        show: true,
-                        position: 'insideRight',
-                        formatter: function (x) {
-                            if (x.data > 3) {
-                                return x.data;
-                            } else {
-                                return '';
-                            }
-                        }
-                    },
-                    data: []
-                },
-            ]
-        };
-        option['legend']['data'].push(poplist['geno1']);
-        option['legend']['data'].push(poplist['geno2']);
-        option['legend']['data'].push(poplist['geno3']);
-        option['series'][0]['name'] = poplist['geno1'];
-        option['series'][1]['name'] = poplist['geno2'];
-        option['series'][2]['name'] = poplist['geno3'];
-        var lend = Object.keys(poplist['geography']);
-        var len = lend.length;
-        for (i = len - 1; i > -1; i--) {
-            for (j = 0; j < i; j++) {
-                if (poplist['geography'][lend[j]][0] > poplist['geography'][lend[j + 1]][0]) {
-                    var jh = lend[j];
-                    lend[j] = lend[j + 1];
-                    lend[j + 1] = jh;
+                var i = 0;
+                for (sam = 0; sam < len; sam++) {
+                    key = lend[sam];
+                    if ((poplist['geography'][key][0] !== 0 || poplist['geography'][key][1] !== 0 || poplist['geography'][key][2] !== 0) && key !== 'HCB') {
+                        option['yAxis']['data'].push(key);
+                        option['series'][0]['data'].push(poplist['geography'][key][0]);
+                        option['series'][1]['data'].push(poplist['geography'][key][1]);
+                        option['series'][2]['data'].push(poplist['geography'][key][2]);
+                        i += 1;
+                    }
                 }
-            }
-        }
-        /*var place = [];
-        var div = Math.ceil(len / 4) + 1;
-        var hang = Math.floor(100 / div);
-        jord = len;
-        for (i = 0; i < len; i++) {
-            if (poplist['geography'][lend[i]][0] == 0 && poplist['geography'][lend[i]][1] == 0 && poplist['geography'][lend[i]][2] == 0) {
-                jord -= 1;
-            }
-        }
-        for (i = 0; i < jord; i++) {
-            var t = i + 1;
-            var divt = Math.ceil(t / 4);
-            var hangt = hang * divt;
-            var liet;
-            if (t % 4 !== 0) {
-                liet = 20 * (t % 4);
+                myChart.setOption(option, 'xml');
             } else {
-                liet = 80;
-            }
-            var resulting = [liet.toString() + '%', hangt.toString() + '%'];
-            console.log(resulting);
-            place.push(resulting);
-        }*/
-        var i = 0;
-        console.log(lend);
-        for (sam = 0; sam < len; sam++) {
-            key = lend[sam];
-            if ((poplist['geography'][key][0] !== 0 || poplist['geography'][key][1] !== 0 || poplist['geography'][key][2] !== 0) && key !== 'HCB') {
-                option['yAxis']['data'].push(key);
-                option['series'][0]['data'].push(poplist['geography'][key][0]);
-                option['series'][1]['data'].push(poplist['geography'][key][1]);
-                option['series'][2]['data'].push(poplist['geography'][key][2]);
-                /*tender = {
-                    name: '',
-                    label: {},
-                    type: 'pie',
-                    radius: [40, 60],
-                    center: place[i],
-                    encode: {
-                        itemName: 'population group',
-                        value: key
-                    }
-                }
-                switch (key) {
-                    case 'CEU':
-                        tender.name = 'Utah residents with Northern or Western European ancestry';
-                        tender.label = {
-                            normal: {
-                                position: 'center',
-                                textStyle: {
-                                    fontSize: '20',
-                                    color: '#000000'
-                                },
-                                formatter: 'CEU'
-                            }
-                        };
-                        break;
-                    case 'HCB':
-                        tender.name = 'Han Chinese in Beijing, China';
-                        tender.label = {
-                            normal: {
-                                position: 'center',
-                                textStyle: {
-                                    fontSize: '20',
-                                    color: '#000000'
-                                },
-                                formatter: 'HCB'
-                            }
-                        };
-                        break;
-                    case 'JPT':
-                        tender.name = 'Japanese in Tokyo, Japan';
-                        tender.label = {
-                            normal: {
-                                position: 'center',
-                                textStyle: {
-                                    fontSize: '20',
-                                    color: '#000000'
-                                },
-                                formatter: 'JPT'
-                            }
-                        };
-                        break;
-                    case 'YRI':
-                        tender.name = 'Yoruba in Ibadan, Nigeria';
-                        tender.label = {
-                            normal: {
-                                position: 'center',
-                                textStyle: {
-                                    fontSize: '20',
-                                    color: '#000000'
-                                },
-                                formatter: 'YRI'
-                            }
-                        };
-                        break;
-                    case 'ASW':
-                        tender.name = 'African ancestry in Southwest USA';
-                        tender.label = {
-                            normal: {
-                                position: 'center',
-                                textStyle: {
-                                    fontSize: '20',
-                                    color: '#000000'
-                                },
-                                formatter: 'ASW'
-                            }
-                        };
-                        break;
-                    case 'CHB':
-                        tender.name = 'Han Chinese in Beijing, China';
-                        tender.label = {
-                            normal: {
-                                position: 'center',
-                                textStyle: {
-                                    fontSize: '20',
-                                    color: '#000000'
-                                },
-                                formatter: 'CHB'
-                            }
-                        };
-                        break;
-                    case 'CHD':
-                        tender.name = 'Chinese in metropolitan Denver, CO, United States';
-                        tender.label = {
-                            normal: {
-                                position: 'center',
-                                textStyle: {
-                                    fontSize: '20',
-                                    color: '#000000'
-                                },
-                                formatter: 'CHD'
-                            }
-                        };
-                        break;
-                    case 'GIH':
-                        tender.name = 'Gujarati Indians in Houston, TX, United States';
-                        tender.label = {
-                            normal: {
-                                position: 'center',
-                                textStyle: {
-                                    fontSize: '20',
-                                    color: '#000000'
-                                },
-                                formatter: 'GIH'
-                            }
-                        };
-                        break;
-                    case 'LWK':
-                        tender.name = 'Luhya in Webuye, Kenya';
-                        tender.label = {
-                            normal: {
-                                position: 'center',
-                                textStyle: {
-                                    fontSize: '20',
-                                    color: '#000000'
-                                },
-                                formatter: 'LWK'
-                            }
-                        };
-                        break;
-                    case 'MEX':
-                        tender.name = 'Mexican ancestry in Los Angeles, CA, United States';
-                        tender.label = {
-                            normal: {
-                                position: 'center',
-                                textStyle: {
-                                    fontSize: '20',
-                                    color: '#000000'
-                                },
-                                formatter: 'MEX'
-                            }
-                        };
-                        break;
-                    case 'MXL':
-                        tender.name = 'Mexican ancestry in Los Angeles, CA, United States';
-                        tender.label = {
-                            normal: {
-                                position: 'center',
-                                textStyle: {
-                                    fontSize: '20',
-                                    color: '#000000'
-                                },
-                                formatter: 'MXL'
-                            }
-                        };
-                        break;
-                    case 'MKK':
-                        tender.name = 'Maasai in Kinyawa, Kenya';
-                        tender.label = {
-                            normal: {
-                                position: 'center',
-                                textStyle: {
-                                    fontSize: '20',
-                                    color: '#000000'
-                                },
-                                formatter: 'MKK'
-                            }
-                        };
-                        break;
-                    case 'TSI':
-                        tender.name = 'Toscani in Italia';
-                        tender.label = {
-                            normal: {
-                                position: 'center',
-                                textStyle: {
-                                    fontSize: '20',
-                                    color: '#000000'
-                                },
-                                formatter: 'TSI'
-                            }
-                        };
-                }
-                option['series'].push(tender);*/
-                i += 1;
+                document.getElementById('populationchart').innerHTML = 'Not enough information to render map';
             }
         }
-        myChart.setOption(option, 'xml');
-    } else {
-        document.getElementById('populationchart').innerHTML = 'Not enough information to render map';
-    }
+    })
 }
 
 function getalfa(rsnumber) {
-    var poplist = load('data/out/ALFA/Rs' + rsnumber + '.json');
-    if (poplist !== null) {
-        pop = [];
-        tlegend = [];
-        for (var i in poplist['results']) {
-            var ref = poplist['results'][i]['ref'];
-            for (var j in poplist['results'][i]['counts']) {
-                for (var k in poplist['results'][i]['counts'][j]['allele_counts']) {
-                    var total = 0;
-                    var fire = poplist['results'][i]['counts'][j]['allele_counts'][k];
-                    for (var l in poplist['results'][i]['counts'][j]['allele_counts'][k]) {
-                        total = total + poplist['results'][i]['counts'][j]['allele_counts'][k][l];
-                    }
-                    for (var l in poplist['results'][i]['counts'][j]['allele_counts'][k]) {
-                        fire[l] = 100*fire[l]/total;
-                        fire[l] = fire[l].toFixed(1);
-                    }
-                    if (tlegend.length === 0){
-                        for (var l in poplist['results'][i]['counts'][j]['allele_counts'][k]) {
-                            tlegend.push(l);
+    $.ajax({
+        url: "/file/alfa/" + rsnumber, //json文件位置
+        type: "GET", //请求方式为get
+        dataType: "json", //返回数据格式为json
+        success: function (data) { //请求成功完成后要执行的方法 
+            poplist = data
+            if (poplist !== null) {
+                pop = [];
+                tlegend = [];
+                for (var i in poplist['results']) {
+                    var ref = poplist['results'][i]['ref'];
+                    for (var j in poplist['results'][i]['counts']) {
+                        for (var k in poplist['results'][i]['counts'][j]['allele_counts']) {
+                            var total = 0;
+                            var fire = poplist['results'][i]['counts'][j]['allele_counts'][k];
+                            for (var l in poplist['results'][i]['counts'][j]['allele_counts'][k]) {
+                                total = total + poplist['results'][i]['counts'][j]['allele_counts'][k][l];
+                            }
+                            for (var l in poplist['results'][i]['counts'][j]['allele_counts'][k]) {
+                                fire[l] = 100 * fire[l] / total;
+                                fire[l] = fire[l].toFixed(1);
+                            }
+                            if (tlegend.length === 0) {
+                                for (var l in poplist['results'][i]['counts'][j]['allele_counts'][k]) {
+                                    tlegend.push(l);
+                                }
+                            }
+                            var tendername;
+                            switch (k) {
+                                case 'SAMN10492695':
+                                    tendername = 'European';
+                                    break;
+                                case 'SAMN10492698':
+                                    tendername = 'African American';
+                                    break;
+                                case 'SAMN10492696':
+                                    tendername = 'African Others';
+                                    break;
+                                case 'SAMN10492703':
+                                    tendername = 'African (Note 1)';
+                                    break;
+                                case 'SAMN10492697':
+                                    tendername = 'East Asian';
+                                    break;
+                                case 'SAMN10492702':
+                                    tendername = 'South Asian';
+                                    break;
+                                case 'SAMN10492701':
+                                    tendername = 'Other Asian';
+                                    break;
+                                case 'SAMN10492704':
+                                    tendername = 'Asian (Note 2)';
+                                    break;
+                                case 'SAMN10492699':
+                                    tendername = 'Latin American 1';
+                                    break;
+                                case 'SAMN10492700':
+                                    tendername = 'Latin American 2';
+                                    break;
+                                case 'SAMN11605645':
+                                    tendername = 'Other';
+                                    break;
+                                case 'SAMN10492705':
+                                    tendername = 'Total (Note 3)';
+                            }
+                            pop.push({
+                                name: tendername,
+                                data: fire
+                                //data: poplist['results'][i]['ref'][j]['allele_counts'][k]
+                            });
                         }
                     }
-                    var tendername;
-                    switch (k) {
-                        case 'SAMN10492695':
-                            tendername = 'European';
-                            break;
-                        case 'SAMN10492698':
-                            tendername = 'African American';
-                            break;
-                        case 'SAMN10492696':
-                            tendername = 'African Others';
-                            break;
-                        case 'SAMN10492703':
-                            tendername = 'African (Note 1)';
-                            break;
-                        case 'SAMN10492697':
-                            tendername = 'East Asian';
-                            break;
-                        case 'SAMN10492702':
-                            tendername = 'South Asian';
-                            break;
-                        case 'SAMN10492701':
-                            tendername = 'Other Asian';
-                            break;
-                        case 'SAMN10492704':
-                            tendername = 'Asian (Note 2)';
-                            break;
-                        case 'SAMN10492699':
-                            tendername = 'Latin American 1';
-                            break;
-                        case 'SAMN10492700':
-                            tendername = 'Latin American 2';
-                            break;
-                        case 'SAMN11605645':
-                            tendername = 'Other';
-                            break;
-                        case 'SAMN10492705':
-                            tendername = 'Total (Note 3)';
-                    }
-                    pop.push({
-                        name: tendername,
-                        data: fire
-                        //data: poplist['results'][i]['ref'][j]['allele_counts'][k]
-                    });
                 }
-            }
-        }
-        var myChart = echarts.init(document.getElementById('alfamain'));
-        var option = {
-            tooltip: {
-                trigger: 'item',
-                axisPointer: {            // 坐标轴指示器，坐标轴触发有效
-                    type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
-                },
-                //formatter: 
-            },
-            toolbox: {
-                // 显示工具箱
-                show: true,
-                feature: {
-                    saveAsImage: {//保存图片
-                        show: true,
-                        title: 'Save as image'
+                var myChart = echarts.init(document.getElementById('alfamain'));
+                var option = {
+                    tooltip: {
+                        trigger: 'item',
+                        axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                            type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                        },
+                        //formatter: 
                     },
-                    dataView: { //数据视图
+                    toolbox: {
+                        // 显示工具箱
                         show: true,
-                        title: 'Original data',
-                        readOnly: true,
-                        optionToContent: function (opt) {
+                        feature: {
+                            saveAsImage: {//保存图片
+                                show: true,
+                                title: 'Save as image'
+                            },
+                            dataView: { //数据视图
+                                show: true,
+                                title: 'Original data',
+                                readOnly: true,
+                                optionToContent: function (opt) {
 
-                        }
-                    }
-                }
-            },
-            legend: {
-                data: []
-            },
-            grid: {
-                left: '3%',
-                right: '4%',
-                bottom: '3%',
-                containLabel: true
-            },
-            xAxis: {
-                type: 'value',
-                max: 100
-            },
-            yAxis: {
-                type: 'category',
-                data: []
-            },
-            series: [
-                {
-                    name: '',
-                    type: 'bar',
-                    stack: '总量',
-                    label: {
-                        show: true,
-                        position: 'insideRight',
-                        formatter: function (x) {
-                            if (x.data > 3) {
-                                return x.data;
-                            } else {
-                                return '';
+                                }
                             }
                         }
                     },
-                    data: []
+                    legend: {
+                        data: []
+                    },
+                    grid: {
+                        left: '3%',
+                        right: '4%',
+                        bottom: '3%',
+                        containLabel: true
+                    },
+                    xAxis: {
+                        type: 'value',
+                        max: 100
+                    },
+                    yAxis: {
+                        type: 'category',
+                        data: []
+                    },
+                    series: [
+                        {
+                            name: '',
+                            type: 'bar',
+                            stack: '总量',
+                            label: {
+                                show: true,
+                                position: 'insideRight',
+                                formatter: function (x) {
+                                    if (x.data > 3) {
+                                        return x.data;
+                                    } else {
+                                        return '';
+                                    }
+                                }
+                            },
+                            data: []
+                        }
+                    ]
+                };
+                for (i = 1; i < tlegend.length; i++) {
+                    option['series'].push({
+                        name: '',
+                        type: 'bar',
+                        stack: '总量',
+                        label: {
+                            show: true,
+                            position: 'insideRight',
+                            formatter: function (x) {
+                                if (x.data > 3) {
+                                    return x.data;
+                                } else {
+                                    return '';
+                                }
+                            }
+                        },
+                        data: []
+                    });
                 }
-            ]
-        };
-        for (i=1;i<tlegend.length;i++) {
-            option['series'].push({
-                name: '',
-                type: 'bar',
-                stack: '总量',
-                label: {
-                    show: true,
-                    position: 'insideRight',
-                    formatter: function (x) {
-                        if (x.data > 3) {
-                            return x.data;
-                        } else {
-                            return '';
+                for (i = 0; i < tlegend.length; i++) {
+                    option['legend']['data'].push(tlegend[i]);
+                    option['series'][i]['name'] = tlegend[i];
+                }
+                len = pop.length;
+                for (i = len - 1; i > -1; i--) {
+                    for (j = 0; j < i; j++) {
+                        if (pop[j]['data'][tlegend[0]] > pop[j + 1]['data'][tlegend[0]]) {
+                            var jh = pop[j];
+                            pop[j] = pop[j + 1];
+                            pop[j + 1] = jh;
                         }
                     }
-                },
-                data: []
-            });
-        }
-        for (i=0;i<tlegend.length;i++) {
-            option['legend']['data'].push(tlegend[i]);
-            option['series'][i]['name'] = tlegend[i];
-        }
-        len = pop.length;
-        for (i = len - 1; i > -1; i--) {
-            for (j = 0; j < i; j++) {
-                if (pop[j]['data'][tlegend[0]] > pop[j+1]['data'][tlegend[0]]) {
-                    var jh = pop[j];
-                    pop[j] = pop[j + 1];
-                    pop[j + 1] = jh;
                 }
+                for (sam = 0; sam < len; sam++) {
+                    var bool = false;
+                    for (san = 0; san < tlegend.length; san++) {
+                        if (pop[sam][tlegend[san]] !== 0) {
+                            bool = true;
+                        }
+                    }
+                    if (bool) {
+                        option['yAxis']['data'].push(pop[sam]['name']);
+                        for (san = 0; san < tlegend.length; san++) {
+                            option['series'][san]['data'].push(pop[sam]['data'][tlegend[san]]);
+                        }
+                    }
+                }
+                myChart.setOption(option, 'xml');
+                console.log('seehere');
+                console.log(option);
+            } else {
+                document.getElementById('alfamain').innerHTML = 'Not enough information to render map';
             }
         }
-        for (sam = 0; sam < len; sam++) {
-            var bool = false;
-            for (san = 0; san < tlegend.length; san++) {
-                if (pop[sam][tlegend[san]] !== 0) {
-                    bool = true;
-                }
-            }
-            if (bool) {
-                option['yAxis']['data'].push(pop[sam]['name']);
-                for (san = 0; san < tlegend.length; san++) {
-                    option['series'][san]['data'].push(pop[sam]['data'][tlegend[san]]);
-                }
-            }
-        }
-        myChart.setOption(option, 'xml');
-        console.log('seehere');
-        console.log(option);
-    } else {
-        document.getElementById('alfamain').innerHTML = 'Not enough information to render map';
-    }
+    })
 }
 
 /*var geo = poplist['geography'];
@@ -920,176 +750,156 @@ series: [
 myChart.setOption(option, 'xml');*/
 
 function listarticle(rsnumber) {
-    var pmidlist = load('data/out/abstract/Rs' + rsnumber + '.json');
-    pages = Math.ceil(pmidlist.length / 10);
-    lastpage = pmidlist.length % 10;
-    if (pages > 1) {
-        document.getElementById('pagespills').removeAttribute('hidden');
-    }
-    for (i = 0; i < pages; i++) {
-        var nodea = document.createElement('a');
-        var josh = (i + 1).toString();
-        var textnodea = document.createTextNode(josh);
-        nodea.appendChild(textnodea);
-        nodea.setAttribute('href', '#page' + josh);
-        nodea.setAttribute('role', 'tab');
-        nodea.setAttribute('data-toggle', 'tab');
-        var nodeli = document.createElement('li');
-        nodeli.appendChild(nodea);
-        nodeli.setAttribute('role', 'presentation');
-        if (i === 0) {
-            nodeli.setAttribute('class', 'active');
-        }
-        document.getElementById('pagespills').appendChild(nodeli);
-        var nodeth1 = document.createElement('th');
-        var nodeth2 = document.createElement('th');
-        var nodeth3 = document.createElement('th');
-        var textnodeth1 = document.createTextNode('PMID');
-        var textnodeth2 = document.createTextNode('Title');
-        var textnodeth3 = document.createTextNode('Keywords');
-        nodeth1.appendChild(textnodeth1);
-        nodeth2.appendChild(textnodeth2);
-        nodeth3.appendChild(textnodeth3);
-        var nodetr = document.createElement('tr');
-        nodetr.appendChild(nodeth1);
-        nodetr.appendChild(nodeth2);
-        nodetr.appendChild(nodeth3);
-        var nodetable = document.createElement('table');
-        nodetable.appendChild(nodetr);
-        nodetable.setAttribute('class', 'pure-table');
-        nodetable.setAttribute('id', 'articleform' + josh);
-        var nodedivin = document.createElement('div');
-        nodedivin.appendChild(nodetable);
-        nodedivin.setAttribute('class', 'col-xs-12 col-md-12');
-        var nodediv = document.createElement('div');
-        nodediv.appendChild(nodedivin);
-        nodediv.setAttribute('role', 'tabpanel');
-        nodediv.setAttribute('id', 'page' + josh);
-        if (i === 0) {
-            nodediv.setAttribute('class', 'tab-pane fade in active')
-        } else {
-            nodediv.setAttribute('class', 'tab-pane fade');
-        }
-        document.getElementById('formitself').appendChild(nodediv);
-        for (j = i * 10; j < (i + 1) * 10; j++) {
-            if (j < pmidlist.length) {
-                var node1 = document.createElement('tr');
-                node1.setAttribute('id', 'article' + j.toString());
-                document.getElementById('articleform' + josh).appendChild(node1);
-                var node2 = document.createElement('td');
-                var node4 = document.createElement('td');
-                var node6 = document.createElement('td');
-                var refnode = document.createElement('a');
-                var pmid = pmidlist[j]['id'];
-                var year = pmidlist[j]['passages'][0]['infons']['year'];
-                var title = pmidlist[j]['passages'][0]['text'];
-                var journal = pmidlist[j]['passages'][0]['infons']['journal'];
-                var authors = pmidlist[j]['passages'][0]['infons']['authors'];
-                var keywords = pmidlist[j]['passages'][1]['annotations'];
-                var checkkey = {};
-                var keyform = '';
-                for (k = 0; k < keywords.length; k++) {
-                    keytype = keywords[k]['infons']['type'];
-                    if (keywords[k]['text'] in checkkey) {
+    $.ajax({
+        url: "/file/pmidlist/" + rsnumber, //json文件位置
+        type: "GET", //请求方式为get
+        dataType: "json", //返回数据格式为json
+        success: function (data) {
+            var pmidlist = data;
+            pages = Math.ceil(pmidlist.length / 10);
+            lastpage = pmidlist.length % 10;
+            if (pages > 1) {
+                document.getElementById('pagespills').removeAttribute('hidden');
+            }
+            for (i = 0; i < pages; i++) {
+                var nodea = document.createElement('a');
+                var josh = (i + 1).toString();
+                var textnodea = document.createTextNode(josh);
+                nodea.appendChild(textnodea);
+                nodea.setAttribute('href', '#page' + josh);
+                nodea.setAttribute('role', 'tab');
+                nodea.setAttribute('data-toggle', 'tab');
+                var nodeli = document.createElement('li');
+                nodeli.appendChild(nodea);
+                nodeli.setAttribute('role', 'presentation');
+                if (i === 0) {
+                    nodeli.setAttribute('class', 'active');
+                }
+                document.getElementById('pagespills').appendChild(nodeli);
+                var nodeth1 = document.createElement('th');
+                var nodeth2 = document.createElement('th');
+                var nodeth3 = document.createElement('th');
+                var textnodeth1 = document.createTextNode('PMID');
+                var textnodeth2 = document.createTextNode('Title');
+                var textnodeth3 = document.createTextNode('Keywords');
+                nodeth1.appendChild(textnodeth1);
+                nodeth2.appendChild(textnodeth2);
+                nodeth3.appendChild(textnodeth3);
+                var nodetr = document.createElement('tr');
+                nodetr.appendChild(nodeth1);
+                nodetr.appendChild(nodeth2);
+                nodetr.appendChild(nodeth3);
+                var nodetable = document.createElement('table');
+                nodetable.appendChild(nodetr);
+                nodetable.setAttribute('class', 'pure-table');
+                nodetable.setAttribute('id', 'articleform' + josh);
+                var nodedivin = document.createElement('div');
+                nodedivin.appendChild(nodetable);
+                nodedivin.setAttribute('class', 'col-xs-12 col-md-12');
+                var nodediv = document.createElement('div');
+                nodediv.appendChild(nodedivin);
+                nodediv.setAttribute('role', 'tabpanel');
+                nodediv.setAttribute('id', 'page' + josh);
+                if (i === 0) {
+                    nodediv.setAttribute('class', 'tab-pane fade in active')
+                } else {
+                    nodediv.setAttribute('class', 'tab-pane fade');
+                }
+                document.getElementById('formitself').appendChild(nodediv);
+                for (j = i * 10; j < (i + 1) * 10; j++) {
+                    if (j < pmidlist.length) {
+                        var node1 = document.createElement('tr');
+                        node1.setAttribute('id', 'article' + j.toString());
+                        document.getElementById('articleform' + josh).appendChild(node1);
+                        var node2 = document.createElement('td');
+                        var node4 = document.createElement('td');
+                        var node6 = document.createElement('td');
+                        var refnode = document.createElement('a');
+                        var pmid = pmidlist[j]['id'];
+                        var year = pmidlist[j]['passages'][0]['infons']['year'];
+                        var title = pmidlist[j]['passages'][0]['text'];
+                        var journal = pmidlist[j]['passages'][0]['infons']['journal'];
+                        var authors = pmidlist[j]['passages'][0]['infons']['authors'];
+                        var keywords = pmidlist[j]['passages'][1]['annotations'];
+                        var checkkey = {};
+                        var keyform = '';
+                        for (k = 0; k < keywords.length; k++) {
+                            keytype = keywords[k]['infons']['type'];
+                            if (keywords[k]['text'] in checkkey) {
 
-                    } else if (keytype === 'Disease' || keytype === 'Chemical' || keytype === 'Gene') {
-                        if (keyform === '') {
-                            keyform = keywords[k]['text'];
-                        } else {
-                            keyform = keyform + ', ' + keywords[k]['text'];
+                            } else if (keytype === 'Disease' || keytype === 'Chemical' || keytype === 'Gene') {
+                                if (keyform === '') {
+                                    keyform = keywords[k]['text'];
+                                } else {
+                                    keyform = keyform + ', ' + keywords[k]['text'];
+                                }
+                                checkkey[keywords[k]['text']] = true;
+                            }
                         }
-                        checkkey[keywords[k]['text']] = true;
+                        var textnode1 = document.createTextNode(pmid);
+                        var textnode3 = document.createTextNode(title);
+                        var textnode5 = document.createTextNode(keyform);
+                        refnode.appendChild(textnode1);
+                        refnode.setAttribute('href', 'https://pubmed.ncbi.nlm.nih.gov/' + pmid + '/');
+                        refnode.setAttribute('target', '_blank');
+                        node2.appendChild(refnode);
+                        node4.appendChild(textnode3);
+                        node6.appendChild(textnode5);
+                        document.getElementById('article' + j.toString()).appendChild(node2);
+                        document.getElementById('article' + j.toString()).appendChild(node4);
+                        document.getElementById('article' + j.toString()).appendChild(node6);
                     }
                 }
-                var textnode1 = document.createTextNode(pmid);
-                var textnode3 = document.createTextNode(title);
-                var textnode5 = document.createTextNode(keyform);
-                refnode.appendChild(textnode1);
-                refnode.setAttribute('href', 'https://pubmed.ncbi.nlm.nih.gov/' + pmid + '/');
-                refnode.setAttribute('target', '_blank');
-                node2.appendChild(refnode);
-                node4.appendChild(textnode3);
-                node6.appendChild(textnode5);
-                document.getElementById('article' + j.toString()).appendChild(node2);
-                document.getElementById('article' + j.toString()).appendChild(node4);
-                document.getElementById('article' + j.toString()).appendChild(node6);
+
             }
         }
-
-    }
-    /*for (i=0; i<pmidlist.length; i++) {
-        var node1 = document.createElement('tr');
-        node1.setAttribute('id', 'article'+i.toString());
-        document.getElementById('articleform').appendChild(node1);
-        var node2 = document.createElement('td');
-        var node4 = document.createElement('td');
-        var node6 = document.createElement('td');
-        var refnode = document.createElement('a');
-        var pmid = pmidlist[i]['id'];
-        var year = pmidlist[i]['passages'][0]['infons']['year'];
-        var title = pmidlist[i]['passages'][0]['text'];
-        var journal = pmidlist[i]['passages'][0]['infons']['journal'];
-        var authors = pmidlist[i]['passages'][0]['infons']['authors'];
-        var keywords = pmidlist[i]['passages'][1]['annotations'];
-        var checkkey = {};
-        var keyform = '';
-        for (j=0; j<keywords.length; j++) {
-            keytype = keywords[j]['infons']['type'];
-            if (keywords[j]['text'] in checkkey) {
-
-            } else if (keytype === 'Disease' || keytype === 'Chemical' || keytype === 'Gene') {
-                if (keyform === '') {
-                    keyform = keywords[j]['text'];
-                } else {
-                    keyform = keyform+', '+keywords[j]['text'];
-                }
-                checkkey[keywords[j]['text']] = true;
-            }
-        }
-        var textnode1 = document.createTextNode(pmid);
-        var textnode3 = document.createTextNode(title);
-        var textnode5 = document.createTextNode(keyform);
-        refnode.appendChild(textnode1);
-        refnode.setAttribute('href', 'https://pubmed.ncbi.nlm.nih.gov/'+pmid+'/');
-        refnode.setAttribute('target', '_blank');
-        node2.appendChild(refnode);
-        node4.appendChild(textnode3);
-        node6.appendChild(textnode5);
-        document.getElementById('article'+i.toString()).appendChild(node2);
-        document.getElementById('article'+i.toString()).appendChild(node4);
-        document.getElementById('article'+i.toString()).appendChild(node6);
-    }*/
+    })
 }
 
-var req = load('temp/form.json');
-console.log(req.name);
-console.log(typeof (req.name));
-var patt1 = /rs[0-9]+/;
-var patt2 = /[0-9]+/;
-console.log(patt2.test(req.name));
-var rsnumber = req.name;
-if (patt1.test(req.name)) {
-    rsnumber = req.name;
-    rsnumber = rsnumber.slice(2, rsnumber.length);
-} else if (patt2.test(req.name)) {
-    rsnumber = req.name;
-    console.log(rsnumber);
+urled = location.pathname;
+var rsnumber;
+var patt1 = /\/rs\/id\/([0-9]+)/;
+if (patt1.test(urled)) {
+    arr = urled.split('/');
+    rsnumber = arr[3];
 }
-console.log(rsnumber);
-console.log(document.title);      // 可以获取title的值。
 document.title = 'Rs' + rsnumber;    // 设置title的值。
-var wordlist = load('data/out/keyword/arranged/Rs' + rsnumber + '.json');
-var newwordlist = load('data/out/keyword/Rs' + rsnumber + '.json');
-var weblist = load('data/out/webwork/Rs' + rsnumber + '.json');
-console.log("title=" + document.title);
+var data1 = null;
+var data2 = null;
+var ajax1 = $.ajax({
+    url: "/file/wordlist/" + rsnumber, //json文件位置
+    type: "GET", //请求方式为get
+    dataType: "json",
+    success: function (data) {
+        data1 = data;
+    }
+});
+var ajax2 = $.ajax({
+    url: "/file/weblist/" + rsnumber,
+    type: "GET",
+    dataType: "json",
+    success: function (data) {
+        data2 = data;
+    }
+});
+$.ajax({
+    url: "/file/newwordlist/" + rsnumber, //json文件位置
+    type: "GET", //请求方式为get
+    dataType: "json", //返回数据格式为json
+    success: function (data) {
+        var newwordlist = data;
+        wordcloudlist(newwordlist, rsnumber);
+    }
+})
+$.when(ajax1, ajax2).done(function () {
+    writewords(data1, data2, rsnumber);
+});
 document.getElementById("rstitle").innerHTML = 'Rs' + rsnumber;
 mybasics = getbasics(rsnumber);
 getgenotype(rsnumber, mybasics);
 getpopulation(rsnumber);
 getalfa(rsnumber);
 listarticle(rsnumber);
-writewords(wordlist, weblist, rsnumber);
-wordcloudlist(newwordlist, rsnumber);
 
 /*function run(rt) {
     console.log('rt '+rt);

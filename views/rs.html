@@ -5,10 +5,229 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="stylesheets/bootstrap.min.css" rel="stylesheet">
-  <link href="stylesheets/offcanvas.css" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+  <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
+  <link href="/stylesheets/offcanvas.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
   <title>rs</title>
+  <script src="/javascripts/common/jquery.min.js"></script>
+  <script src="/javascripts/common/echarts-en.js"></script>
+  <script>
+    function newDoc() {
+      rsnumber = document.getElementById('SNPNo').value;
+      console.log('seeme');
+      console.log(rsnumber);
+      rsnumber = String(rsnumber);
+      var patt5 = /rs([0-9]+)/;
+      var patt6 = /Rs([0-9]+)/;
+      if (patt5.test(rsnumber) || patt6.test(rsnumber)) {
+        rsnumber = rsnumber.slice(2);
+      }
+      window.location.assign("http://localhost:3000/rs/id/"+rsnumber);
+    }
+    function reloadalfa() {
+      rsnumber = document.getElementById('SNPNo').value;
+      console.log('seeme');
+      console.log(rsnumber);
+      rsnumber = String(rsnumber);
+      var patt5 = /rs([0-9]+)/;
+      var patt6 = /Rs([0-9]+)/;
+      if (patt5.test(rsnumber) || patt6.test(rsnumber)) {
+        rsnumber = rsnumber.slice(2);
+      }
+      $.ajax({
+        url: "/file/alfa/" + rsnumber, //json文件位置
+        type: "GET", //请求方式为get
+        dataType: "json", //返回数据格式为json
+        success: function (data) { //请求成功完成后要执行的方法 
+            poplist = data
+            if (poplist !== null) {
+                pop = [];
+                tlegend = [];
+                for (var i in poplist['results']) {
+                    var ref = poplist['results'][i]['ref'];
+                    for (var j in poplist['results'][i]['counts']) {
+                        for (var k in poplist['results'][i]['counts'][j]['allele_counts']) {
+                            var total = 0;
+                            var fire = poplist['results'][i]['counts'][j]['allele_counts'][k];
+                            for (var l in poplist['results'][i]['counts'][j]['allele_counts'][k]) {
+                                total = total + poplist['results'][i]['counts'][j]['allele_counts'][k][l];
+                            }
+                            for (var l in poplist['results'][i]['counts'][j]['allele_counts'][k]) {
+                                fire[l] = 100 * fire[l] / total;
+                                fire[l] = fire[l].toFixed(1);
+                            }
+                            if (tlegend.length === 0) {
+                                for (var l in poplist['results'][i]['counts'][j]['allele_counts'][k]) {
+                                    tlegend.push(l);
+                                }
+                            }
+                            var tendername;
+                            switch (k) {
+                                case 'SAMN10492695':
+                                    tendername = 'European';
+                                    break;
+                                case 'SAMN10492698':
+                                    tendername = 'African American';
+                                    break;
+                                case 'SAMN10492696':
+                                    tendername = 'African Others';
+                                    break;
+                                case 'SAMN10492703':
+                                    tendername = 'African (Note 1)';
+                                    break;
+                                case 'SAMN10492697':
+                                    tendername = 'East Asian';
+                                    break;
+                                case 'SAMN10492702':
+                                    tendername = 'South Asian';
+                                    break;
+                                case 'SAMN10492701':
+                                    tendername = 'Other Asian';
+                                    break;
+                                case 'SAMN10492704':
+                                    tendername = 'Asian (Note 2)';
+                                    break;
+                                case 'SAMN10492699':
+                                    tendername = 'Latin American 1';
+                                    break;
+                                case 'SAMN10492700':
+                                    tendername = 'Latin American 2';
+                                    break;
+                                case 'SAMN11605645':
+                                    tendername = 'Other';
+                                    break;
+                                case 'SAMN10492705':
+                                    tendername = 'Total (Note 3)';
+                            }
+                            pop.push({
+                                name: tendername,
+                                data: fire
+                                //data: poplist['results'][i]['ref'][j]['allele_counts'][k]
+                            });
+                        }
+                    }
+                }
+                var myChart = echarts.init(document.getElementById('alfamain'));
+                var option = {
+                    tooltip: {
+                        trigger: 'item',
+                        axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                            type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                        },
+                        //formatter: 
+                    },
+                    toolbox: {
+                        // 显示工具箱
+                        show: true,
+                        feature: {
+                            saveAsImage: {//保存图片
+                                show: true,
+                                title: 'Save as image'
+                            },
+                            dataView: { //数据视图
+                                show: true,
+                                title: 'Original data',
+                                readOnly: true,
+                                optionToContent: function (opt) {
+
+                                }
+                            }
+                        }
+                    },
+                    legend: {
+                        data: []
+                    },
+                    grid: {
+                        left: '3%',
+                        right: '4%',
+                        bottom: '3%',
+                        containLabel: true
+                    },
+                    xAxis: {
+                        type: 'value',
+                        max: 100
+                    },
+                    yAxis: {
+                        type: 'category',
+                        data: []
+                    },
+                    series: [
+                        {
+                            name: '',
+                            type: 'bar',
+                            stack: '总量',
+                            label: {
+                                show: true,
+                                position: 'insideRight',
+                                formatter: function (x) {
+                                    if (x.data > 3) {
+                                        return x.data;
+                                    } else {
+                                        return '';
+                                    }
+                                }
+                            },
+                            data: []
+                        }
+                    ]
+                };
+                for (i = 1; i < tlegend.length; i++) {
+                    option['series'].push({
+                        name: '',
+                        type: 'bar',
+                        stack: '总量',
+                        label: {
+                            show: true,
+                            position: 'insideRight',
+                            formatter: function (x) {
+                                if (x.data > 3) {
+                                    return x.data;
+                                } else {
+                                    return '';
+                                }
+                            }
+                        },
+                        data: []
+                    });
+                }
+                for (i = 0; i < tlegend.length; i++) {
+                    option['legend']['data'].push(tlegend[i]);
+                    option['series'][i]['name'] = tlegend[i];
+                }
+                len = pop.length;
+                for (i = len - 1; i > -1; i--) {
+                    for (j = 0; j < i; j++) {
+                        if (pop[j]['data'][tlegend[0]] > pop[j + 1]['data'][tlegend[0]]) {
+                            var jh = pop[j];
+                            pop[j] = pop[j + 1];
+                            pop[j + 1] = jh;
+                        }
+                    }
+                }
+                for (sam = 0; sam < len; sam++) {
+                    var bool = false;
+                    for (san = 0; san < tlegend.length; san++) {
+                        if (pop[sam][tlegend[san]] !== 0) {
+                            bool = true;
+                        }
+                    }
+                    if (bool) {
+                        option['yAxis']['data'].push(pop[sam]['name']);
+                        for (san = 0; san < tlegend.length; san++) {
+                            option['series'][san]['data'].push(pop[sam]['data'][tlegend[san]]);
+                        }
+                    }
+                }
+                myChart.setOption(option, 'xml');
+                console.log('seehere');
+                console.log(option);
+            } else {
+                document.getElementById('alfamain').innerHTML = 'Not enough information to render map';
+            }
+        }
+    })
+    }
+  </script>
 </head>
 
 <body onload="load();">
@@ -43,14 +262,14 @@
           <li><a href="/about">About</a></li>
           <li><a href="/report">Report a bug</a></li>
         </ul>
-        <form class="navbar-form navbar-left" action="/rs" method="post">
+        <div class="navbar-form navbar-left">
           <div class="form-group">
             <input id="SNPNo" type="text" class="form-control" placeholder="e.g.: rs2234693, 2234693" name="name"
               value="">
-          </div>
-          <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"
+            <button class="btn btn-default" onclick="newDoc()"><span class="glyphicon glyphicon-search"
               aria-hidden="true"></span></button>
-        </form>
+          </div>
+        </div>
         <ul class="nav navbar-nav navbar-right">
           <li><a href="/zh">中文</a></li>
           <li class="active"><a href="/">English <span class="sr-only">(current)</span></a></li>
@@ -259,6 +478,9 @@
                         <!-- Tab panes -->
                       <div class="tab-content">
                         <div role="tabpanel" class="tab-pane fade in active" id="alfa">
+                          <button type="button" class="btn btn-default btn-lg" onclick="reloadalfa();">
+                            <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Refresh
+                          </button>
                           <div id="alfamain" style="width: 800px;height:600px;">
 
                           </div>
@@ -344,7 +566,7 @@
 
   <script src="/javascripts/common/jquery.min.js"></script>
   <script src="/javascripts/common/bootstrap.min.js"></script>
-  <script src="javascripts/common/offcanvas.js"></script>
+  <script src="/javascripts/common/offcanvas.js"></script>
   <script src="/javascripts/common/echarts-en.js"></script>
   <script src="/javascripts/common/echarts-wordcloud.js"></script>
   <script src="/javascripts/scrs.js"></script>
