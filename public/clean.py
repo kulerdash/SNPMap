@@ -19,6 +19,6 @@ def cleansing(al, filename):
         for j in range(0, len(al[i]['passages'][1]['annotations'])):
             data1.append({"name": al[i]['passages'][1]['annotations'][j]['text'], "type": al[i]['passages'][1]['annotations'][j]['infons']['type']})
         ka.append({"id": al[i]['id'], "name": al[i]['passages'][0]['text'], "data": data1})
-    with open('data\\out\\clean\\'+filename.strip('.txt')+'.json', 'w', encoding='utf-8') as fp:
+    with open('data/out/clean/'+filename.strip('.txt')+'.json', 'w', encoding='utf-8') as fp:
         json.dump(ka, fp)
     

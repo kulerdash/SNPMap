@@ -16,16 +16,16 @@ router.get('/id/:term', function (req, res, next) {
         fs.stat('./public/data/out/ALFA/rs' + value + '.json', function (err, stat) {
             if (err == null) {
                 console.log('ALFA file exists');
-                axios.get('https://api.ncbi.nlm.nih.gov/variation/v0/refsnp/' + value +'/frequency').then((resp) => {
+                /*axios.get('https://api.ncbi.nlm.nih.gov/variation/v0/refsnp/' + value +'/frequency').then((resp) => {
                     //请求成功，处理resp.data中的html数据
                     console.log(resp.data);
                 }).catch((err) => {
                     //请求失败，错误处理
                     console.log(err.code);
-                });
+                });*/
             } else if (err.code === 'ENOENT') {
-                exec("python alfa.py " + value,
-                    { cwd: 'C:/Users/kulerdash/OneDrive - zju.edu.cn/学习资料/Med/项目/expressDemo/SNPMap/public' },
+                exec("python3 alfa.py " + value,
+                    { cwd: 'C:/Projects/SNPMap/public' },
                     function (error, stdout, stderr) {
                         if (error) {
                             console.info('stderr : ' + stderr);
@@ -39,8 +39,8 @@ router.get('/id/:term', function (req, res, next) {
             if (err == null) {
                 console.log('Abstract file exists');
             } else if (err.code === 'ENOENT') {
-                exec("python rest.py " + value,
-                    { cwd: 'C:/Users/kulerdash/OneDrive - zju.edu.cn/学习资料/Med/项目/expressDemo/SNPMap/public' },
+                exec("python3 rest.py " + value,
+                    { cwd: 'C:/Projects/SNPMap/public' },
                     function (error, stdout, stderr) {
                         if (error) {
                             console.info('stderr : ' + stderr);
@@ -50,12 +50,7 @@ router.get('/id/:term', function (req, res, next) {
                 console.log('Abstract: Some other error: ', err.code);
             }
         });
-        setTimeout(function(){
- 
-            res.render('rs', { title: 'Express' });
-            
-           //延迟一秒执行
-        },5000);
+        res.render('rs', { title: 'Express' });
         
     })
     

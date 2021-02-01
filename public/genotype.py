@@ -25,16 +25,16 @@ def genoinfo(lines, filename):
         key = lines[i][1:cut]
         value = lines[i][cut+1:].strip('\n')
         info[key] = value
-    g = open('data\\out\\basic\\alleles\\'+filename.strip('.txt')+'.json', 'w', encoding='utf-8')
+    g = open('data/out/basic/alleles/'+filename.strip('.txt')+'.json', 'w', encoding='utf-8')
     g.write(json.dumps(info))
 
 def main():
     time_start = time.time()
     print('Running Python genotype analysis...')
-    filelist = os.listdir('data\\samples\\alleles')
+    filelist = os.listdir('data/samples/alleles')
     for i in range(0, len(filelist)):
         if filelist[i].count('.txt')>0 and filelist[i].count('Rs')>0:
-            with open('data\\samples\\alleles\\'+filelist[i]) as f:
+            with open('data/samples/alleles/'+filelist[i]) as f:
                 lines = f.readlines()
             genoinfo(lines, filelist[i])
             print(filelist[i] + ' is finished.')

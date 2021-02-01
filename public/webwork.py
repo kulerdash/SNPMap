@@ -17,7 +17,7 @@ import time
 from lemminflect import getLemma
 
 def getweb(a, filename):
-    with open('data\\out\\PMIDList\\'+filename, 'r', encoding = 'utf-8') as fp:
+    with open('data/out/PMIDList/'+filename, 'r', encoding = 'utf-8') as fp:
         pmidlist = json.load(fp)
     abstract = {}
     webresult = {}
@@ -30,9 +30,9 @@ def getweb(a, filename):
     a = b
     for i in range (0, len(pmidlist)):
         artwordlist = []
-        filelist = os.listdir('data\\out\\abstractPMID')
+        filelist = os.listdir('data/out/abstractPMID')
         if 'PMID'+str(pmidlist[i])+'.json' in filelist:
-            with open('data\\out\\abstractPMID\\PMID'+str(pmidlist[i])+'.json', 'r', encoding = 'utf-8') as gp:
+            with open('data/out/abstractPMID/PMID'+str(pmidlist[i])+'.json', 'r', encoding = 'utf-8') as gp:
                 article = json.load(gp)
             abstract[pmidlist[i]] = article
             artwordbiglist = article['passages'][0]['annotations'] + article['passages'][1]['annotations']
@@ -54,17 +54,17 @@ def getweb(a, filename):
 
 def main():
     time_start = time.time()
-    filelist = os.listdir('data\\out\\keyword')
+    filelist = os.listdir('data/out/keyword')
     for i in range(0, len(filelist)):
         if filelist[i].count('.json')>0 and filelist[i].count('Rs')>0:
-            with open('data\\out\\keyword\\'+filelist[i]) as f:
+            with open('data/out/keyword/'+filelist[i]) as f:
                 a = json.load(f)
             webresult = getweb(a, filelist[i])
-            g = open('data\\out\\webwork\\'+filelist[i], 'a', encoding='utf-8')
+            g = open('data/out/webwork/'+filelist[i], 'a', encoding='utf-8')
             g.truncate(0)
             webresult = sorted(webresult.items(),key=lambda x:x[1])#根据单词个数进行排序
             webresult = webresult[::-1]
-            with open('data\\out\\webwork\\'+filelist[i], 'a', encoding='utf-8') as hp:
+            with open('data/out/webwork/'+filelist[i], 'a', encoding='utf-8') as hp:
                 json.dump(webresult, hp)
             print(filelist[i] + ' is finished.')
     time_end = time.time()

@@ -23,16 +23,16 @@ def arrange(a, filename):
                 info[a[j]['type']]['data'].append(a[j])
     else:
         info['Check'] = 0
-    g = open('data\\out\\keyword\\arranged\\'+filename, 'w', encoding='utf-8')
+    g = open('data/out/keyword/arranged/'+filename, 'w', encoding='utf-8')
     g.write(json.dumps(info))
 
 def main():
     time_start = time.time()
     print('Running Python typearrange analysis...')
-    filelist = os.listdir('data\\out\\keyword')
+    filelist = os.listdir('data/out/keyword')
     for i in range(0, len(filelist)):
         if filelist[i].count('.json')>0 and filelist[i].count('Rs')>0:
-            with open('data\\out\\keyword\\'+filelist[i], 'r', encoding='utf-8') as f:
+            with open('data/out/keyword/'+filelist[i], 'r', encoding='utf-8') as f:
                 a = json.load(f)
             arrange(a, filelist[i])
             print(filelist[i] + ' is finished.')

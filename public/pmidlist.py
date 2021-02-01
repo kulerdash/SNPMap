@@ -17,19 +17,19 @@ import time
 import json
 
 def GetPMID(text, num, filename):
-    g = open('data\\out\\PMIDList\\'+filename, 'w', encoding='utf-8')
+    g = open('data/out/PMIDList/'+filename, 'w', encoding='utf-8')
     for i in range(0, num):
         g.write(str(text[i])+'\n')
-    g = open('data\\out\\PMIDList\\'+filename.strip('.txt')+'.json', 'w', encoding='utf-8')
+    g = open('data/out/PMIDList/'+filename.strip('.txt')+'.json', 'w', encoding='utf-8')
     g.write(json.dumps(list(map(int, text))))
 
 def main():
     # 读取Samples文件夹内文件按行读取到列表中
     time_start = time.time()
-    filelist = os.listdir('data\\samples')
+    filelist = os.listdir('data/samples')
     for i in range(0, len(filelist)):
         if filelist[i].count('.txt')>0 and filelist[i].count('Rs')>0:
-            with open('data\\samples\\'+filelist[i]) as f:
+            with open('data/samples/'+filelist[i]) as f:
                 lines = f.readlines()
             list_pmid = list()
             for j in range(0, len(lines)):

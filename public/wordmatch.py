@@ -29,9 +29,9 @@ def clearredundancy(inputed):
     return a_list
 
 def wordsearch(filename):
-    rsnumber = filename.strip('data\\out\\abstract\\')
+    rsnumber = filename.strip('data/out/abstract/')
     rsnumber = rsnumber.strip('.json')
-    basicname = 'data\\out\\basic\\'+rsnumber+'.json'
+    basicname = 'data/out/basic/'+rsnumber+'.json'
     with open(filename) as fp:
         a = json.load(fp)
     with open(basicname) as fp2:

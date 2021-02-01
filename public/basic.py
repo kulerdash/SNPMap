@@ -52,18 +52,18 @@ def basicinfo(lines, filename):
                 value2 = float(lines[i][s2+1:s3-1])
                 value3 = float(lines[i][s3+1:])
                 pop['geography'][place] = [value1, value2, value3]
-        g = open('data\\out\\population\\'+filename.strip('.txt')+'.json', 'w', encoding='utf-8')
+        g = open('data/out/population/'+filename.strip('.txt')+'.json', 'w', encoding='utf-8')
         g.write(json.dumps(pop))
-    g = open('data\\out\\basic\\'+filename.strip('.txt')+'.json', 'w', encoding='utf-8')
+    g = open('data/out/basic/'+filename.strip('.txt')+'.json', 'w', encoding='utf-8')
     g.write(json.dumps(info))
 
 def main():
     time_start = time.time()
     print('Running Python basic info analysis...')
-    filelist = os.listdir('data\\samples')
+    filelist = os.listdir('data/samples')
     for i in range(0, len(filelist)):
         if filelist[i].count('.txt')>0 and filelist[i].count('Rs')>0:
-            with open('data\\samples\\'+filelist[i]) as f:
+            with open('data/samples/'+filelist[i]) as f:
                 lines = f.readlines()
             basicinfo(lines, filelist[i])
             print(filelist[i] + ' is finished.')
